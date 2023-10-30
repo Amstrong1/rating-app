@@ -28,6 +28,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', HomeController::class)->name('dashboard');
+    Route::get('/user/print/{user}', [UserController::class, 'print'])->name('user.print');
     Route::resource('/structure', StructureController::class);
     Route::resource('/place', PlaceController::class);
     Route::resource('/user', UserController::class);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\User;
 use App\Models\Place;
 use Illuminate\Support\Facades\Auth;
@@ -50,12 +51,17 @@ class UserController extends Controller
     public function show(User $user)
     {
         $qrcode = QrCode::size(200)->generate(str_replace('/user', '', url()->current()));
-        $rates = $user->rates()->get();
+        $quizzes = $user->structure->quizzes()->get();
+        $rates = $user->rates()->count();
+        $rateYes = $user->rates()->where('answer', true)->count();
+        $rateNo = $user->rates()->where('answer', false)->count();
         return view('app.user.show', [
             'user' => $user,
             'qrcode' => $qrcode,
+            'quizzes' => $quizzes,
             'rates' => $rates,
-            'my_attributes' => $this->rates_columns(),
+            'rateYes' => $rateYes,
+            'rateNo' => $rateNo,
         ]);
     }
 
@@ -65,6 +71,13 @@ class UserController extends Controller
             'user' => $user,
             'my_fields' => $this->user_fields(),
         ]);
+    }
+
+    public function print(User $user)
+    {
+        $qrcode = QrCode::size(200)->generate(str_replace('/user', '', url()->current()));
+        $pdf = PDF::loadView('app.user.print', compact('user', 'qrcode'));
+        return $pdf->stream();
     }
 
     public function update(UserUpdateRequest $request, User $user)
@@ -101,21 +114,12 @@ class UserController extends Controller
         return $columns;
     }
 
-    private function rates_columns()
-    {
-        $columns = (object) array(
-            'question' => 'Question',
-            'yes_percent' => "Pourcentage réponses positives",
-            'no_percent' => "Pourcentage réponses négatives",
-        );
-        return $columns;
-    }
-
     private function user_actions()
     {
         $actions = (object) array(
             'show' => 'Voir',
             'edit' => 'Modifier',
+            'print' => 'Imprimer',
             'delete' => "Supprimer",
         );
         return $actions;

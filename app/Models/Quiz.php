@@ -16,5 +16,13 @@ class Quiz extends Model
     public function structure(): BelongsTo
     {
         return $this->belongsTo(Structure::class);
+    }  
+
+    /**
+     * Get the rate that owns the quiz.
+     */
+    public function rate(): BelongsTo
+    {
+        return $this->belongsTo(Rate::class);
     }
 }

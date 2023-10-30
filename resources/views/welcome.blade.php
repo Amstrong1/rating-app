@@ -19,11 +19,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/geolocation.js') }}"></script>
 
 </head>
 
 
-<body class="font-sans text-gray-900 antialiased">
+<body class="font-sans text-gray-900 antialiased" onload="geolocal()">
 
     <header>
         <!-- Navigation bar -->
@@ -50,9 +51,10 @@
                 <div>
                     <a class="flex items-center no-underline hover:no-underline font-bold text-2xl lg:text-4xl h-20"
                         href="/">
-                        <img class="w-20" src="{{ asset('assets/img/vibecro.png') }}" alt="">
-                        <div class="tracking-widest text-sm md:text-2xl font-semibold italic rounded text-white">
-                            Nom de l'entreprise</div>
+                        <img class="w-10" src="{{ url('storage/' . $user->structure->logo) }}"
+                     alt=""> &nbsp;
+                        <div class="tracking-widest text-sm font-semibold italic rounded text-white">
+                            {{ $user->structure->name }}</div>
                     </a>
                 </div>
 
@@ -64,7 +66,7 @@
                                 data-te-ripple-color="light">Accueil</a>
                         </li>
                         <li class="mb-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                            <a class="block" href="#!" data-te-nav-link-ref data-te-ripple-init
+                            <a class="block" href="{{ $user->structure->slug }}" data-te-nav-link-ref data-te-ripple-init
                                 data-te-ripple-color="light">A Propos</a>
                         </li>
                     </ul>
@@ -95,7 +97,7 @@
                     @csrf
 
                     <input type="hidden" name="quizzes" value="{{ $quizzes->count() }}">
-                    
+
                     @php $i = 0; @endphp
                     @foreach ($quizzes as $quiz)
                         <div class="relative mb-6 md:w-1/2 md:mx-auto">
@@ -121,6 +123,9 @@
                     <input type="hidden" name="structure" value="{{ $structure->id }}">
                     <input type="hidden" name="user" value="{{ $user->id }}">
 
+                    <input type="hidden" id="latitude" name="latitude" value="">
+                    <input type="hidden" id="longitude" name="longitude" value="">
+
                     <!--Submit button-->
                     <button type="submit"
                         class="md:w-1/2 block mx-auto rounded px-6 pb-2 pt-2.5 my-6 text-xs font-medium uppercase leading-normal text-white"
@@ -143,14 +148,13 @@
             </div>
 
             <div class="mb-2">
-                <a class="text-white no-underline hover:no-underline" href="#">&copy; Nom entreprise
-                    2023</a>
+                <a class="text-white no-underline hover:no-underline" href="#">&copy;{{ $user->structure->name }}&nbsp;     2023</a>
             </div>
         </div>
 
         <div class="my-2 flex justify-center items-center w-full">
             <a class="text-white no-underline hover:no-underline" href="#">Développer par ...</a> &nbsp; &nbsp;
-            <a class="text-white no-underline hover:no-underline"> +229 97 90 74 89</a>
+            <a class="text-white no-underline hover:no-underline"> <u>Tel:</u> 01020304</a>
         </div>
     </footer>
 

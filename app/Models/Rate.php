@@ -11,7 +11,7 @@ class Rate extends Model
 {
     use HasFactory;
 
-    protected $append = ['question, yes_percent', 'no_percent'];
+    protected $append = ['question', 'user', 'rate_date', 'answer_formatted'];
 
     /**
      * Get the structure that owns the rate.
@@ -26,18 +26,30 @@ class Rate extends Model
         return $this->belongsTo(Quiz::class);
     }
 
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function getQuestionAttribute()
     {
         return $this->quiz->question;
     }
 
-    // public function getYesPercentAttribute()
-    // {
-    //     return $this->belongsTo(Structure::class);
-    // }
+    public function getRateDateAttribute()
+    {
+        return getFormattedDate($this->created_at);
+    }
 
-    // public function getNoPercentAttribute()
-    // {
-    //     return $this->belongsTo(Structure::class);
-    // }
+    public function getAnswerFormattedAttribute()
+    {
+        $answer = '';
+        if ($this->answer == true) {
+            $answer = 'Oui';
+        } else {
+            $answer = 'Non';
+        }
+        
+        return $answer;
+    }
 }

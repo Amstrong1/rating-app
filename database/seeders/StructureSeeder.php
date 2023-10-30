@@ -18,6 +18,7 @@ class StructureSeeder extends Seeder
             'address' => 'bohicon',
             'contact' => '52 85 85 90',
             'email' => 'contact@vibecro-corp.com',
+            'slug' => 'www.vibecro-corp.net',
             'logo' => 'logos/vibecro.png',
         ]);
     }

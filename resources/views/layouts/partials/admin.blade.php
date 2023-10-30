@@ -56,7 +56,7 @@
     <li class="mx-1 static" data-te-nav-item-ref>
         <x-nav-link
             class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white dark:hover:text-white dark:focus:text-white"
-            data-te-ripple-init data-te-ripple-color="light">
+            :href="route('evaluate.index')" :active="request()->routeIs('evaluate.*')" data-te-ripple-init data-te-ripple-color="light">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
