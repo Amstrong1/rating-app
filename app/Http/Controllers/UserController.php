@@ -50,7 +50,7 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        $qrcode = QrCode::size(200)->generate(str_replace('/user', '', url()->current()));
+        $qrcode = QrCode::size(200)->generate(str_replace('user', 'site', url()->current()));
         $quizzes = $user->structure->quizzes()->get();
         $rates = $user->rates()->count();
         $rateYes = $user->rates()->where('answer', true)->count();
