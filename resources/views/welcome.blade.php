@@ -62,11 +62,11 @@
                 <div class="hidden md:flex md:flex-row justify-end content-center">
                     <ul class="mr-auto flex flex-col md:flex-row md:justify-end" data-te-navbar-nav-ref>
                         <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                            <a class="block" href="#!" data-te-nav-link-ref data-te-ripple-init
+                            <a class="block" href="{{ url()->previous() }}" data-te-nav-link-ref data-te-ripple-init
                                 data-te-ripple-color="light">Accueil</a>
                         </li>
                         <li class="mb-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                            <a class="block" href="{{ $user->structure->slug }}" data-te-nav-link-ref data-te-ripple-init
+                            <a class="block" href="{{ $user->structure->slug ?? '#' }}" data-te-nav-link-ref data-te-ripple-init
                                 data-te-ripple-color="light">A Propos</a>
                         </li>
                     </ul>
@@ -75,10 +75,10 @@
         </nav>
 
         <!-- Hero section with background image, heading, subheading and button -->
-        <div class="bg-fixed bg-cover bg-no-repeat h-64"
-            style="background-position: 50%; background-image: url('assets/img/146.webp');">
+        <div class="bg-fixed bg-cover bg-no-repeat h-96"
+            style="background-position: 50%; background-image: url('assets/img/146.jpg');">
             <div class="px-8 md:px-14 mx-auto flex flex-wrap flex-col md:flex-row items-center h-full py-2"
-                style="background-color: rgba(0, 0, 0, 0.75)">
+                style="background-color: rgba(0, 0, 0, 0.50)">
             </div>
         </div>
     </header>
