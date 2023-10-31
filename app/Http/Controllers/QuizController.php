@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quiz;
+use App\Models\Place;
+use App\Models\PlaceQuiz;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreQuizRequest;
 use App\Http\Requests\UpdateQuizRequest;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 class QuizController extends Controller
 {
@@ -42,7 +45,26 @@ class QuizController extends Controller
         $quiz->structure_id = Auth::user()->structure_id;
         $quiz->question = $request->question;
 
-        if ( $quiz->save()) {
+        if ($quiz->save()) {
+
+            if ($request->places == null) {
+                $places = new EloquentCollection();
+                $places_id = Place::where('structure_id', Auth::user()->structure_id)->get('id');
+                for ($i=0; $i < count($places_id); $i++) {
+                    $places[] = $places_id[$i]->id;
+                }
+            } else {
+                $places = $request->places;
+            }
+
+            foreach ($places as $place) {
+                PlaceQuiz::create([
+                    'place_id' => $place,
+                    'quiz_id' =>  $quiz->id,
+                    'structure_id' => Auth::user()->structure_id,
+                ]);
+            }
+
             Alert::toast("Données enregistrées", 'success');
             return redirect('quiz');
         } else {
@@ -80,6 +102,16 @@ class QuizController extends Controller
         $quiz->question = $request->question;
 
         if ($quiz->save()) {
+
+            foreach ($request->places as $place) {
+                PlaceQuiz::where('quiz_id', $quiz->id)->delete();
+                PlaceQuiz::create([
+                    'place_id' => $place,
+                    'quiz_id' =>  $quiz->id,
+                    'structure_id' => Auth::user()->structure_id,
+                ]);
+            }
+
             Alert::toast('Les informations ont été modifiées', 'success');
             return redirect('quiz');
         };
@@ -104,6 +136,7 @@ class QuizController extends Controller
     {
         $columns = (object) [
             'question' => 'Question',
+            'place' => 'Unité',
         ];
         return $columns;
     }
@@ -123,7 +156,12 @@ class QuizController extends Controller
             'question' => [
                 'title' => 'Question',
                 'field' => 'text'
-            ]
+            ],
+            'places' => [
+                'title' => 'Unité',
+                'field' => 'multiple-select',
+                'options' => Place::where('structure_id', Auth::user()->structure_id)->get(),
+            ],
         ];
         return $fields;
     }

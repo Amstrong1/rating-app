@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PlaceQuiz;
+use App\Models\Quiz;
 use App\Models\Rate;
 use App\Models\User;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
 class WelcomeController extends Controller
 {
@@ -31,7 +34,11 @@ class WelcomeController extends Controller
 
         $user = User::find($user_id);
         $structure = $user->structure;
-        $quizzes = $structure->quizzes()->get();
+        $quizzes_id = PlaceQuiz::where('place_id', $user->place_id)->get('quiz_id');
+        $quizzes = new EloquentCollection();
+        foreach ($quizzes_id as $quiz) {
+            $quizzes[] = Quiz::find($quiz->quiz_id);
+        }
         return view('welcome', compact('user', 'structure', 'quizzes'));
     }
 }
