@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     {{-- favicon --}}
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon_io/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -91,7 +91,7 @@
     </header>
 
     <div class="w-full min-h-screen bg-fixed bg-center bg-cover flex flex-col sm:justify-center items-center"
-        style="background-image:url('assets/img/hero.jpg');">
+        style="background-image:url('assets/img/146.jpg');">
 
         <div class="w-full min-h-screen pt-16 md:pt-30 lg:pt-40 mb-0" style="background-color: rgba(3, 34, 76, .8)">
             <div class="">

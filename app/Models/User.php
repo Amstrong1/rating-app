@@ -75,8 +75,8 @@ class User extends Authenticatable
     /**
      * Get the rate that owns the user.
      */
-    public function rates(): BelongsTo
+    public function rates(): HasMany
     {
-        return $this->belongsTo(Rate::class);
+        return $this->hasMany(Rate::class);
     }
 }

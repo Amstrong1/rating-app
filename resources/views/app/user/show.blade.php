@@ -29,6 +29,9 @@
                                                 <div class="mr-4 p-3 text-center">
                                                     <span
                                                         class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                                                        {{-- @php
+                                                            dd($user->rates);
+                                                        @endphp --}}
                                                         @if ($user->rates !== null)
                                                             {{ $user->rates->count() }}
                                                         @else
@@ -41,7 +44,7 @@
                                                     <span
                                                         class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                                                         @if ($user->rates !== null)
-                                                            {{ $user->rates->where('answer', true)->count }}
+                                                            {{ $user->rates->where('answer', true)->count() }}
                                                         @else
                                                             0
                                                         @endif
@@ -52,7 +55,7 @@
                                                     <span
                                                         class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                                                         @if ($user->rates !== null)
-                                                            {{ $user->rates->where('answer', false)->count() ?? 0 }}
+                                                            {{ $user->rates->where('answer', false)->count() }}
                                                         @else
                                                             0
                                                         @endif

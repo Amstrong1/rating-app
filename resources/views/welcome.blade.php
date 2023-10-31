@@ -31,7 +31,7 @@
         <nav class="relative flex w-full items-center justify-between bg-white text-white py-2 shadow-lg md:flex- md:justify-start"
             style="background-color: #03224c" data-te-navbar-ref>
             <div class="flex w-full flex-wrap items-center justify-between px-3">
-                <div class="flex items-center justify-between w-full">
+                {{-- <div class="flex items-center justify-between w-full">
                     <!-- Hamburger menu button -->
                     <button
                         class="border-0 bg-transparent px-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"
@@ -46,28 +46,35 @@
                             </svg>
                         </span>
                     </button>
-                </div>
+                </div> --}}
 
                 <div>
                     <a class="flex items-center no-underline hover:no-underline font-bold text-2xl lg:text-4xl h-20"
                         href="/">
-                        <img class="w-10" src="{{ url('storage/' . $user->structure->logo) }}"
-                     alt=""> &nbsp;
+                        <img class="w-10" src="{{ url('storage/' . $user->structure->logo) }}" alt=""> &nbsp;
                         <div class="tracking-widest text-sm font-semibold italic rounded text-white">
                             {{ $user->structure->name }}</div>
                     </a>
                 </div>
 
                 <!-- Navigation links -->
-                <div class="hidden md:flex md:flex-row justify-end content-center">
+                <div class="md:flex md:flex-row justify-end content-center">
                     <ul class="mr-auto flex flex-col md:flex-row md:justify-end" data-te-navbar-nav-ref>
-                        <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
+                        {{-- <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
                             <a class="block" href="{{ url()->previous() }}" data-te-nav-link-ref data-te-ripple-init
                                 data-te-ripple-color="light">Accueil</a>
-                        </li>
-                        <li class="mb-2 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                            <a class="block" href="{{ $user->structure->slug ?? '#' }}" data-te-nav-link-ref data-te-ripple-init
-                                data-te-ripple-color="light">A Propos</a>
+                        </li> --}}
+                        <li class="mb-2 lg:mb-0 lg:pr-2 flex" data-te-nav-item-ref>
+
+                            <a class="flex" href="{{ $user->structure->slug ?? '#' }}" data-te-nav-link-ref
+                                data-te-ripple-init data-te-ripple-color="light">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+                                </svg>
+                                &nbsp;A Propos
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -142,19 +149,22 @@
 
         <div class="w-full pt-8 pb-8 text-md text-center fade-in flex flex-col md:flex-row justify-between">
             <div class="mt-2">
-                <a class="text-white no-underline hover:no-underline" href="#">PCD</a> <span class="text-white"> |
+                <a class="text-white no-underline hover:no-underline" href="#">PCD</a> <span
+                    class="text-white"> |
                 </span>
                 <a class="text-white no-underline hover:no-underline" href="#">CGU</a>
             </div>
 
             <div class="mb-2">
-                <a class="text-white no-underline hover:no-underline" href="#">&copy;{{ $user->structure->name }}&nbsp;     2023</a>
+                <a class="text-white no-underline hover:no-underline"
+                    href="#">&copy;{{ $user->structure->name }}&nbsp; 2023</a>
             </div>
         </div>
 
         <div class="my-2 flex justify-center items-center w-full">
-            <a class="text-white no-underline hover:no-underline" href="#">Développer par ...</a> &nbsp; &nbsp;
-            <a class="text-white no-underline hover:no-underline"> <u>Tel:</u> 01020304</a>
+            <a class="text-white no-underline hover:no-underline" href="#"><i>Made by Vibecro Corp</i></a>
+            &nbsp; &nbsp;
+            <a class="text-white no-underline hover:no-underline"> <i> <u>Tel:</u> +229 58 28 25 58</i></a>
         </div>
     </footer>
 

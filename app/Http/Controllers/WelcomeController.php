@@ -7,6 +7,7 @@ use App\Models\Quiz;
 use App\Models\Rate;
 use App\Models\Structure;
 use App\Models\User;
+use App\Notifications\UserRated;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
@@ -18,6 +19,7 @@ class WelcomeController extends Controller
         if ($request->method() == 'POST') {
 
             $structure = Structure::find($request->structure);
+            $admins = User::where('role', 'admin')->where('structure_id', $structure->id)->get();
 
             if (distance($request->latitude, $request->longitude, $structure->latitude, $request->longitude) <= 800) {
                 for ($i = 0; $i < $request->quizzes; $i++) {
@@ -29,6 +31,10 @@ class WelcomeController extends Controller
                     $rate->description = $request->input('description' . $i);
                     if ($rate->save()) {
                         Alert::toast("Données enregistrées", 'success');
+
+                        foreach ($admins as $admin) {
+                            $admin->notify(new UserRated());
+                        }
                     } else {
                         Alert::toast('Une erreur est survenue', 'error');
                     }
