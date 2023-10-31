@@ -7,8 +7,7 @@
 
                     <section class="pt-16 flex">
                         <div class="w-full md:w-1/2 px-4">
-                            <div
-                                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 rounded-lg mt-8">
+                            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 rounded-lg mt-8">
                                 <div class="px-6">
                                     <div class="flex flex-wrap justify-center">
                                         <div class="w-full px-4 flex justify-center">
@@ -30,21 +29,33 @@
                                                 <div class="mr-4 p-3 text-center">
                                                     <span
                                                         class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                                        {{ $user->rates->count() }}
+                                                        @if ($user->rates !== null)
+                                                            {{ $user->rates->count() }}
+                                                        @else
+                                                            0
+                                                        @endif
                                                     </span>
                                                     <span class="text-sm text-blueGray-400">QUESTIONS</span>
                                                 </div>
                                                 <div class="mr-4 p-3 text-center">
                                                     <span
                                                         class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                                        {{ $user->rates->where('answer', true)->count() }}
+                                                        @if ($user->rates !== null)
+                                                            {{ $user->rates->where('answer', true)->count }}
+                                                        @else
+                                                            0
+                                                        @endif
                                                     </span>
                                                     <span class="text-sm text-blueGray-400">OUI</span>
                                                 </div>
                                                 <div class="lg:mr-4 p-3 text-center">
                                                     <span
                                                         class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                                        {{ $user->rates->where('answer', false)->count() }}
+                                                        @if ($user->rates !== null)
+                                                            {{ $user->rates->where('answer', false)->count() ?? 0 }}
+                                                        @else
+                                                            0
+                                                        @endif
                                                     </span>
                                                     <span class="text-sm text-blueGray-400">NON</span>
                                                 </div>
@@ -94,17 +105,20 @@
                                                             {{ $quizze->question }}
                                                         </td>
                                                         <td class="px-4 py-3 text-center">
-                                                            {{ ($rateYes * 100) / $rates . ' %' }}
+                                                            @if ($rates !== 0)
+                                                                {{ ($rateYes * 100) / $rates . ' %' }}
+                                                            @endif
                                                         </td>
                                                         <td class="px-4 py-3 text-center">
-                                                            {{ ($rateNo * 100) / $rates . ' %' }}
+                                                            @if ($rates !== 0)
+                                                                {{ ($rateNo * 100) / $rates . ' %' ?? '' }}
+                                                            @endif
                                                         </td>
                                                     </tr>
                                                 @endforeach
                                             @else
                                                 <tr>
-                                                    <td colspan="{{ count((array) $mattributes) + 1 }}"
-                                                        class="px-6 py-4 whitespace-nowrap text-center text-gray-400">
+                                                    <td class="px-6 py-4 whitespace-nowrap text-center text-gray-400">
                                                         Aucun Element </td>
                                                 </tr>
                                             @endif
