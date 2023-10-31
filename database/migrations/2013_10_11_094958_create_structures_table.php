@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('contact');
             $table->string('email');
             $table->string('logo');
-            $table->string('slug');
+            $table->string('slug')->nullable();
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->timestamps();
