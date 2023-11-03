@@ -32,13 +32,27 @@
                                                         {{-- @php
                                                             dd($user->rates);
                                                         @endphp --}}
+                                                        @if ($quizzes !== null)
+                                                            {{ $quizzes->count() }}
+                                                        @else
+                                                            0
+                                                        @endif
+                                                    </span>
+                                                    <span class="text-sm text-blueGray-400">QUESTIONS</span>
+                                                </div>
+                                                <div class="mr-4 p-3 text-center">
+                                                    <span
+                                                        class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
+                                                        {{-- @php
+                                                            dd($user->rates);
+                                                        @endphp --}}
                                                         @if ($user->rates !== null)
                                                             {{ $user->rates->count() }}
                                                         @else
                                                             0
                                                         @endif
                                                     </span>
-                                                    <span class="text-sm text-blueGray-400">QUESTIONS</span>
+                                                    <span class="text-sm text-blueGray-400">EVALUATIONS</span>
                                                 </div>
                                                 <div class="mr-4 p-3 text-center">
                                                     <span
@@ -109,12 +123,12 @@
                                                         </td>
                                                         <td class="px-4 py-3 text-center">
                                                             @if ($rates !== 0)
-                                                                {{ ($rateYes * 100) / $rates . ' %' }}
+                                                                {{ number_format(($rateYes * 100) / $rates, 0, '.', '') . ' %' }}
                                                             @endif
                                                         </td>
                                                         <td class="px-4 py-3 text-center">
                                                             @if ($rates !== 0)
-                                                                {{ ($rateNo * 100) / $rates . ' %' ?? '' }}
+                                                                {{ number_format(($rateNo * 100) / $rates, 0, '.', '') . ' %' ?? '' }}
                                                             @endif
                                                         </td>
                                                     </tr>

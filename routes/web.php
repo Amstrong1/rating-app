@@ -22,6 +22,10 @@ use App\Http\Controllers\StructureController;
 */
 Route::match(['get', 'post'], '/site/{id}', [WelcomeController::class, 'index']);
 
+Route::get('/', function () {
+    return view('landing');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
