@@ -21,18 +21,18 @@
                                     <div style="background-color: #00558b; border-color: #cae1f1; border-right-color: #09beaf"
                                         class="flex flex-col justify-center items-center text-white col-span-2 p-4 border-2 border-r-4">
                                         <span class="text-2xl font-bold my-2">
-                                            {{ $evaluate->user->rates()->where('answer', true)->count() *(10 / $evaluate->user->rates()->count()) }}
+                                            {{ number_format($evaluate->user->rates()->where('answer', true)->count() *(10 / $evaluate->user->rates()->count()), 0, ',', ' ') }}
                                             /
                                             {{ $evaluate->user->rates()->count() * (10 / $evaluate->user->rates()->count()) }}
                                         </span>
                                         <div class="flex flex-row my-2">
                                             @for ($i = 0;
-    $i <
-    ceil(
-        $evaluate->user->rates()->where('answer', true)->count() *
-            (5 / $evaluate->user->rates()->count()),
-    );
-    $i++)
+                                                $i <
+                                                ceil(
+                                                    $evaluate->user->rates()->where('answer', true)->count() *
+                                                        (5 / $evaluate->user->rates()->count()),
+                                                );
+                                                $i++)
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="orange"
                                                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                     class="w-4 h-4">
@@ -42,12 +42,12 @@
                                             @endfor
 
                                             @for ($i = 0;
-    $i <
-    floor(
-        $evaluate->user->rates()->where('answer', false)->count() *
-            (5 / $evaluate->user->rates()->count()),
-    );
-    $i++)
+                                                $i <
+                                                floor(
+                                                    $evaluate->user->rates()->where('answer', false)->count() *
+                                                        (5 / $evaluate->user->rates()->count()),
+                                                );
+                                                $i++)
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                     class="w-4 h-4">
