@@ -21,7 +21,7 @@ class WelcomeController extends Controller
             $structure = Structure::find($request->structure);
             $admins = User::where('role', 'admin')->where('structure_id', $structure->id)->get();
 
-            if (distance($request->latitude, $request->longitude, $structure->latitude, $request->longitude) <= 800) {
+            // if (distance($request->latitude, $request->longitude, $structure->latitude, $request->longitude) <= 800) {
                 for ($i = 0; $i < $request->quizzes; $i++) {
                     $rate = new Rate();
                     $rate->structure_id = $request->structure;
@@ -39,9 +39,9 @@ class WelcomeController extends Controller
                         Alert::toast('Une erreur est survenue', 'error');
                     }
                 }
-            } else {
-                Alert::toast('Vérifier votre position géographique', 'error');
-            }
+            // } else {
+            //     Alert::toast('Vérifier votre position géographique', 'error');
+            // }
         }
 
         $user = User::find($user_id);
