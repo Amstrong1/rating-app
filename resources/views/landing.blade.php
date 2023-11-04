@@ -70,112 +70,25 @@
                       <a href="index.html" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100">Accueil</a>
                     </li>
                     <li class="relative">
-                      <a href="snippets/index.html" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100">Snippets</a>
+                      <a href="snippets/index.html" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100">Solutions</a>
                     </li>
 
                     <!-- dropdown with submenu-->
                     <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @click.away="open = false">
                       <a id="mobiledrop-04" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="javascript:;" @click="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
-                        Pages
-                        <!-- caret -->
-                        <span class="inline-block ltr:float-right rtl:float-left mt-1 pt-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="transform transition duration-300" :class="{ 'rotate-0' : open , 'ltr:-rotate-90 rtl:rotate-90' : !open }" width=".8rem" height=".8rem" fill="currentColor" viewBox="0 0 512 512"><polyline points="112 184 256 328 400 184" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"/></svg>
-                        </span>
+                        Contact
+                       
                       </a>
 
-                      <!-- dropdown menu -->
-                      <ul class="block rounded rounded-t-none top-full z-50 py-0.5 ltr:text-left rtl:text-right bg-white dark:bg-gray-800 mb-4" style="min-width: 12rem" x-description="Dropdown menu" x-show="open" role="menu" aria-orientation="vertical" aria-labelledby="mobiledrop-04">
-                        <!--submenu-->
-                        <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @click.away="open = false">
-                          <a id="sidemenu-01" class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="javascript:;" @click="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
-                            Pages
-                            <!-- caret -->
-                            <span class="inline-block ltr:float-right rtl:float-left mt-1 pt-1">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="transform transition duration-300" :class="{ 'rotate-0' : open , 'ltr:-rotate-90 rtl:rotate-90' : !open }" width=".8rem" height=".8rem" fill="currentColor" viewBox="0 0 512 512"><polyline points="112 184 256 328 400 184" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"/></svg>
-                            </span>
-                          </a>
-
-                          <!--dropdown submenu-->
-                          <ul class="block rounded rounded-t-none top-full z-50 ltr:ml-3 rtl:mr-3 py-0.5 ltr:text-left rtl:text-right bg-white dark:bg-gray-800" style="min-width: 12rem" x-description="Dropdown menu" x-show="open" role="menu" aria-orientation="vertical" aria-labelledby="sidemenu-01">
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="about.html">About</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="career.html">Career</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="contact.html">Contact</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="fax.html">Fax</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="portfolio.html">Portfolio</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="pricing.html">Pricing</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="services.html">Services</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="coming-soon.html">Coming soon</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="404.html">404</a></li>
-                          </ul>
-                        </li><!--end submenu-->
-
-                        <!--submenu-->
-                        <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @click.away="open = false">
-                          <a id="sidemenu-02" class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="javascript:;" @click="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
-                            Blogs
-                            <!-- caret -->
-                            <span class="inline-block ltr:float-right rtl:float-left mt-1 pt-1">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="transform transition duration-300" :class="{ 'rotate-0' : open , 'ltr:-rotate-90 rtl:rotate-90' : !open }" width=".8rem" height=".8rem" fill="currentColor" viewBox="0 0 512 512"><polyline points="112 184 256 328 400 184" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"/></svg>
-                            </span>
-                          </a>
-
-                          <!--dropdown submenu-->
-                          <ul class="block rounded rounded-t-none top-full z-50 ltr:ml-3 rtl:mr-3 py-0.5 ltr:text-left rtl:text-right bg-white dark:bg-gray-800" style="min-width: 12rem" x-description="Dropdown menu" x-show="open" role="menu" aria-orientation="vertical" aria-labelledby="sidemenu-02">
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="category.html">Category</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="category-list.html">Category list</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="search.html">Search</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="author.html">Author</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="single-post.html">Single post</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="full-width-post.html">Full width</a></li>
-                          </ul>
-                        </li><!--end submenu-->
-
-                        <!--submenu-->
-                        <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @click.away="open = false">
-                          <a id="sidemenu-03" class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="javascript:;" @click="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
-                            Users
-                            <!-- caret -->
-                            <span class="inline-block ltr:float-right rtl:float-left mt-1 pt-1">
-                              <svg xmlns="http://www.w3.org/2000/svg" class="transform transition duration-300" :class="{ 'rotate-0' : open , 'ltr:-rotate-90 rtl:rotate-90' : !open }" width=".8rem" height=".8rem" fill="currentColor" viewBox="0 0 512 512"><polyline points="112 184 256 328 400 184" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"/></svg>
-                            </span>
-                          </a>
-
-                          <!--dropdown submenu-->
-                          <ul class="block rounded rounded-t-none top-full z-50 ltr:ml-3 rtl:mr-3 py-0.5 ltr:text-left rtl:text-right bg-white dark:bg-gray-800" style="min-width: 12rem" x-description="Dropdown menu" x-show="open" role="menu" aria-orientation="vertical" aria-labelledby="sidemenu-03">
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="user-login.html">Login</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="user-register.html">Register</a></li>
-                            <li><a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="user-forgot.html">Forgot password</a></li>
-                          </ul>
-                        </li><!--end submenu-->
-                      </ul>
+          
                     </li>
 
                     <!-- dropdown -->
                     <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @click.away="open = false">
                       <a id="mobiledrop-03" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="javascript:;" @click="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
-                        Docs
-                        <!-- caret -->
-                        <span class="inline-block ltr:float-right rtl:float-left mt-1 pt-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="transform transition duration-300" :class="{ 'rotate-0' : open , 'ltr:-rotate-90 rtl:rotate-90' : !open }" width=".8rem" height=".8rem" fill="currentColor" viewBox="0 0 512 512"><polyline points="112 184 256 328 400 184" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:48px"/></svg>
-                        </span>
-                      </a>
-
-                      <!-- dropdown menu -->
-                      <ul class="block rounded rounded-t-none top-full z-50 py-0.5 ltr:text-left rtl:text-right bg-white dark:bg-gray-800 mb-4" style="min-width: 12rem" x-description="Dropdown menu" x-show="open" role="menu" aria-orientation="vertical" aria-labelledby="mobiledrop-03">
-                        <li class="relative">
-                          <a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="docs/index.html">Documentation</a>
-                        </li>
-                        <li class="relative">
-                          <a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="docs/components/alerts.html">Components</a>
-                        </li>
-                        <li class="relative">
-                          <a class="block w-full py-2 px-6 clear-both whitespace-nowrap hover:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="docs/started/changelog.html">Changelog</a>
-                        </li>
-                      </ul>
-                    </li>
-
-                    <li class="relative">
-                      <a href="docs/support.html" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100">Support</a>
+                        Espace Client
+                        
+                      </a>     
                     </li>
                   </ul>
                 </nav>
