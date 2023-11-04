@@ -39,7 +39,10 @@ class StructureController extends Controller
         $structure = new Structure();
 
         $fileName = time() . '.' . $request->logo->extension();
-        $path = $request->file('logo')->storeAs('logos', $fileName, 'public');
+        // $path = $request->file('logo')->storeAs('logos', $fileName, 'public');
+        
+        $request->image->move(public_path('storage'), $fileName);
+        $path = $fileName;
 
         $structure->name = $request->name;
         $structure->contact = $request->contact;
@@ -85,7 +88,9 @@ class StructureController extends Controller
 
         if ($request->file !== null) {
             $fileName = time() . '.' . $request->logo->extension();
-            $path = $request->file('logo')->storeAs('logos', $fileName, 'public');
+            // $path = $request->file('logo')->storeAs('logos', $fileName, 'public');
+            $request->image->move(public_path('storage'), $fileName);
+            $path = $fileName;
         }
 
         $structure->name = $request->name;
