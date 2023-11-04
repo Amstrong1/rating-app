@@ -11,155 +11,155 @@
 </head>
 <body class="pt-20 font-sans text-base font-normal text-gray-700 dark:bg-gray-800 dark:text-gray-300">
       <!-- ========== { HEADER }==========  -->
-  <header>
-    <!-- Navbar -->
-    <nav x-data="{ open: false }" class="nav-top flex flex-nowrap lg:flex-start items-center z-20 fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 overflow-y-auto max-h-screen lg:overflow-visible lg:max-h-full">
-      <div class="container mx-auto px-4 xl:max-w-6xl ">
-        <!-- mobile navigation -->
-        <div class="flex flex-row justify-between py-3 lg:hidden">
-          <!-- logo -->
-          <a class="flex items-center py-2 ltr:mr-4 rtl:ml-4 text-xl" href="index.html">
-            <span class="text-4xl font-semibold dark:text-gray-100">Avis<span class="text-blue-700">Client.</span></span>
-            <!-- <img class="max-w-full h-auto" src="src/img/logo.png" alt="Logo dark"> -->
-          </a>
+    <header>
+      <!-- Navbar -->
+      <nav x-data="{ open: false }" class="nav-top flex flex-nowrap lg:flex-start items-center z-20 fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 overflow-y-auto max-h-screen lg:overflow-visible lg:max-h-full">
+        <div class="container mx-auto px-4 xl:max-w-6xl ">
+          <!-- mobile navigation -->
+          <div class="flex flex-row justify-between py-3 lg:hidden">
+            <!-- logo -->
+            <a class="flex items-center py-2 ltr:mr-4 rtl:ml-4 text-xl" href="index.html">
+              <span class="text-4xl font-semibold dark:text-gray-100">Avis<span class="text-blue-700">Client.</span></span>
+              <!-- <img class="max-w-full h-auto" src="src/img/logo.png" alt="Logo dark"> -->
+            </a>
 
-          <!-- navbar toggler -->
-          <div class="ltr:right-0 rtl:left-0 flex items-center">
-            <!-- Mobile menu button-->
-            <button id="navbartoggle" type="button" class="inline-flex items-center justify-center text-gray-800 hover:text-gray-700 dark:text-gray-200 dark:hover:text-gray-300 focus:outline-none focus:ring-0" aria-controls="mobile-menu" @click="open = !open" aria-expanded="false" x-bind:aria-expanded="open.toString()">
-              <span class="sr-only">Mobile menu</span>
-              <svg x-description="Icon closed" x-state:on="Menu open" x-state:off="Menu closed" class="block h-8 w-8" :class="{ 'hidden': open, 'block': !(open) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
+            <!-- navbar toggler -->
+            <div class="ltr:right-0 rtl:left-0 flex items-center">
+              <!-- Mobile menu button-->
+              <button id="navbartoggle" type="button" class="inline-flex items-center justify-center text-gray-800 hover:text-gray-700 dark:text-gray-200 dark:hover:text-gray-300 focus:outline-none focus:ring-0" aria-controls="mobile-menu" @click="open = !open" aria-expanded="false" x-bind:aria-expanded="open.toString()">
+                <span class="sr-only">Mobile menu</span>
+                <svg x-description="Icon closed" x-state:on="Menu open" x-state:off="Menu closed" class="block h-8 w-8" :class="{ 'hidden': open, 'block': !(open) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
 
-              <svg x-description="Icon open" x-state:on="Menu open" x-state:off="Menu closed" class="hidden h-8 w-8" :class="{ 'block': open, 'hidden': !(open) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </button>
+                <svg x-description="Icon open" x-state:on="Menu open" x-state:off="Menu closed" class="hidden h-8 w-8" :class="{ 'block': open, 'hidden': !(open) }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
           </div>
-        </div>
 
-        <!-- Mobile menu -->
-        <div class="lg:hidden fixed w-full h-full inset-0 z-40" id="mobile-menu" x-description="Mobile menu" x-show="open" style="display: none;">
-          <!-- bg open -->
-          <span class="fixed bg-gray-900 bg-opacity-70 w-full h-full inset-x-0 top-0"></span>
-          
-          <!-- Mobile navbar -->
-          <nav id="mobile-nav" class="flex flex-col ltr:right-0 rtl:left-0 w-64 fixed top-0 py-4 bg-white dark:bg-gray-800 h-full overflow-auto z-40" x-show="open" @click.away="open=false" x-description="Mobile menu" role="menu" aria-orientation="vertical" aria-labelledby="navbartoggle" 
-          x-transition:enter="transform transition-transform duration-300" 
-          x-transition:enter-start="ltr:translate-x-full rtl:-translate-x-full" 
-          x-transition:enter-end="translate-x-0" 
-          x-transition:leave="transform transition-transform duration-300" 
-          x-transition:leave-start="translate-x-0" 
-          x-transition:leave-end="ltr:translate-x-full rtl:-translate-x-full">
-            <div class="mb-auto">
-              <!--logo-->
-              <div class="mh-18 text-center px-12 mb-8">
-                <a href="#" class="flex relative">
-                  <span class="text-4xl font-semibold px-4 dark:text-gray-200">Avis<span class="text-blue-700">Client.</span></span>
-                  <!-- <img src="src/img/logo.png" class="max-w-full h-auto" alt="logo"> -->
-                  <span class="absolute -bottom-4 transform ltr:translate-x-1/2 rtl:-translate-x-1/2 w-20 h-0 border-t-2 border-opacity-50 border-blue-700 mx-auto"></span>
-                </a>
-              </div>
+          <!-- Mobile menu -->
+          <div class="lg:hidden fixed w-full h-full inset-0 z-40" id="mobile-menu" x-description="Mobile menu" x-show="open" style="display: none;">
+            <!-- bg open -->
+            <span class="fixed bg-gray-900 bg-opacity-70 w-full h-full inset-x-0 top-0"></span>
+            
+            <!-- Mobile navbar -->
+            <nav id="mobile-nav" class="flex flex-col ltr:right-0 rtl:left-0 w-64 fixed top-0 py-4 bg-white dark:bg-gray-800 h-full overflow-auto z-40" x-show="open" @click.away="open=false" x-description="Mobile menu" role="menu" aria-orientation="vertical" aria-labelledby="navbartoggle" 
+            x-transition:enter="transform transition-transform duration-300" 
+            x-transition:enter-start="ltr:translate-x-full rtl:-translate-x-full" 
+            x-transition:enter-end="translate-x-0" 
+            x-transition:leave="transform transition-transform duration-300" 
+            x-transition:leave-start="translate-x-0" 
+            x-transition:leave-end="ltr:translate-x-full rtl:-translate-x-full">
+              <div class="mb-auto">
+                <!--logo-->
+                <div class="mh-18 text-center px-12 mb-8">
+                  <a href="#" class="flex relative">
+                    <span class="text-4xl font-semibold px-4 dark:text-gray-200">Avis<span class="text-blue-700">Client.</span></span>
+                    <!-- <img src="src/img/logo.png" class="max-w-full h-auto" alt="logo"> -->
+                    <span class="absolute -bottom-4 transform ltr:translate-x-1/2 rtl:-translate-x-1/2 w-20 h-0 border-t-2 border-opacity-50 border-blue-700 mx-auto"></span>
+                  </a>
+                </div>
 
-              <!--navigation-->
-              <div class="mb-4">
-                <nav class="relative flex flex-wrap items-center justify-between">
-                  <ul id="side-menu" class="w-full float-none flex flex-col">
-                    <li class="relative">
-                      <a href="index.html" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100">Accueil</a>
-                    </li>
-                    <li class="relative">
-                      <a href="snippets/index.html" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100">Solutions</a>
-                    </li>
+                <!--navigation-->
+                <div class="mb-4">
+                  <nav class="relative flex flex-wrap items-center justify-between">
+                    <ul id="side-menu" class="w-full float-none flex flex-col">
+                      <li class="relative">
+                        <a href="#acceuil" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100">Accueil</a>
+                      </li>
+                      <li class="relative">
+                        <a href="#solution" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100">Solutions</a>
+                      </li>
 
-                    <!-- dropdown with submenu-->
-                    <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @click.away="open = false">
-                      <a id="mobiledrop-04" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="javascript:;" @click="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
-                        Contact
-                       
-                      </a>
-
-          
-                    </li>
-
-                    <!-- dropdown -->
-                    <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @click.away="open = false">
-                      <a id="mobiledrop-03" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="javascript:;" @click="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
-                        Espace Client
+                      <!-- dropdown with submenu-->
+                      <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @click.away="open = false">
+                        <a id="mobiledrop-04" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="#contact" @click="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
+                          Contact
                         
-                      </a>     
-                    </li>
-                  </ul>
-                </nav>
+                        </a>
+
+            
+                      </li>
+
+                      <!-- dropdown -->
+                      <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @click.away="open = false">
+                        <a id="mobiledrop-03" class="block py-3 px-4 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="{{ route('login') }}" @click="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
+                          Espace Client
+                          
+                        </a>     
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
               </div>
-            </div>
-            <!-- copyright -->
-            <div class="mt-5 text-center">
-              <p>Copyright <a href="#">TailPro</a> - All right reserved</p>
-            </div>
-          </nav>
-        </div><!-- End Mobile menu -->
+              <!-- copyright -->
+              <div class="mt-5 text-center">
+                <p>Copyright <a href="#">TailPro</a> - All right reserved</p>
+              </div>
+            </nav>
+          </div><!-- End Mobile menu -->
 
-        <!-- desktop menu -->
-        <div class="hidden lg:flex lg:flex-row lg:flex-nowrap lg:items-center lg:justify-between lg:mt-0" id="desktp-menu">
-          <!-- logo -->
-          <a class="hidden lg:flex items-center py-2 ltr:mr-4 rtl:ml-4 text-xl" href="index.html">
-            <span class="text-4xl font-semibold dark:text-gray-100">Avis<span class="text-blue-700">Client.</span></span>
-          </a>
+          <!-- desktop menu -->
+          <div class="hidden lg:flex lg:flex-row lg:flex-nowrap lg:items-center lg:justify-between lg:mt-0" id="desktp-menu">
+            <!-- logo -->
+            <a class="hidden lg:flex items-center py-2 ltr:mr-4 rtl:ml-4 text-xl" href="index.html">
+              <span class="text-4xl font-semibold dark:text-gray-100">Avis<span class="text-blue-700">Client.</span></span>
+            </a>
 
-          <!-- menu -->
-          <ul class="flex flex-col lg:mx-auto mt-2 lg:flex-row lg:mt-0">
-            <!-- dropdown -->
-            <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @mouseleave="open = false">
-              <a id="dropdown-mega" class="group block py-3 lg:py-7 px-6 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="javascript:;" @mouseenter="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
-                <span class="absolute bottom-4 ltr:left-1/2 rtl:right-1/2 transform ltr:-translate-x-1/2 rtl:translate-x-1/2 w-6 h-0.5 bg-blue-700 transition duration-700 ease-in-out opacity-0 group-hover:opacity-100" :class="{ 'opacity-100': open }"></span>
-                Accueil
-               
-              </a>
+            <!-- menu -->
+            <ul class="flex flex-col lg:mx-auto mt-2 lg:flex-row lg:mt-0">
+              <!-- dropdown -->
+              <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @mouseleave="open = false">
+                <a id="dropdown-mega" class="group block py-3 lg:py-7 px-6 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="#acceuil" @mouseenter="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
+                  <span class="absolute bottom-4 ltr:left-1/2 rtl:right-1/2 transform ltr:-translate-x-1/2 rtl:translate-x-1/2 w-6 h-0.5 bg-blue-700 transition duration-700 ease-in-out opacity-0 group-hover:opacity-100" :class="{ 'opacity-100': open }"></span>
+                  Accueil
+                
+                </a>
 
-            </li>
-            <li class="relative">
-              <a class="group block py-3 lg:py-7 px-6 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="snippets/index.html">
-                <span class="absolute bottom-4 ltr:left-1/2 rtl:right-1/2 transform ltr:-translate-x-1/2 rtl:translate-x-1/2 w-6 h-0.5 bg-blue-700 transition duration-700 ease-in-out opacity-0 group-hover:opacity-100"></span>
-                Solutions
-              </a>
-            </li>
+              </li>
+              <li class="relative">
+                <a class="group block py-3 lg:py-7 px-6 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="#solution">
+                  <span class="absolute bottom-4 ltr:left-1/2 rtl:right-1/2 transform ltr:-translate-x-1/2 rtl:translate-x-1/2 w-6 h-0.5 bg-blue-700 transition duration-700 ease-in-out opacity-0 group-hover:opacity-100"></span>
+                  Solutions
+                </a>
+              </li>
 
-            <!-- dropdown with submenu-->
-            <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @mouseleave="open = false">
-              <a id="dropdown-02" class="group block py-3 lg:py-7 px-6 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="javascript:;" @mouseenter="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
-                <span class="absolute bottom-4 ltr:left-1/2 rtl:right-1/2 transform ltr:-translate-x-1/2 rtl:translate-x-1/2 w-6 h-0.5 bg-blue-700 transition duration-700 ease-in-out opacity-0 group-hover:opacity-100" :class="{ 'opacity-100': open }"></span>
-                Contact
-               
-              </a>
+              <!-- dropdown with submenu-->
+              <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @mouseleave="open = false">
+                <a id="dropdown-02" class="group block py-3 lg:py-7 px-6 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="#contact" @mouseenter="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
+                  <span class="absolute bottom-4 ltr:left-1/2 rtl:right-1/2 transform ltr:-translate-x-1/2 rtl:translate-x-1/2 w-6 h-0.5 bg-blue-700 transition duration-700 ease-in-out opacity-0 group-hover:opacity-100" :class="{ 'opacity-100': open }"></span>
+                  Contact
+                
+                </a>
+                
+              </li>
+
+              <!-- dropdown -->
+              <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @mouseleave="open = false">
+                <a id="dropdown-01" class="group block py-3 lg:py-7 px-6 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="{{ route('login') }}" @mouseenter="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
+                  <span class="absolute bottom-4 ltr:left-1/2 rtl:right-1/2 transform ltr:-translate-x-1/2 rtl:translate-x-1/2 w-6 h-0.5 bg-blue-700 transition duration-700 ease-in-out opacity-0 group-hover:opacity-100" :class="{ 'opacity-100': open }"></span>
+                  Espace Client
+                
+                </a>
               
-            </li>
+              </li>
 
-            <!-- dropdown -->
-            <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @mouseleave="open = false">
-              <a id="dropdown-01" class="group block py-3 lg:py-7 px-6 hover:text-blue-700 focus:text-blue-700 dark:hover:text-gray-100 dark:focus:text-gray-100" href="{{ route('login') }}" @mouseenter="open = !open" aria-haspopup="true" x-bind:aria-expanded="open" :class="{ 'text-blue-700 dark:text-gray-100': open }">
-                <span class="absolute bottom-4 ltr:left-1/2 rtl:right-1/2 transform ltr:-translate-x-1/2 rtl:translate-x-1/2 w-6 h-0.5 bg-blue-700 transition duration-700 ease-in-out opacity-0 group-hover:opacity-100" :class="{ 'opacity-100': open }"></span>
-                Espace Client
-               
-              </a>
-             
-            </li>
-
-           
-          </ul>
+            
+            </ul>
+            
           
-         
-        </div><!-- end desktop menu -->
-      </div>
-    </nav><!-- End Navbar -->
-  </header>
-  <!-- end header -->
+          </div><!-- end desktop menu -->
+        </div>
+      </nav><!-- End Navbar -->
+    </header>
+    <!-- end header -->
 
     <!-- =========={ MAIN }==========  -->
     <main id="content">
         <!-- =========={ HERO }==========  -->
-        <div id="hero" class="relative pt-20 pb-24 md:pt-24 bg-gray-900 text-gray-100 z-0">
+        <div id="acceuil" class="relative pt-20 pb-24 md:pt-24 bg-gray-900 text-gray-100 z-0">
           <!-- particle moving animation -->
           <div class="particle">
             <div class="scroll-rotate absolute opacity-60 text-indigo-700" style="right:9%;bottom: 72%;">
@@ -337,7 +337,7 @@
         </div><!-- End Services -->
     
         <!-- =========={ about }==========  -->
-        <div id="about" class="relative pt-12 pb-6 lg:pt-16 lg:pb-10 bg-white dark:bg-gray-800">
+        <div id="solution" class="relative pt-12 pb-6 lg:pt-16 lg:pb-10 bg-white dark:bg-gray-800">
           <div class="container xl:max-w-6xl mx-auto px-4">
             <!-- section header -->
             <header class="text-center mx-auto mb-6">
@@ -716,6 +716,122 @@
             </div><!-- end row -->
           </div>
         </div><!-- End Reviews -->
+
+        <!-- contact start -->
+        <div id="contact" class="relative py-20 md:py-24 bg-white dark:bg-gray-800">
+          <div class="container xl:max-w-6xl mx-auto px-4">
+            <div class="flex flex-wrap flex-row -mx-4 justify-center">
+              <div class="max-w-ful px-4 w-full lg:w-8/12">
+                <div class="bg-gray-50 border border-gray-200 dark:bg-gray-900 dark:bg-opacity-20 dark:border-gray-800 rounded-md w-full p-12">
+                  <!-- section header -->
+                  <header class="text-center mx-auto mb-12 lg:px-20">
+                    <h2 class="text-2xl md:text-3xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-100"><span class="font-light">Nous </span> écrire</h2>
+                    <hr class="block w-12 h-0.5 mx-auto my-5 bg-blue-700 border-blue-700">
+                    <p class="text-gray-600 leading-relaxed font-light text-xl mx-auto pb-2">Avez-vous des questions sur le service, veuillez nous contacter.</p>
+                  </header><!-- end section header -->
+
+                  <!-- contact form -->
+                  <form action="#">
+                    <div class="flex flex-wrap flex-row -mx-4">
+                      <div class="flex-shrink w-full max-w-full md:w-1/2 px-4 mb-6">
+                        <label class="inline-block mb-2" for="name">Your Name</label>
+                        <input type="text" name="name" class="w-full leading-5 relative py-3 px-5 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" id="name">
+                        <div class="validate"></div>
+                      </div>
+                      <div class="flex-shrink w-full max-w-full md:w-1/2 px-4 mb-6">
+                        <label class="inline-block mb-2" for="email">Your Email</label>
+                        <input type="email" class="w-full leading-5 relative py-3 px-5 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" name="email" id="email">
+                        <div class="validate"></div>
+                      </div>
+                    </div>
+                    <div class="mb-6">
+                      <label class="inline-block mb-2" for="subject">Subject</label>
+                      <input type="text" class="w-full leading-5 relative py-3 px-5 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" name="subject" id="subject">
+                      <div class="validate"></div>
+                    </div>
+                    <div class="mb-6">
+                      <label class="inline-block mb-2" for="messages">Message</label>
+                      <textarea class="w-full leading-5 relative py-3 px-5 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" name="message" rows="10" id="messages"></textarea>
+                      <div class="validate"></div>
+                    </div>
+                    <div class="text-center mb-6">
+                      <button class="py-3 px-5 inline-block text-center rounded-md leading-normal text-gray-100 bg-blue-700 border border-blue-700 hover:text-white hover:bg-blue-800 hover:ring-0 hover:border-blue-800 focus:bg-blue-800 focus:border-blue-800 focus:outline-none focus:ring-0" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" fill="currentColor" class="ltr:mr-2 rtl:ml-2 tranform ltr:rotate-0 rtl:-rotate-90 inline-block" viewBox="0 0 512 512"><path d="M53.12,199.94l400-151.39a8,8,0,0,1,10.33,10.33l-151.39,400a8,8,0,0,1-15-.34L229.66,292.45a16,16,0,0,0-10.11-10.11L53.46,215A8,8,0,0,1,53.12,199.94Z" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line x1="460" y1="52" x2="227" y2="285" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line></svg>
+                        Send Message
+                      </button>
+                    </div>
+                  </form><!-- end contact form -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End contact -->
+
+        <!-- Footer start -->
+        <footer class="bg-gray-900 text-gray-300">
+          <!-- footer content -->
+          <div id="footer-content" class="relative">
+            <div class="container xl:max-w-6xl mx-auto px-4 py-8 border-t border-gray-200 border-opacity-10">
+              <!-- row -->
+              <div class="flex flex-wrap flex-row -mx-4">
+                <!-- copyright text -->
+                <div class="flex-shrink max-w-full px-4 w-full md:w-2/3 text-center md:ltr:text-left md:rtl:text-right mb-6 md:mb-0">
+                  <p>© Your Company Name | All Rights Reserved.</p>
+                </div>
+
+                <!-- social icon -->
+                <div class="flex-shrink max-w-full px-4 w-full md:w-1/3 self-center">
+                  <ul class="space-x-3 text-center md:ltr:text-right md:rtl:text-left">
+                    <!--facebook-->
+                    <li class="inline-block">
+                      <a target="_blank" class="hover:text-gray-100" rel="noopener noreferrer" href="https://facebook.com" title="Facebook">
+                        <!-- <i class="fab fa-facebook fa-2x"></i> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 512 512"><path fill="currentColor" d="M455.27,32H56.73A24.74,24.74,0,0,0,32,56.73V455.27A24.74,24.74,0,0,0,56.73,480H256V304H202.45V240H256V189c0-57.86,40.13-89.36,91.82-89.36,24.73,0,51.33,1.86,57.51,2.68v60.43H364.15c-28.12,0-33.48,13.3-33.48,32.9V240h67l-8.75,64H330.67V480h124.6A24.74,24.74,0,0,0,480,455.27V56.73A24.74,24.74,0,0,0,455.27,32Z"></path></svg>
+                      </a>
+                    </li>
+                    <!--twitter-->
+                    <li class="inline-block">
+                      <a target="_blank" class="hover:text-gray-100" rel="noopener noreferrer" href="https://twitter.com" title="Twitter">
+                        <!-- <i class="fab fa-twitter fa-2x"></i> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 512 512"><path fill="currentColor" d="M496,109.5a201.8,201.8,0,0,1-56.55,15.3,97.51,97.51,0,0,0,43.33-53.6,197.74,197.74,0,0,1-62.56,23.5A99.14,99.14,0,0,0,348.31,64c-54.42,0-98.46,43.4-98.46,96.9a93.21,93.21,0,0,0,2.54,22.1,280.7,280.7,0,0,1-203-101.3A95.69,95.69,0,0,0,36,130.4C36,164,53.53,193.7,80,211.1A97.5,97.5,0,0,1,35.22,199v1.2c0,47,34,86.1,79,95a100.76,100.76,0,0,1-25.94,3.4,94.38,94.38,0,0,1-18.51-1.8c12.51,38.5,48.92,66.5,92.05,67.3A199.59,199.59,0,0,1,39.5,405.6,203,203,0,0,1,16,404.2,278.68,278.68,0,0,0,166.74,448c181.36,0,280.44-147.7,280.44-275.8,0-4.2-.11-8.4-.31-12.5A198.48,198.48,0,0,0,496,109.5Z"></path></svg>
+                      </a>
+                    </li>
+                    <!--youtube-->
+                    <li class="inline-block">
+                      <a target="_blank" class="hover:text-gray-100" rel="noopener noreferrer" href="https://youtube.com" title="Youtube">
+                        <!-- <i class="fab fa-youtube fa-2x"></i> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 512 512"><path fill="currentColor" d="M508.64,148.79c0-45-33.1-81.2-74-81.2C379.24,65,322.74,64,265,64H247c-57.6,0-114.2,1-169.6,3.6-40.8,0-73.9,36.4-73.9,81.4C1,184.59-.06,220.19,0,255.79q-.15,53.4,3.4,106.9c0,45,33.1,81.5,73.9,81.5,58.2,2.7,117.9,3.9,178.6,3.8q91.2.3,178.6-3.8c40.9,0,74-36.5,74-81.5,2.4-35.7,3.5-71.3,3.4-107Q512.24,202.29,508.64,148.79ZM207,353.89V157.39l145,98.2Z"></path></svg>
+                      </a>
+                    </li>
+                    <!--VKontakte-->
+                    <li class="inline-block">
+                      <a target="_blank" class="hover:text-gray-100" rel="noopener noreferrer" href="https://vk.com" title="VKontakte">
+                        <!-- <i class="fab fa-vk fa-2x"></i> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 512 512"><path fill="currentColor" d="M484.7,132c3.56-11.28,0-19.48-15.75-19.48H416.58c-13.21,0-19.31,7.18-22.87,14.86,0,0-26.94,65.6-64.56,108.13-12.2,12.3-17.79,16.4-24.4,16.4-3.56,0-8.14-4.1-8.14-15.37V131.47c0-13.32-4.06-19.47-15.25-19.47H199c-8.14,0-13.22,6.15-13.22,12.3,0,12.81,18.81,15.89,20.84,51.76V254c0,16.91-3,20-9.66,20-17.79,0-61-66.11-86.92-141.44C105,117.64,99.88,112,86.66,112H33.79C18.54,112,16,119.17,16,126.86c0,13.84,17.79,83.53,82.86,175.77,43.21,63,104.72,96.86,160.13,96.86,33.56,0,37.62-7.69,37.62-20.5V331.33c0-15.37,3.05-17.93,13.73-17.93,7.62,0,21.35,4.09,52.36,34.33C398.28,383.6,404.38,400,424.21,400h52.36c15.25,0,22.37-7.69,18.3-22.55-4.57-14.86-21.86-36.38-44.23-62-12.2-14.34-30.5-30.23-36.09-37.92-7.62-10.25-5.59-14.35,0-23.57-.51,0,63.55-91.22,70.15-122" style="fill-rule:evenodd"></path></svg>
+                      </a>
+                    </li>
+                    <!--Linkedin-->
+                    <li class="inline-block">
+                      <a target="_blank" class="hover:text-gray-100" rel="noopener noreferrer" href="https://linkedin.com" title="Linkedin">
+                        <!-- <i class="fab fa-linkedin fa-2x"></i> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 512 512"><path fill="currentColor" d="M444.17,32H70.28C49.85,32,32,46.7,32,66.89V441.61C32,461.91,49.85,480,70.28,480H444.06C464.6,480,480,461.79,480,441.61V66.89C480.12,46.7,464.6,32,444.17,32ZM170.87,405.43H106.69V205.88h64.18ZM141,175.54h-.46c-20.54,0-33.84-15.29-33.84-34.43,0-19.49,13.65-34.42,34.65-34.42s33.85,14.82,34.31,34.42C175.65,160.25,162.35,175.54,141,175.54ZM405.43,405.43H341.25V296.32c0-26.14-9.34-44-32.56-44-17.74,0-28.24,12-32.91,23.69-1.75,4.2-2.22,9.92-2.22,15.76V405.43H209.38V205.88h64.18v27.77c9.34-13.3,23.93-32.44,57.88-32.44,42.13,0,74,27.77,74,87.64Z"></path></svg>
+                      </a>
+                    </li>
+                    <!--instagram-->
+                    <li class="inline-block">
+                      <a target="_blank" class="hover:text-gray-100" rel="noopener noreferrer" href="https://instagram.com" title="Instagram">
+                        <!-- <i class="fab fa-instagram fa-2x"></i> -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 512 512"><path fill="currentColor" d="M349.33,69.33a93.62,93.62,0,0,1,93.34,93.34V349.33a93.62,93.62,0,0,1-93.34,93.34H162.67a93.62,93.62,0,0,1-93.34-93.34V162.67a93.62,93.62,0,0,1,93.34-93.34H349.33m0-37.33H162.67C90.8,32,32,90.8,32,162.67V349.33C32,421.2,90.8,480,162.67,480H349.33C421.2,480,480,421.2,480,349.33V162.67C480,90.8,421.2,32,349.33,32Z"></path><path fill="currentColor" d="M377.33,162.67a28,28,0,1,1,28-28A27.94,27.94,0,0,1,377.33,162.67Z"></path><path fill="currentColor" d="M256,181.33A74.67,74.67,0,1,1,181.33,256,74.75,74.75,0,0,1,256,181.33M256,144A112,112,0,1,0,368,256,112,112,0,0,0,256,144Z"></path></svg>
+                      </a>
+                    </li><!--end instagram-->
+                  </ul>
+                </div>
+              </div><!-- end row -->
+            </div>
+          </div>
+        </footer>
+        <!-- end footer -->
       </main>
       <!-- end main -->
 
