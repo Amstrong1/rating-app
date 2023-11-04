@@ -32,8 +32,8 @@
                                                         {{-- @php
                                                             dd($user->rates);
                                                         @endphp --}}
-                                                        @if ($quizzes !== null)
-                                                            {{ $quizzes->count() }}
+                                                        @if ($placeQuizzes !== null)
+                                                            {{ $placeQuizzes }}
                                                         @else
                                                             0
                                                         @endif

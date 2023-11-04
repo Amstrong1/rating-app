@@ -53,6 +53,7 @@ class UserController extends Controller
         // dd($user);
         $qrcode = QrCode::size(200)->generate(str_replace('user', 'site', url()->current()));
         $quizzes = $user->structure->quizzes()->get();
+        $placeQuizzes = $user->place->places_quizzes()->count();
         $rates = $user->rates()->count();
         $rateYes = $user->rates()->where('answer', true)->count();
         $rateNo = $user->rates()->where('answer', false)->count();
@@ -60,6 +61,7 @@ class UserController extends Controller
             'user' => $user,
             'qrcode' => $qrcode,
             'quizzes' => $quizzes,
+            'placeQuizzes' => $placeQuizzes,
             'rates' => $rates,
             'rateYes' => $rateYes,
             'rateNo' => $rateNo,

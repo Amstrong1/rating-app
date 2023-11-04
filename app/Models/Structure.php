@@ -20,6 +20,11 @@ class Structure extends Model
         return $this->hasMany(Place::class);
     }
     
+    public function places_quizzes(): HasMany
+    {
+        return $this->hasMany(PlaceQuiz::class);
+    }
+    
     public function quizzes(): HasMany
     {
         return $this->hasMany(Quiz::class);

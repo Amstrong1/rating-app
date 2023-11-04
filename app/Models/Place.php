@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -16,5 +17,13 @@ class Place extends Model
     public function structure(): BelongsTo
     {
         return $this->belongsTo(Structure::class);
+    }
+
+    /**
+     * Get the structure that owns the place.
+     */
+    public function places_quizzes(): HasMany
+    {
+        return $this->hasMany(PlaceQuiz::class);
     }
 }
