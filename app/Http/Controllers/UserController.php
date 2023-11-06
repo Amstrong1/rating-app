@@ -50,22 +50,27 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        // dd($user);
-        $qrcode = QrCode::size(200)->generate(str_replace('user', 'site', url()->current()));
-        $quizzes = $user->structure->quizzes()->get();
-        $placeQuizzes = $user->place->places_quizzes()->count();
-        $rates = $user->rates()->count();
-        $rateYes = $user->rates()->where('answer', true)->count();
-        $rateNo = $user->rates()->where('answer', false)->count();
-        return view('app.user.show', [
-            'user' => $user,
-            'qrcode' => $qrcode,
-            'quizzes' => $quizzes,
-            'placeQuizzes' => $placeQuizzes,
-            'rates' => $rates,
-            'rateYes' => $rateYes,
-            'rateNo' => $rateNo,
-        ]);
+        if ($user->place !== null) {
+            $qrcode = QrCode::size(200)->generate(str_replace('user', 'site', url()->current()));
+            // dd($user->place);
+            $placeQuizzes = $user->place->places_quizzes()->count();
+            $quizzes = $user->place->quizzes()->get();
+            $rates = $user->rates()->count();
+            $rateYes = $user->rates()->where('answer', true)->count();
+            $rateNo = $user->rates()->where('answer', false)->count();
+
+            return view('app.user.show', [
+                'user' => $user,
+                'qrcode' => $qrcode,
+                'quizzes' => $quizzes,
+                'placeQuizzes' => $placeQuizzes,
+                'rates' => $rates,
+                'rateYes' => $rateYes,
+                'rateNo' => $rateNo,
+            ]);
+        } else {
+            return back();
+        }
     }
 
     public function edit(User $user)

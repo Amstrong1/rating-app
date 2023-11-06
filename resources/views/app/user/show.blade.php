@@ -122,13 +122,13 @@
                                                             {{ $quizze->question }}
                                                         </td>
                                                         <td class="px-4 py-3 text-center">
-                                                            @if ($rates !== 0)
+                                                            @if ($rates !== null && $rates !== 0)
                                                                 {{ number_format(($rateYes * 100) / $rates, 0, '.', '') . ' %' }}
                                                             @endif
                                                         </td>
                                                         <td class="px-4 py-3 text-center">
-                                                            @if ($rates !== 0)
-                                                                {{ number_format(($rateNo * 100) / $rates, 0, '.', '') . ' %' ?? '' }}
+                                                            @if ($rates !== null && $rates !== 0)
+                                                                {{ number_format(($rateNo * 100) / $rates, 0, '.', '') . ' %' }}
                                                             @endif
                                                         </td>
                                                     </tr>
