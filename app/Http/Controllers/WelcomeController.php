@@ -30,7 +30,7 @@ class WelcomeController extends Controller
                     $rate->answer = $request->input('answer' . $i);
                     $rate->description = $request->input('description' . $i);
                     if ($rate->save()) {
-                        Alert::toast("Données enregistrées", 'success');
+                        Alert::toast("Merci de votre attention", 'success');
 
                         foreach ($admins as $admin) {
                             $admin->notify(new UserRated());

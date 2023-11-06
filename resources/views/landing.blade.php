@@ -157,7 +157,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                     </svg>
-                    Accueil
+                    {{__('message.menu1')}}
                   </span>
                 
                 </a>
@@ -169,7 +169,8 @@
                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
-                  Solution
+                  {{__('message.menu2')}}
+
                   
                   <!-- caret -->
                   <span class="inline-block ltr:ml-2 rtl:mr-2">
@@ -196,7 +197,8 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                     Contact
+                    {{__('message.menu3')}}
+
                 </span>
 
                 </a>
@@ -210,12 +212,26 @@
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>&nbsp;&nbsp;
-                  Espace Client
+                  {{__('message.menu4')}}
+ 
+                  {{-- <h3>{{__('message.welcome')}}</h3> --}}
                 </span>
                 </a>
-              
               </li>
-
+              <div class="fixed left-0 top-1/2 transform -translate-y-1/2">
+                <form method="POST" action="{{ route('lang.switch') }}" class="p-1 bg-white border border-gray-400 rounded-l-lg shadow-lg">
+                    @csrf
+                    <div class="mb-2">
+                        <label for="lang" class="block text-sm text-gray-700 font-semibold mb-1">Select Language</label>
+                        <select name="lang" id="lang" class="w-32 py-1 px-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300">
+                            <option value="en">English</option>
+                            <option value="fr">Français</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-2 rounded focus:outline-none focus:ring focus:border-blue-300">Change</button>
+                </form>
+            </div>
+                
             
             </ul>
           
@@ -223,6 +239,7 @@
         </div>
       </nav><!-- End Navbar -->
     </header>
+    
     <!-- end header -->
 
     <!-- =========={ MAIN }==========  -->
@@ -286,8 +303,8 @@
               <!-- content -->
               <div class="flex-shrink max-w-full px-4 w-full lg:w-1/2 xl:mr-auto z-10">
                 <div class="text-center lg:ltr:text-left lg:rtl:text-right">
-                  <h1 class="text-4xl leading-normal font-bold text-white capitalize mb-4"><span class="text-indigo-500" data-toggle="typed" data-options='{"strings": ["Collecte", "étude", "interprétation ", "et partage"]}'></span>des retours<br> clients.</h1>
-                  <p class="text-gray-100 leading-relaxed font-light text-xl mx-auto pb-2 mb-12">Solution de gestion des avis clients.</p>
+                  <h1 class="text-4xl leading-normal font-bold text-white capitalize mb-4"><span class="text-indigo-500" data-toggle="typed" data-options='{"strings": ["{{ __('message.header1') }}", "{{ __('message.header2') }}", "{{ __('message.header3') }} ", "{{ __('message.header4') }}"]}'></span>des retours<br> clients.</h1>
+                  <p class="text-gray-100 leading-relaxed font-light text-xl mx-auto pb-2 mb-12">{{ __('message.header5') }}.</p>
                   <div class="mb-16 lg:mb-0">
                     <a class="py-3 px-5 inline-block text-center rounded-md leading-normal text-gray-800 bg-gray-100 border border-gray-100 hover:text-gray-900 hover:bg-gray-200 hover:ring-0 hover:border-gray-200 focus:bg-gray-200 focus:border-gray-200 focus:outline-none focus:ring-0 ltr:mr-6 rtl:ml-6" href="{{ route('login') }}">
                       <svg xmlns="http://www.w3.org/2000/svg" class="inline-block ltr:mr-1 rtl:ml-1" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 512 512"><rect x="64" y="176" width="384" height="256" rx="28.87" ry="28.87" style="fill:none;stroke:currentColor;stroke-linejoin:round;stroke-width:32px"></rect><line x1="144" y1="80" x2="368" y2="80" style="stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></line><line x1="112" y1="128" x2="400" y2="128" style="stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></line></svg>
@@ -615,12 +632,17 @@
             <hr class="block w-12 h-0.5 mx-auto my-5 bg-gray-100 border-gray-100">  
             <p class="text-gray-100 leading-relaxed font-light text-xl mx-auto pb-2 mb-12">Inscrivez-vous à la newsletter pour ne rien manquer ! Des pépites dans votre boîte mail une fois par mois : sur la relation client, le management, le marketing…</p>
             <!-- buttom -->
-            <input type="email" class="w-full leading-5 mb-6 relative py-3 px-5 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" id="email" placeholder="Email address" name="email"  aria-label="newsletter form">
-             
-            <a class="py-3 px-5 -ml-1 rounded-md leading-5 text-gray-800 bg-gray-100 border border-gray-100 hover:text-gray-900 hover:bg-gray-200 hover:ring-0 hover:border-gray-200 focus:bg-gray-200 focus:border-gray-200 focus:outline-none focus:ring-0" href="#">
-              Let's talk!
-              <svg xmlns="http://www.w3.org/2000/svg" class="inline-block mr-1 transform rotate-45" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 512 512"><path d="M53.12,199.94l400-151.39a8,8,0,0,1,10.33,10.33l-151.39,400a8,8,0,0,1-15-.34L229.66,292.45a16,16,0,0,0-10.11-10.11L53.46,215A8,8,0,0,1,53.12,199.94Z" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line x1="460" y1="52" x2="227" y2="285" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line></svg>
-            </a>
+            <form action="{{ route('newsletter.save') }}" method="POST">
+              @csrf
+              @method('post')
+            
+              <input type="email" class="w-full leading-5 mb-6 relative py-3 px-5 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" id="email" placeholder="Email address" name="email"  aria-label="newsletter form">
+               
+              <button type="submit" class="py-3 px-5 -ml-1 rounded-md leading-5 text-gray-800 bg-gray-100 border border-gray-100 hover:text-gray-900 hover:bg-gray-200 hover:ring-0 hover:border-gray-200 focus:bg-gray-200 focus:border-gray-200 focus:outline-none focus:ring-0" >
+                Let's talk!
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block mr-1 transform rotate-45" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 512 512"><path d="M53.12,199.94l400-151.39a8,8,0,0,1,10.33,10.33l-151.39,400a8,8,0,0,1-15-.34L229.66,292.45a16,16,0,0,0-10.11-10.11L53.46,215A8,8,0,0,1,53.12,199.94Z" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line x1="460" y1="52" x2="227" y2="285" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line></svg>
+              </button>
+            </form>
           </div>
         </div><!-- End CTA -->
     
@@ -802,7 +824,9 @@
                   </header><!-- end section header -->
 
                   <!-- contact form -->
-                  <form action="#">
+                  <form action="{{ route('save.contact') }}" method="POST">
+                    @csrf
+                    @method('post')
                     <div class="flex flex-wrap flex-row -mx-4">
                       <div class="flex-shrink w-full max-w-full md:w-1/2 px-4 mb-6">
                         <label class="inline-block mb-2" for="name">Your Name</label>
@@ -864,6 +888,7 @@
         <!-- end footer -->
       </main>
       <!-- end main -->
+        
 
     <!-- Start development js -->
   <!-- alpine js -->
