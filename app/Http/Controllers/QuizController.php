@@ -103,7 +103,17 @@ class QuizController extends Controller
 
         if ($quiz->save()) {
 
-            foreach ($request->places as $place) {
+            if ($request->places == null) {
+                $places = new EloquentCollection();
+                $places_id = Place::where('structure_id', Auth::user()->structure_id)->get('id');
+                for ($i=0; $i < count($places_id); $i++) {
+                    $places[] = $places_id[$i]->id;
+                }
+            } else {
+                $places = $request->places;
+            }
+
+            foreach ($places as $place) {
                 PlaceQuiz::where('quiz_id', $quiz->id)->delete();
                 PlaceQuiz::create([
                     'place_id' => $place,

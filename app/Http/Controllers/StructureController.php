@@ -41,7 +41,7 @@ class StructureController extends Controller
         $fileName = time() . '.' . $request->logo->extension();
         // $path = $request->file('logo')->storeAs('logos', $fileName, 'public');
         
-        $request->image->move(public_path('storage'), $fileName);
+        $request->file->move(public_path('storage'), $fileName);
         $path = $fileName;
 
         $structure->name = $request->name;
