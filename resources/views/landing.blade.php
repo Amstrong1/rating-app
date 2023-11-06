@@ -218,19 +218,19 @@
                 </span>
                 </a>
               </li>
-              <div class="fixed left-0 top-1/2 transform -translate-y-1/2">
+              {{-- <div class="fixed left-0 top-1/2 transform -translate-y-1/3">
                 <form method="POST" action="{{ route('lang.switch') }}" class="p-1 bg-white border border-gray-400 rounded-l-lg shadow-lg">
                     @csrf
                     <div class="mb-2">
                         <label for="lang" class="block text-sm text-gray-700 font-semibold mb-1">Select Language</label>
-                        <select name="lang" id="lang" class="w-32 py-1 px-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300">
+                        <select name="lang" id="lang" class="w-32 py-1 px-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300">
                             <option value="en">English</option>
                             <option value="fr">Français</option>
                         </select>
                     </div>
                     <button type="submit" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-2 rounded focus:outline-none focus:ring focus:border-blue-300">Change</button>
                 </form>
-            </div>
+            </div> --}}
                 
             
             </ul>
