@@ -9,6 +9,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Structure extends Model
 {
     use HasFactory;
+
+    protected $append = [
+        'formated_date'
+    ];
+
+    public function getFormatedDateAttribute(){
+        return getFormattedDate($this->created_at);
+    }
     
     public function users(): HasMany
     {

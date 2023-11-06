@@ -5,10 +5,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\EvaluateController;
 use App\Http\Controllers\StructureController;
+use App\Http\Controllers\NewsletterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,9 @@ use App\Http\Controllers\StructureController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::post('lang', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
+
+
 Route::match(['get', 'post'], '/site/{id}', [WelcomeController::class, 'index']);
 
 Route::get('/', function () {
@@ -45,5 +50,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::post('/newsletter', [NewsletterController::class, 'save'])->name('newsletter.save');
+
+Route::post('/contact', [ContactController::class, 'store'])->name('save.contact');
 
 require __DIR__ . '/auth.php';
