@@ -11,4 +11,5 @@ return [
     'header3' => 'analysis',
     'header4' => 'sharing',
     'header5' => 'Customer Review Management Solution',
+    'header6' => 'customer feedback',
 ];

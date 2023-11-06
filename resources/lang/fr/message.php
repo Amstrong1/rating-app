@@ -10,5 +10,6 @@ return [
     'header2' => 'étude',
     'header3' => 'interprétation',
     'header4' => 'et partage',
-    'header4' => 'Solution de gestion des avis clients.',
+    'header5' => 'Solution de gestion des avis clients.',
+    'header6' => 'des retours clients',
 ];

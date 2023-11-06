@@ -303,7 +303,7 @@
               <!-- content -->
               <div class="flex-shrink max-w-full px-4 w-full lg:w-1/2 xl:mr-auto z-10">
                 <div class="text-center lg:ltr:text-left lg:rtl:text-right">
-                  <h1 class="text-4xl leading-normal font-bold text-white capitalize mb-4"><span class="text-indigo-500" data-toggle="typed" data-options='{"strings": ["{{ __('message.header1') }}", "{{ __('message.header2') }}", "{{ __('message.header3') }} ", "{{ __('message.header4') }}"]}'></span>des retours<br> clients.</h1>
+                  <h1 class="text-4xl leading-normal font-bold text-white capitalize mb-4"><span class="text-indigo-500" data-toggle="typed" data-options='{"strings": ["{{ __('message.header1') }}", "{{ __('message.header2') }}", "{{ __('message.header3') }} ", "{{ __('message.header4') }}"]}'></span>{{ __('message.header6') }}.</h1>
                   <p class="text-gray-100 leading-relaxed font-light text-xl mx-auto pb-2 mb-12">{{ __('message.header5') }}.</p>
                   <div class="mb-16 lg:mb-0">
                     <a class="py-3 px-5 inline-block text-center rounded-md leading-normal text-gray-800 bg-gray-100 border border-gray-100 hover:text-gray-900 hover:bg-gray-200 hover:ring-0 hover:border-gray-200 focus:bg-gray-200 focus:border-gray-200 focus:outline-none focus:ring-0 ltr:mr-6 rtl:ml-6" href="{{ route('login') }}">
