@@ -221,19 +221,19 @@
                 </span>
                 </a>
               </li>
-              {{-- <div class="fixed left-0 top-1/2 transform -translate-y-1/3">
+              <div class="fixed left-0 top-1/2 transform -translate-y-1/3">
                 <form method="POST" action="{{ route('lang.switch') }}" class="p-1 bg-white border border-gray-400 rounded-l-lg shadow-lg">
                     @csrf
                     <div class="mb-2">
-                        <label for="lang" class="block text-sm text-gray-700 font-semibold mb-1">Select Language</label>
-                        <select name="lang" id="lang" class="w-32 py-1 px-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300">
-                            <option value="en">English</option>
-                            <option value="fr">Français</option>
+                       
+                        <select name="lang" id="lang" class="w-18 py-1 px-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300">
+                          <option value="fr">Français</option>
+                          <option value="en">English</option>
                         </select>
                     </div>
                     <button type="submit" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-2 rounded focus:outline-none focus:ring focus:border-blue-300">Change</button>
                 </form>
-            </div> --}}
+            </div>
                 
             
             </ul>
@@ -311,11 +311,11 @@
                   <div class="mb-16 lg:mb-0">
                     <a class="py-3 px-5 inline-block text-center rounded-md leading-normal text-gray-800 bg-gray-100 border border-gray-100 hover:text-gray-900 hover:bg-gray-200 hover:ring-0 hover:border-gray-200 focus:bg-gray-200 focus:border-gray-200 focus:outline-none focus:ring-0 ltr:mr-6 rtl:ml-6" href="{{ route('login') }}">
                       <svg xmlns="http://www.w3.org/2000/svg" class="inline-block ltr:mr-1 rtl:ml-1" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 512 512"><rect x="64" y="176" width="384" height="256" rx="28.87" ry="28.87" style="fill:none;stroke:currentColor;stroke-linejoin:round;stroke-width:32px"></rect><line x1="144" y1="80" x2="368" y2="80" style="stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></line><line x1="112" y1="128" x2="400" y2="128" style="stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></line></svg>
-                       Espace Client
+                      {{ __('message.header7') }}
                     </a>
                     <a class="py-3 px-5 inline-block text-center rounded-md leading-normal text-gray-800 bg-gray-100 border border-gray-100 hover:text-gray-900 hover:bg-gray-200 hover:ring-0 hover:border-gray-200 focus:bg-gray-200 focus:border-gray-200 focus:outline-none focus:ring-0" href="#contact">
                       <svg xmlns="http://www.w3.org/2000/svg" class="inline-block ltr:mr-1 rtl:ml-1" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 512 512"><path d="M304,384V360c0-29,31.54-56.43,52-76,28.84-27.57,44-64.61,44-108,0-80-63.73-144-144-144A143.6,143.6,0,0,0,112,176c0,41.84,15.81,81.39,44,108,20.35,19.21,52,46.7,52,76v24" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path><line x1="224" y1="480" x2="288" y2="480" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><line x1="208" y1="432" x2="304" y2="432" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><line x1="256" y1="384" x2="256" y2="256" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></line><path d="M294,240s-21.51,16-38,16-38-16-38-16" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"></path></svg>
-                       Contactez Nous
+                      {{ __('message.header8') }}
                     </a>
                   </div>
                 </div>
@@ -365,9 +365,9 @@
           <div class="container xl:max-w-6xl mx-auto px-4">
             <!-- section header -->
             <header class="text-center mx-auto mb-12 lg:px-20">
-              <h2 class="text-2xl md:text-3xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-100">Nos domaines d'expertise</h2>
+              <h2 class="text-2xl md:text-3xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-100">{{ __('message.domaine1') }}</h2>
               <hr class="block w-12 h-0.5 mx-auto my-5 bg-indigo-700 border-indigo-700">
-              <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">Nous vous accompagnons de la création à la diffusion de vos enquêtes de satisfaction. <br> Et ce, dans tous les domaines pour obtenir vos clients.</p>
+              <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">{{ __('message.domaine2') }}</p>
             </header><!-- end section header -->
     
             <!-- row -->
@@ -376,9 +376,9 @@
                 <div class="p-6 mx-4 mb-12 rounded-md shadow wow fadeInUp" data-wow-duration="1s">
                   <div class="flex rounded items-center ltr:pl-4 ltr:pr-1 md:ltr:pl-1 md:ltr:pr-1 rtl:pr-4 rtl:pl-1 md:rtl:pr-1 md:rtl:pl-1 py-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" class="inline-block text-indigo-700 ltr:mr-3 rtl:ml-3" fill="currentColor" viewBox="0 0 512 512"><path d="M344,144c-3.92,52.87-44,96-88,96s-84.15-43.12-88-96c-4-55,35-96,88-96S348,90,344,144Z" style="fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px"/><path d="M256,304c-87,0-175.3,48-191.64,138.6C62.39,453.52,68.57,464,80,464H432c11.44,0,17.62-10.48,15.65-21.4C431.3,352,343,304,256,304Z" style="fill:none;stroke:currentColor;stroke-miterlimit:10;stroke-width:32px"/></svg>
-                    <h3 class="text-lg leading-normal mb-2 font-semibold text-gray-800 dark:text-gray-100">Baromatre Social</h3>
+                    <h3 class="text-lg leading-normal mb-2 font-semibold text-gray-800 dark:text-gray-100">{{ __('message.domaine3') }}</h3>
                   </div>
-                  <p>Mesurez le climat social de votre entreprise et améliorez votre gestion des RH !</p>
+                  <p>{{ __('message.domaine4') }}</p>
                 </div>
               </div>
     
@@ -388,9 +388,9 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem" fill="currentColor"  class="inline-block text-indigo-700 ltr:mr-3 rtl:ml-3" viewBox="0 0 16 16">
                       <path d="M6.192 2.78c-.458-.677-.927-1.248-1.35-1.643a2.972 2.972 0 0 0-.71-.515c-.217-.104-.56-.205-.882-.02-.367.213-.427.63-.43.896-.003.304.064.664.173 1.044.196.686.555 1.528 1.035 2.401L.752 8.22c-.277.277-.269.656-.218.918.055.283.187.593.36.903.348.627.92 1.361 1.626 2.068.707.706 1.44 1.278 2.068 1.626.31.173.62.305.903.36.262.05.64.059.918-.219l5.615-5.614c.118.257.092.512.049.939-.03.292-.067.665-.072 1.176v.123h.003a1 1 0 0 0 1.993 0H14a3.657 3.657 0 0 0-.004-.174c-.055-1.25-.7-2.738-1.86-3.494a4.3 4.3 0 0 0-.212-.434c-.348-.626-.92-1.36-1.626-2.067-.707-.707-1.441-1.279-2.068-1.627-.31-.172-.62-.304-.903-.36-.262-.05-.641-.058-.918.219l-.217.216zM4.16 1.867c.381.356.844.922 1.311 1.632l-.704.705c-.382-.727-.66-1.403-.813-1.938a3.284 3.284 0 0 1-.132-.673c.092.061.205.15.338.274zm.393 3.964c.54.853 1.108 1.568 1.608 2.034a.5.5 0 1 0 .682-.732c-.453-.422-1.017-1.136-1.564-2.027l1.088-1.088c.054.12.115.243.183.365.349.627.92 1.361 1.627 2.068.706.707 1.44 1.278 2.068 1.626a4.5 4.5 0 0 0 .365.183l-4.861 4.861a.567.567 0 0 1-.068-.01c-.137-.026-.342-.104-.608-.251-.525-.292-1.186-.8-1.846-1.46-.66-.66-1.168-1.32-1.46-1.846-.147-.265-.225-.47-.251-.607a.573.573 0 0 1-.01-.068l3.047-3.048zm2.871-1.934a2.44 2.44 0 0 1-.241-.561c.135.033.324.11.562.241.524.292 1.186.8 1.846 1.46.45.45.83.901 1.118 1.31a3.497 3.497 0 0 0-1.066.091 11.27 11.27 0 0 1-.76-.694c-.66-.66-1.167-1.322-1.459-1.847z"/>
                     </svg>
-                    <h3 class="text-lg leading-normal mb-2 font-semibold text-gray-800 dark:text-gray-100">Retour Patients</h3>
+                    <h3 class="text-lg leading-normal mb-2 font-semibold text-gray-800 dark:text-gray-100">{{ __('message.domaine5') }}</h3>
                   </div>
-                  <p>Ecoutez les retours de vos patients et améliorez-vous en continu.</p>
+                  <p>{{ __('message.domaine6') }}</p>
                 </div>
               </div>
     
@@ -401,9 +401,9 @@
                       <path d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z"/>
                       <path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                     </svg>
-                    <h3 class="text-lg leading-normal mb-2 font-semibold text-gray-800 dark:text-gray-100">Avis Clientt</h3>
+                    <h3 class="text-lg leading-normal mb-2 font-semibold text-gray-800 dark:text-gray-100">{{ __('message.domaine7') }}</h3>
                   </div>
-                  <p>Générez plus de chiffre d'affaires et fidélisez vos clients durablement !</p>
+                  <p>{{ __('message.domaine8') }}</p>
                 </div>
               </div>
     
@@ -414,9 +414,9 @@
                       <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
                       <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
                     </svg>
-                    <h3 class="text-lg leading-normal mb-2 font-semibold text-gray-800 dark:text-gray-100">Temoignage Fournisseur</h3>
+                    <h3 class="text-lg leading-normal mb-2 font-semibold text-gray-800 dark:text-gray-100">{{ __('message.domaine9') }}</h3>
                   </div>
-                  <p>Respectez vos engagements qualité.</p>
+                  <p>{{ __('message.domaine10') }}</p>
                 </div>
               </div>
     
@@ -430,9 +430,9 @@
           <div class="container xl:max-w-6xl mx-auto px-4">
             <!-- section header -->
             <header class="text-center mx-auto mb-6">
-              <h2 class="text-2xl md:text-3xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-100">Nos Soutions</h2>
+              <h2 class="text-2xl md:text-3xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-100">{{ __('message.solution1') }}</h2>
               <hr class="block w-12 h-0.5 mx-auto my-5 bg-indigo-700 border-indigo-700">
-              <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">"Je Donne Mon Avis" n'est pas qu'une simple plateforme – c'est une révolution dans la gestion de la satisfaction et des retours des avis clients. Grâce à l'exploitation pointue de l'Intelligence Artificielle, nous déchiffrons<br> , analysons et transformons chaque feedback en opportunité. Découvrez une approche novatrice pour être toujours à l'écoute de vos clients, patients ou fournisseurs.</p>
+              <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">{{ __('message.solution2') }}</p>
             </header><!-- end section header -->
     
             <!-- showcase  -->
@@ -457,8 +457,8 @@
                     </div>
     
                     <div class="ltr:ml-4 mb-4 lg:ltr:ml-6 rtl:mr-4 lg:rtl:mr-6">
-                      <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">Notre logiciel vous permet de créer vos enquêtes facilement</h3>
-                      <p>En quelques clics, créez toute forme d'enquête, grâce à une interface hyper-personnalisable et une douzaine de questions différentes les avis clients en toute simplicité !</p>
+                      <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{{ __('message.solution3') }}</h3>
+                      <p>{{ __('message.solution4') }}</p>
                     </div>
                   </li>
     
@@ -473,8 +473,8 @@
                     </div>
     
                     <div class="ltr:ml-4 mb-4 lg:ltr:ml-6 rtl:mr-4 lg:rtl:mr-6">
-                      <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">Ainsi que de les envoyer par SMS ou par Mail</h3>
-                      <p>Choisissez de lancer votre campagne par SMS, ou par mail auprès de vos clients/collaborateurs/patients.</p>
+                      <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{{ __('message.solution5') }}</h3>
+                      <p>{{ __('message.solution6') }}</p>
                     </div>
                   </li>
     
@@ -489,8 +489,8 @@
                     </div>
     
                     <div class="ltr:ml-4 mb-4 lg:ltr:ml-6 rtl:mr-4 lg:rtl:mr-6">
-                      <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">Et de partager les résultats, et de les exploiter !</h3>
-                      <p>Partagez les meilleurs avis clients, ou mettez en place des actions de correction automatiquement ! Notre IA peut par exemple notifier la personne en charge du problème, pour que vous vous amélioriez rapidement !</p>
+                      <h3 class="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-100">{{ __('message.solution7') }}</h3>
+                      <p>{{ __('message.solution8') }}</p>
                     </div>
                   </li>
                 </ol><!-- end processs vertical -->
@@ -507,9 +507,9 @@
           <div class="container xl:max-w-6xl mx-auto px-4">
             <!-- section header -->
             <header class="text-center mx-auto mb-12 lg:px-20">
-              <h2 class="text-2xl md:text-3xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-100">Exemples d'enquêtes</h2>
+              <h2 class="text-2xl md:text-3xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-100">{{ __('message.ex1') }}</h2>
               <hr class="block w-12 h-0.5 mx-auto my-5 bg-indigo-700 border-indigo-700">
-              <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">Nos enquêtes sont entièrement personnalisables, pour s'adapter parfaitement à votre charte graphique !</p>
+              <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">{{ __('message.ex2') }}</p>
             </header><!-- end section header -->
     
             <div class="flex flex-wrap flex-row -mx-4 items-center">
@@ -631,9 +631,9 @@
           <div class="absolute top-0 left-0 w-full h-full opacity-90 bg-indigo-700" style="z-index:-1;"></div>
     
           <div class="container xl:max-w-6xl mx-auto px-4 text-center">
-            <h1 class="text-2xl md:text-3xl leading-normal mb-2 font-semibold text-white">Newsletter</h1>    
+            <h1 class="text-2xl md:text-3xl leading-normal mb-2 font-semibold text-white">{{ __('message.newsletter1') }}</h1>    
             <hr class="block w-12 h-0.5 mx-auto my-5 bg-gray-100 border-gray-100">  
-            <p class="text-gray-100 leading-relaxed font-light text-xl mx-auto pb-2 mb-12">Inscrivez-vous à la newsletter pour ne rien manquer ! Des pépites dans votre boîte mail une fois par mois : sur la relation client, le management, le marketing…</p>
+            <p class="text-gray-100 leading-relaxed font-light text-xl mx-auto pb-2 mb-12">{{ __('message.newsletter2') }}</p>
             <!-- buttom -->
             <form action="{{ route('newsletter.save') }}" method="POST">
               @csrf
@@ -654,9 +654,9 @@
           <div class="container xl:max-w-6xl mx-auto px-4">
             <!-- section header -->
             <header class="text-center mx-auto mb-12">
-              <h2 class="text-2xl md:text-3xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-100"><span class="font-light">Ils nous </span> recommandent !</h2>
+              <h2 class="text-2xl md:text-3xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-100">{{ __('message.t1') }}</h2>
               <hr class="block w-12 h-0.5 mx-auto my-5 bg-indigo-700 border-indigo-700">
-              <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">What customers say about the services we provide them.</p>
+              <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">{{ __('message.t2') }}</p>
             </header><!-- end section header -->
     
             <!-- row -->
@@ -821,9 +821,9 @@
                 <div class="bg-gray-50 border border-gray-200 dark:bg-gray-900 dark:bg-opacity-20 dark:border-gray-800 rounded-md w-full p-12">
                   <!-- section header -->
                   <header class="text-center mx-auto mb-12 lg:px-20">
-                    <h2 class="text-2xl md:text-3xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-100"><span class="font-light">Nous </span> écrire</h2>
+                    <h2 class="text-2xl md:text-3xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-100">{{ __('message.c1') }}</h2>
                     <hr class="block w-12 h-0.5 mx-auto my-5 bg-blue-700 border-blue-700">
-                    <p class="text-gray-600 leading-relaxed font-light text-xl mx-auto pb-2">Avez-vous des questions sur le service, veuillez nous contacter.</p>
+                    <p class="text-gray-600 leading-relaxed font-light text-xl mx-auto pb-2">{{ __('message.c2') }}</p>
                   </header><!-- end section header -->
 
                   <!-- contact form -->
@@ -832,12 +832,12 @@
                     @method('post')
                     <div class="flex flex-wrap flex-row -mx-4">
                       <div class="flex-shrink w-full max-w-full md:w-1/2 px-4 mb-6">
-                        <label class="inline-block mb-2" for="name">Your Name</label>
+                        <label class="inline-block mb-2" for="name">Name</label>
                         <input type="text" name="name" class="w-full leading-5 relative py-3 px-5 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" id="name">
                         <div class="validate"></div>
                       </div>
                       <div class="flex-shrink w-full max-w-full md:w-1/2 px-4 mb-6">
-                        <label class="inline-block mb-2" for="email">Your Email</label>
+                        <label class="inline-block mb-2" for="email">Email</label>
                         <input type="email" class="w-full leading-5 relative py-3 px-5 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" name="email" id="email">
                         <div class="validate"></div>
                       </div>
