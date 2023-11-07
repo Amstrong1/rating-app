@@ -849,7 +849,7 @@
                     </div>
                     <div class="mb-6">
                       <label class="inline-block mb-2" for="messages">Message</label>
-                      <textarea class="w-full leading-5 relative py-3 px-5 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" name="message" rows="10" id="messages"></textarea>
+                      <textarea class="w-full leading-5 relative py-3 px-5 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-400 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600" name="contenu" rows="10" id="messages"></textarea>
                       <div class="validate"></div>
                     </div>
                     <div class="text-center mb-6">

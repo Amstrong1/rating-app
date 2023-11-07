@@ -8,19 +8,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-    <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/geolocation.js') }}"></script>
+    <style>
+        /* Styles pour la section audio */
+        .display {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 20px; /* Ajustez la hauteur selon vos besoins */
+        }
+    
+        audio {
+            width: 100%;
+            max-width: 400px;
+        }
+    
+        /* Styles pour les contrôles audio */
+        .controllers {
+            text-align: center;
+        }
+    
+        button {
+            padding: 10px 20px;
+            background-color: #4bad41;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+        }
+    
+        button:hover {
+            background-color: #357e2e;
+        }
+    
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+    
+        p {
+            font-size: 18px;
+        }
+    </style>
 
 </head>
 
@@ -133,6 +170,9 @@
 
                     <input type="hidden" id="latitude" name="latitude" value="">
                     <input type="hidden" id="longitude" name="longitude" value="">
+                    <input type="hidden" id="form_type" name="form_type" value="classic">
+
+                    
 
                     <!--Submit button-->
                     <button type="submit"
@@ -144,6 +184,27 @@
             </div>
         </div>
     </section>
+        <!-----------------------------  vocal ---------------------------->
+        <div>
+            <div class="display">
+
+            </div>
+            <div class="controllers">
+
+            </div>
+
+            <form action="" method="POST" style="text-align: center;" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="form_type" value="audio">
+                <input type="hidden" name="structure" value="{{ $structure->id }}">
+                <input type="hidden" name="user" value="{{ $user->id }}">
+                <input type="file" name="audio" id="aud"> 
+                <button type="submit" style="background-color: #4bad41">Send</button>
+
+            </form>
+        </div>
+
+        
 
     <footer class="px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center" style="background-color: #03224c">
         <!--Footer-->
@@ -173,5 +234,131 @@
     @include('sweetalert::alert')
 
 </body>
+<!-- Votre code HTML existant -->
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 
+<script>
+    // collect DOMs
+    const display = document.querySelector('.display');
+    const controllerWrapper = document.querySelector('.controllers');
+
+    const State = ['Initial', 'Record', 'Download'];
+    let stateIndex = 0;
+    let mediaRecorder, chunks = [], audioURL = '';
+
+    // mediaRecorder setup for audio
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        console.log('mediaDevices supported..');
+
+        navigator.mediaDevices.getUserMedia({
+            audio: true
+        }).then(stream => {
+            mediaRecorder = new MediaRecorder(stream);
+
+            mediaRecorder.ondataavailable = (e) => {
+                chunks.push(e.data);
+            }
+
+            mediaRecorder.onstop = () => {
+                const blob = new Blob(chunks, { 'type': 'audio/ogg; codecs=opus' });
+                chunks = [];
+                audioURL = window.URL.createObjectURL(blob);
+                document.querySelector('audio').src = audioURL;
+            }
+        }).catch(error => {
+            console.log('Following error has occurred: ', error)
+        });
+    } else {
+        stateIndex = '';
+        application(stateIndex);
+    }
+
+    const clearDisplay = () => {
+        display.textContent = '';
+    }
+
+    const clearControls = () => {
+        controllerWrapper.textContent = '';
+    }
+
+    const record = () => {
+        stateIndex = 1;
+        mediaRecorder.start();
+        application(stateIndex);
+    }
+
+    const stopRecording = () => {
+        stateIndex = 2;
+        mediaRecorder.stop();
+        application(stateIndex);
+    }
+
+    const downloadAudio = () => {
+        const downloadLink = document.createElement('a');
+        downloadLink.href = audioURL;
+        downloadLink.setAttribute('download', 'audio');
+        downloadLink.click();
+    }
+
+    const addButton = (id, funString, text) => {
+        const btn = document.createElement('button');
+        btn.id = id;
+        btn.setAttribute('onclick', funString);
+        btn.textContent = text;
+        controllerWrapper.append(btn);
+    }
+
+    const addMessage = (text) => {
+        const msg = document.createElement('p');
+        msg.textContent = text;
+        display.append(msg);
+    }
+
+    const addAudio = () => {
+        const audio = document.createElement('audio');
+        audio.controls = true;
+        audio.src = audioURL;
+        display.append(audio);
+    }
+
+    const application = (index) => {
+        switch (State[index]) {
+            case 'Initial':
+                clearDisplay();
+                clearControls();
+
+                addButton('record', 'record()', 'Laisser Un vocal');
+                break;
+
+            case 'Record':
+                clearDisplay();
+                clearControls();
+
+                addMessage('Recording...');
+                addButton('stop', 'stopRecording()', 'Stoppez le vocal');
+                break
+
+            case 'Download':
+                clearControls();
+                clearDisplay();
+
+                addAudio();
+                addButton('record', 'record()', 'Laisser Un vocal');
+                break
+
+            default:
+                clearControls();
+                clearDisplay();
+
+                addMessage('Your browser does not support mediaDevices');
+                break;
+        }
+    }
+
+    function send() {
+        document.getElementById("send").value = document.getElementsByTagName("audio")[0].src;
+    }
+
+    application(stateIndex);
+</script>
 </html>
