@@ -51,6 +51,7 @@ class WelcomeController extends Controller
                     // $path = $request->file('logo')->storeAs('logos', $fileName, 'public');
                     
                     $request->audio->move(public_path('storage'), $fileName);
+                    
                     $path = $fileName;
                     
                     $file = new File();
