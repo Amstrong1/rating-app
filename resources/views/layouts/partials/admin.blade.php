@@ -65,5 +65,17 @@
             Evaluation
         </x-nav-link>
     </li>
+    <li class="mx-1 static" data-te-nav-item-ref>
+        <x-nav-link
+            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white dark:hover:text-white dark:focus:text-white"
+            :href="route('voice.index')" :active="request()->routeIs('evaluate.*')" data-te-ripple-init data-te-ripple-color="light">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 010 3.75H5.625a1.875 1.875 0 010-3.75z" />
+            </svg>&nbsp;
+             Vocaux
+        </x-nav-link>
+    </li>
 
 </ul>

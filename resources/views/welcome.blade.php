@@ -198,14 +198,13 @@
                 <input type="hidden" name="form_type" value="audio">
                 <input type="hidden" name="structure" value="{{ $structure->id }}">
                 <input type="hidden" name="user" value="{{ $user->id }}">
-                <input type="file" name="audio" id="aud"> 
-                <button type="submit" style="background-color: #4bad41">Send</button>
+                <input type="hidden" name="audio" id="aud"> 
+                {{-- <button type="submit" id="send" style="background-color: #4bad41">Send</button> --}}
 
             </form>
         </div>
 
         
-
     <footer class="px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center" style="background-color: #03224c">
         <!--Footer-->
 
@@ -287,11 +286,11 @@
         application(stateIndex);
     }
 
-    const stopRecording = () => {
-        stateIndex = 2;
-        mediaRecorder.stop();
-        application(stateIndex);
-    }
+    // const stopRecording = () => {
+    //     stateIndex = 2;
+    //     mediaRecorder.stop();
+    //     application(stateIndex);
+    // }
 
     const downloadAudio = () => {
         const downloadLink = document.createElement('a');
@@ -358,7 +357,45 @@
     function send() {
         document.getElementById("send").value = document.getElementsByTagName("audio")[0].src;
     }
+    const sendAudioToController = async (audioBlob) => {
+            const formData = new FormData();
+            formData.append('audio', audioBlob);
+            formData.append('_token', '{{ csrf_token() }}');
+            formData.append('form_type', 'audio');
+            formData.append('structure', '{{ $structure->id }}');
+            formData.append('user', '{{ $user->id }}');
 
+            try {
+                const response = await fetch('/api/voice/', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (response.ok) {
+                    console.log('Audio téléversé avec succès.');
+                } else {
+                    console.error('Erreur lors du téléversement de l\'audio.');
+                }
+            } catch (error) {
+                console.error('Erreur réseau :', error);
+            }
+        };
+
+        const stopRecording = () => {
+            stateIndex = 2;
+            mediaRecorder.stop();
+
+            // Après avoir arrêté l'enregistrement, envoyez l'audio au contrôleur
+            mediaRecorder.onstop = () => {
+                const blob = new Blob(chunks, { 'type': 'audio/ogg; codecs=opus' });
+                chunks = [];
+                audioURL = window.URL.createObjectURL(blob);
+
+                sendAudioToController(blob); // Envoyer le blob audio au contrôleur
+                alert("Audio envoyé avec succé");
+                application(stateIndex);
+            };
+        }
     application(stateIndex);
 </script>
 </html>

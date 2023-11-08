@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\VoiceController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
@@ -43,6 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/user', UserController::class);
     Route::resource('/quiz', QuizController::class);
     Route::resource('/evaluate', EvaluateController::class);
+    Route::get('/voices', [VoiceController::class, 'index'])->name('voice.index');
 });
 
 Route::middleware('auth')->group(function () {

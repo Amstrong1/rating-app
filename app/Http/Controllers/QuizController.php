@@ -114,6 +114,7 @@ class QuizController extends Controller
             }
 
             PlaceQuiz::where('quiz_id', $quiz->id)->delete();
+            
             foreach ($places as $place) {
                 PlaceQuiz::create([
                     'place_id' => $place,

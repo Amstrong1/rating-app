@@ -80,4 +80,27 @@ class WelcomeController extends Controller
             }
             return view('welcome', compact('user', 'structure', 'quizzes'));
         }
+
+
+        public function voice(Request $request){
+
+           // dd($request->all());
+           $fileName = time() . '.' . $request->audio->extension();
+                    // $path = $request->file('logo')->storeAs('logos', $fileName, 'public');
+                    
+                    $request->audio->move(public_path('storage'), $fileName);
+                    
+                    $path = $fileName;
+                    
+                    $file = new File();
+                    $file->file = $path;
+                    $file->structure_id = $request->structure;
+                    $file->user_id = $request->user;
+                    if ($file->save()) {
+                        Alert::toast("Merci de votre attention", 'success');
+
+                    } else {
+                        Alert::toast('Une erreur est survenue', 'error');
+                    }
+        }
 }
