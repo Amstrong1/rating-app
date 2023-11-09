@@ -3,7 +3,7 @@
 return [
     'welcome' => 'Welcome to our application!',
     'menu1' => 'Home',
-    'menu2' => 'Solution',
+    'menu2' => 'Our Solutions',
     'menu3' => 'Contact',
     'menu4' => 'Customer Area',
     'header1' => 'Collection',

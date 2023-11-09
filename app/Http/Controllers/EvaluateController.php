@@ -11,10 +11,14 @@ class EvaluateController extends Controller
     {
         $structure = Auth::user()->structure;
         $users = $structure->users()->get();
+        $voices = $structure->files()->get();
         $evaluates = new EloquentCollection();
         foreach ($users as $user) {
             $evaluates[] = $structure->rates()->where('user_id', $user->id)->orderBy('id', 'desc')->first();
+            $descriptions[] = $structure->rates()->where('user_id', $user->id)->orderBy('id', 'desc')->get('description');
+            $voices[] = $structure->files()->where('user_id', $user->id)->orderBy('id', 'desc')->first();
         }
+        //dd($descriptions);
         // $evaluates = $evaluates->collapse();
         // $evaluates = $structure->rates()->get();
         // $userEvaluate = $evaluates->where('answer', true);
@@ -24,6 +28,8 @@ class EvaluateController extends Controller
         return view('app.evaluate.index', [
             // 'evaluates' => $structure->rates()->groupBy('user_id')->get(),
             'evaluates' => $evaluates,
+            'descriptions' => $descriptions,
+            'voices' => $voices,
             // 'my_actions' => $this->evaluate_actions(),
             // 'my_attributes' => $this->evaluate_columns(),
         ]);

@@ -45,6 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/quiz', QuizController::class);
     Route::resource('/evaluate', EvaluateController::class);
     Route::get('/voices', [VoiceController::class, 'index'])->name('voice.index');
+    Route::get('/clients', [VoiceController::class, 'customers'])->name('customer.index');
 });
 
 Route::middleware('auth')->group(function () {

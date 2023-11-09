@@ -25,4 +25,9 @@ class VoiceController extends Controller
         );
         return $columns;
     }
+
+    public function customers(){
+
+        return view('app.customers.index');
+    }
 }
