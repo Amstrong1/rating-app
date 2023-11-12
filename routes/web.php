@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\UserController;
@@ -25,6 +26,18 @@ use App\Http\Controllers\NewsletterController;
 */
 Route::post('lang', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
+Route::get('/migrate', function(){
+    Artisan::call('migrate:fresh --seed');
+    dd('migrated!');
+});
+
+Route::get('reboot',function(){
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+      dd('All done!');
+  });
 
 Route::match(['get', 'post'], '/site/{id}', [WelcomeController::class, 'index']);
 

@@ -23,19 +23,20 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 20px; /* Ajustez la hauteur selon vos besoins */
+            height: 20px;
+            /* Ajustez la hauteur selon vos besoins */
         }
-    
+
         audio {
             width: 100%;
             max-width: 400px;
         }
-    
+
         /* Styles pour les contrôles audio */
         .controllers {
             text-align: center;
         }
-    
+
         button {
             padding: 10px 20px;
             background-color: #4bad41;
@@ -44,16 +45,16 @@
             cursor: pointer;
             margin: 10px;
         }
-    
+
         button:hover {
             background-color: #357e2e;
         }
-    
+
         button:disabled {
             background-color: #cccccc;
             cursor: not-allowed;
         }
-    
+
         p {
             font-size: 18px;
         }
@@ -151,7 +152,7 @@
                             </label>
                             <select
                                 class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
-                                name="{{ 'answer' . $i }}" id="{{ 'quiz' . $i }}">
+                                name="{{ 'answer' . $i }}" id="{{ 'quiz' . $i }}" required>
                                 <option value="">Reponse</option>
                                 <option value="1">Oui</option>
                                 <option value="0">Non</option>
@@ -172,7 +173,7 @@
                     <input type="hidden" id="longitude" name="longitude" value="">
                     <input type="hidden" id="form_type" name="form_type" value="classic">
 
-                    
+
 
                     <!--Submit button-->
                     <button type="submit"
@@ -184,27 +185,23 @@
             </div>
         </div>
     </section>
-        <!-----------------------------  vocal ---------------------------->
-        <div>
-            <div class="display">
+    <!-----------------------------  vocal ---------------------------->
+    <div>
+        <div class="display"></div>
+        <div class="controllers"></div>
 
-            </div>
-            <div class="controllers">
+        <form action="" method="POST" style="text-align: center;" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="form_type" value="audio">
+            <input type="hidden" name="structure" value="{{ $structure->id }}">
+            <input type="hidden" name="user" value="{{ $user->id }}">
+            <input type="hidden" name="audio" id="aud">
+            {{-- <button type="submit" id="send" style="background-color: #4bad41">Send</button> --}}
 
-            </div>
+        </form>
+    </div>
 
-            <form action="" method="POST" style="text-align: center;" enctype="multipart/form-data">
-                @csrf
-                <input type="hidden" name="form_type" value="audio">
-                <input type="hidden" name="structure" value="{{ $structure->id }}">
-                <input type="hidden" name="user" value="{{ $user->id }}">
-                <input type="hidden" name="audio" id="aud"> 
-                {{-- <button type="submit" id="send" style="background-color: #4bad41">Send</button> --}}
 
-            </form>
-        </div>
-
-        
     <footer class="px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center" style="background-color: #03224c">
         <!--Footer-->
 
@@ -243,7 +240,8 @@
 
     const State = ['Initial', 'Record', 'Download'];
     let stateIndex = 0;
-    let mediaRecorder, chunks = [], audioURL = '';
+    let mediaRecorder, chunks = [],
+        audioURL = '';
 
     // mediaRecorder setup for audio
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
@@ -259,7 +257,9 @@
             }
 
             mediaRecorder.onstop = () => {
-                const blob = new Blob(chunks, { 'type': 'audio/ogg; codecs=opus' });
+                const blob = new Blob(chunks, {
+                    'type': 'audio/ogg; codecs=opus'
+                });
                 chunks = [];
                 audioURL = window.URL.createObjectURL(blob);
                 document.querySelector('audio').src = audioURL;
@@ -358,12 +358,12 @@
         document.getElementById("send").value = document.getElementsByTagName("audio")[0].src;
     }
     const sendAudioToController = async (audioBlob) => {
-            const formData = new FormData();
-            formData.append('audio', audioBlob);
-            formData.append('_token', '{{ csrf_token() }}');
-            formData.append('form_type', 'audio');
-            formData.append('structure', '{{ $structure->id }}');
-            formData.append('user', '{{ $user->id }}');
+        const formData = new FormData();
+        formData.append('audio', audioBlob);
+        formData.append('_token', '{{ csrf_token() }}');
+        formData.append('form_type', 'audio');
+        formData.append('structure', '{{ $structure->id }}');
+        formData.append('user', '{{ $user->id }}');
 
             try {
                 const response = await fetch('/voice/', {
@@ -371,31 +371,34 @@
                     body: formData,
                 });
 
-                if (response.ok) {
-                    console.log('Audio téléversé avec succès.');
-                } else {
-                    console.error('Erreur lors du téléversement de l\'audio.');
-                }
-            } catch (error) {
-                console.error('Erreur réseau :', error);
+            if (response.ok) {
+                console.log('Audio téléversé avec succès.');
+            } else {
+                console.error('Erreur lors du téléversement de l\'audio.');
             }
-        };
-
-        const stopRecording = () => {
-            stateIndex = 2;
-            mediaRecorder.stop();
-
-            // Après avoir arrêté l'enregistrement, envoyez l'audio au contrôleur
-            mediaRecorder.onstop = () => {
-                const blob = new Blob(chunks, { 'type': 'audio/ogg; codecs=opus' });
-                chunks = [];
-                audioURL = window.URL.createObjectURL(blob);
-
-                sendAudioToController(blob); // Envoyer le blob audio au contrôleur
-                alert("Audio envoyé avec succé");
-                application(stateIndex);
-            };
+        } catch (error) {
+            console.error('Erreur réseau :', error);
         }
+    };
+
+    const stopRecording = () => {
+        stateIndex = 2;
+        mediaRecorder.stop();
+
+        // Après avoir arrêté l'enregistrement, envoyez l'audio au contrôleur
+        mediaRecorder.onstop = () => {
+            const blob = new Blob(chunks, {
+                'type': 'audio/ogg; codecs=opus'
+            });
+            chunks = [];
+            audioURL = window.URL.createObjectURL(blob);
+
+            sendAudioToController(blob); // Envoyer le blob audio au contrôleur
+            alert("Audio envoyé avec succé");
+            application(stateIndex);
+        };
+    }
     application(stateIndex);
 </script>
+
 </html>
