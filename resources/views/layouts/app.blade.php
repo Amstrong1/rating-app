@@ -110,7 +110,8 @@
                                 style="color: #03224c">
                                 <marquee behavior="" direction="">
                                     Licence accordée à l'entreprise {{ Auth::user()->structure->name }}. Validité 1an :
-                                    Du 01/01/2023 au 01/12/2023
+                                    Du {{ \Carbon\Carbon::parse(Auth::user()->structure->created_at)->format('d/m/Y') }}
+                                    au {{ \Carbon\Carbon::parse(Auth::user()->structure->created_at)->addYear()->format('d/m/Y') }}
                                 </marquee>
                             </div>
                             <div class=""></div>

@@ -49,12 +49,12 @@
             
             <!-- Mobile navbar -->
             <nav id="mobile-nav" class="flex flex-col ltr:right-0 rtl:left-0 w-64 fixed top-0 py-4 bg-white dark:bg-gray-800 h-full overflow-auto z-40" x-show="open" @click.away="open=false" x-description="Mobile menu" role="menu" aria-orientation="vertical" aria-labelledby="navbartoggle" 
-            x-transition:enter="transform transition-transform duration-300" 
-            x-transition:enter-start="ltr:translate-x-full rtl:-translate-x-full" 
-            x-transition:enter-end="translate-x-0" 
-            x-transition:leave="transform transition-transform duration-300" 
-            x-transition:leave-start="translate-x-0" 
-            x-transition:leave-end="ltr:translate-x-full rtl:-translate-x-full">
+                  x-transition:enter="transform transition-transform duration-300" 
+                  x-transition:enter-start="ltr:translate-x-full rtl:-translate-x-full" 
+                  x-transition:enter-end="translate-x-0" 
+                  x-transition:leave="transform transition-transform duration-300" 
+                  x-transition:leave-start="translate-x-0" 
+                  x-transition:leave-end="ltr:translate-x-full rtl:-translate-x-full">
               <div class="mb-auto">
                 <!--logo-->
                 <div class="mh-18 text-center px-12 mb-8">
@@ -157,7 +157,7 @@
             </a>
 
             <!-- menu -->
-            <ul class="flex flex-col lg:mx-auto mt-2  lg:flex-row lg:mt-0" style="margin-left: 18rem;">
+            <ul class="flex flex-col lg:mx-auto mt-2  lg:flex-row lg:mt-0" >
               <!-- dropdown -->
               <li class="relative" x-data="{ open: false }" @keydown.escape.stop="open = false" @mouseleave="open = false">
                
@@ -233,24 +233,27 @@
                 </span>
                 </a>
               </li>
-              <div class="fixed left-0 top-1/2 transform -translate-y-1/3">
-                <form method="POST" action="{{ route('lang.switch') }}" class="p-1 bg-white border border-gray-400 rounded-l-lg shadow-lg">
-                    @csrf
-                    <div class="mb-2">
-                       
-                        <select name="lang" id="lang" class="w-18 py-1 px-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300">
-                          <option value="fr">Français</option>
-                          <option value="en">English</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-2 rounded focus:outline-none focus:ring focus:border-blue-300">Change</button>
-                </form>
-            </div>
+              
                 
             
             </ul>
+
+            {{-- <div class="fixed left-0 top-1/2 transform -translate-y-1/3"> --}}
+              <div class="left-0 mt-2 top-1/2 transform -translate-y-1/3 ">
+                <form method="POST" action="{{ route('lang.switch') }}" class="flex p-1 bg-white border border-gray-100 rounded-l-lg shadow-lg">
+                    @csrf
+                    <div>
+                        <select name="lang" id="lang" class="w-18 py-0 px-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300">
+                            <option value="fr">Français</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-semibold py-0 px-1 rounded focus:outline-none focus:ring focus:border-blue-300">Change</button>
+                </form>
+            </div>
           
-          </div><!-- end desktop menu -->
+          </div>
+          <!-- end desktop menu -->
         </div>
       </nav><!-- End Navbar -->
     </header>

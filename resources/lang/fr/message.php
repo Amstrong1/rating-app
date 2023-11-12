@@ -37,7 +37,7 @@ return [
     'newsletter1' => "Newsletter",
     'newsletter2' => "Inscrivez-vous à la newsletter pour ne rien manquer ! Des pépites dans votre boîte mail une fois par mois : sur la relation client, le management, le marketing…",
     't1' => "Ils nous recommandent !",
-    't2' => "What customers say about the services we provide them.",
+    't2' => "Ce que les clients disent des services que nous leur fournissons.",
     'c1' => "Nous écrire",
     'c2' => "Avez-vous des questions sur le service, veuillez nous contacter.",
 ];
