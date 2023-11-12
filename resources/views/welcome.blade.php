@@ -366,7 +366,7 @@
             formData.append('user', '{{ $user->id }}');
 
             try {
-                const response = await fetch('/api/voice/', {
+                const response = await fetch('/voice/', {
                     method: 'POST',
                     body: formData,
                 });

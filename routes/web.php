@@ -35,11 +35,13 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+
 Route::controller(WelcomeController::class)->group(function(){
 
     Route::post('voice','voice');
     
 });
+
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', HomeController::class)->name('dashboard');
     Route::get('/user/print/{user}', [UserController::class, 'print'])->name('user.print');

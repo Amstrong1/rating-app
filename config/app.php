@@ -185,6 +185,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        // 'Cors' => Fruitcake\Cors\HandleCors::class,
         'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
         "PDF" => Barryvdh\DomPDF\Facade::class,
     ])->toArray(),
