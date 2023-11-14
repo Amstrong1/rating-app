@@ -242,7 +242,7 @@
               <div class="left-0 mt-2 top-1/2 transform -translate-y-1/3 ">
                 <form method="POST" action="{{ route('lang.switch') }}" class="flex p-1 bg-white border border-gray-100 rounded-l-lg shadow-lg">
                     @csrf
-                    <div>
+                    <div
                         <select name="lang" id="lang" class="w-18 py-0 px-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300">
                             <option value="fr">Français</option>
                             <option value="en">English</option>
@@ -322,7 +322,7 @@
               <div class="flex-shrink max-w-full px-4 w-full lg:w-1/2 xl:mr-auto z-10">
                 <div class="text-center lg:ltr:text-left lg:rtl:text-right">
                   <h1 class="text-4xl leading-normal font-bold text-white capitalize mb-4"><span class="text-indigo-500" data-toggle="typed" data-options='{"strings": ["{{ __('message.header1') }}", "{{ __('message.header2') }}", "{{ __('message.header3') }} ", "{{ __('message.header4') }}"]}'></span>{{ __('message.header6') }}.</h1>
-                  <p class="text-gray-100 leading-relaxed font-light text-xl mx-auto pb-2 mb-12">{{ __('message.header5') }}.</p>
+                  <p class="text-gray-100 leading-relaxed font-light text-xl mx-auto pb-2 mb-12">{{ __('message.header5') }}</p>
                   <div class="mb-16 lg:mb-0">
                     <a class="py-3 px-5 inline-block text-center rounded-md leading-normal text-gray-800 bg-gray-100 border border-gray-100 hover:text-gray-900 hover:bg-gray-200 hover:ring-0 hover:border-gray-200 focus:bg-gray-200 focus:border-gray-200 focus:outline-none focus:ring-0 ltr:mr-6 rtl:ml-6" href="{{ route('login') }}">
                       <svg xmlns="http://www.w3.org/2000/svg" class="inline-block ltr:mr-1 rtl:ml-1" width="1.5rem" height="1.5rem" fill="currentColor" viewBox="0 0 512 512"><rect x="64" y="176" width="384" height="256" rx="28.87" ry="28.87" style="fill:none;stroke:currentColor;stroke-linejoin:round;stroke-width:32px"></rect><line x1="144" y1="80" x2="368" y2="80" style="stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></line><line x1="112" y1="128" x2="400" y2="128" style="stroke:currentColor;stroke-linecap:round;stroke-miterlimit:10;stroke-width:32px"></line></svg>
