@@ -20,6 +20,17 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <style>
+        .dataTables_wrapper .row:first-child {
+            display: flex;
+            justify-content: space-between;
+            
+        }
+        .dataTables_wrapper .row:last-child {
+            display: flex;
+            justify-content: space-between;
+            
+        }
+
         .select2 {
             display: block;
             width: 100%;
@@ -111,7 +122,8 @@
                                 <marquee behavior="" direction="">
                                     Licence accordée à l'entreprise {{ Auth::user()->structure->name }}. Validité 1an :
                                     Du {{ \Carbon\Carbon::parse(Auth::user()->structure->created_at)->format('d/m/Y') }}
-                                    au {{ \Carbon\Carbon::parse(Auth::user()->structure->created_at)->addYear()->format('d/m/Y') }}
+                                    au
+                                    {{ \Carbon\Carbon::parse(Auth::user()->structure->created_at)->addYear()->format('d/m/Y') }}
                                 </marquee>
                             </div>
                             <div class=""></div>

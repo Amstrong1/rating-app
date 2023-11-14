@@ -63,29 +63,15 @@
 </head>
 
 
-<body class="font-sans text-gray-900 antialiased" onload="geolocal()">
+<body class="font-sans text-gray-900 antialiased"
+ {{-- onload="geolocal()" --}}
+>
 
     <header>
         <!-- Navigation bar -->
         <nav class="relative flex w-full items-center justify-between bg-white text-white py-2 shadow-lg md:flex- md:justify-start"
             style="background-color: #03224c" data-te-navbar-ref>
             <div class="flex w-full flex-wrap items-center justify-between px-3">
-                {{-- <div class="flex items-center justify-between w-full">
-                    <!-- Hamburger menu button -->
-                    <button
-                        class="border-0 bg-transparent px-2 text-xl leading-none transition-shadow duration-150 ease-in-out hover:text-neutral-700 focus:text-neutral-700 dark:hover:text-white dark:focus:text-white lg:hidden"
-                        type="button" data-te-collapse-init data-te-target="#navbarSupportedContentX"
-                        aria-controls="navbarSupportedContentX" aria-expanded="false" aria-label="Toggle navigation">
-                        <!-- Hamburger menu icon -->
-                        <span class="[&>svg]:w-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke-width="1.5" stroke="currentColor" class="h-7 w-7">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                            </svg>
-                        </span>
-                    </button>
-                </div> --}}
 
                 <div>
                     <a class="flex items-center no-underline hover:no-underline font-bold text-2xl lg:text-4xl h-20"
@@ -99,10 +85,6 @@
                 <!-- Navigation links -->
                 <div class="md:flex md:flex-row justify-end content-center">
                     <ul class="mr-auto flex flex-col md:flex-row md:justify-end" data-te-navbar-nav-ref>
-                        {{-- <li class="mb-4 lg:mb-0 lg:pr-2" data-te-nav-item-ref>
-                            <a class="block" href="{{ url()->previous() }}" data-te-nav-link-ref data-te-ripple-init
-                                data-te-ripple-color="light">Accueil</a>
-                        </li> --}}
                         <li class="mb-2 lg:mb-0 lg:pr-2 flex" data-te-nav-item-ref>
 
                             <a class="flex" href="{{ $user->structure->slug ?? '#' }}" data-te-nav-link-ref
@@ -121,7 +103,7 @@
         </nav>
 
         <!-- Hero section with background image, heading, subheading and button -->
-        <div class="bg-fixed bg-cover bg-no-repeat h-96"
+        <div class="bg-center bg-contain bg-no-repeat h-96"
             style="background-position: 50%; background-image: url('assets/img/146.jpg');">
             <div class="px-8 md:px-14 mx-auto flex flex-wrap flex-col md:flex-row items-center h-full py-2"
                 style="background-color: rgba(0, 0, 0, 0.50)">
@@ -157,14 +139,17 @@
                                 <option value="1">Oui</option>
                                 <option value="0">Non</option>
                             </select>
-                            <textarea name="{{ 'description' . $i }}" placeholder="Détail(Optionel)"
-                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"></textarea>
+
                             <x-input-error :messages="$errors->get("{{ 'answer' . $i }}")" class="mt-2" />
                         </div>
                         <input type="hidden" name="{{ 'quiz_id' . $i }}" value="{{ $quiz->id }}">
 
                         @php $i++; @endphp
                     @endforeach
+                    <div class="relative mb-6 md:w-1/2 md:mx-auto">
+                        <textarea name="{{ 'appreciation' }}" placeholder="Appréciations(Facultatif)"
+                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"></textarea>
+                    </div>
 
                     <input type="hidden" name="structure" value="{{ $structure->id }}">
                     <input type="hidden" name="user" value="{{ $user->id }}">
@@ -196,7 +181,6 @@
             <input type="hidden" name="structure" value="{{ $structure->id }}">
             <input type="hidden" name="user" value="{{ $user->id }}">
             <input type="hidden" name="audio" id="aud">
-            {{-- <button type="submit" id="send" style="background-color: #4bad41">Send</button> --}}
 
         </form>
     </div>
@@ -286,12 +270,6 @@
         application(stateIndex);
     }
 
-    // const stopRecording = () => {
-    //     stateIndex = 2;
-    //     mediaRecorder.stop();
-    //     application(stateIndex);
-    // }
-
     const downloadAudio = () => {
         const downloadLink = document.createElement('a');
         downloadLink.href = audioURL;
@@ -365,11 +343,11 @@
         formData.append('structure', '{{ $structure->id }}');
         formData.append('user', '{{ $user->id }}');
 
-            try {
-                const response = await fetch('/voice/', {
-                    method: 'POST',
-                    body: formData,
-                });
+        try {
+            const response = await fetch('/voice/', {
+                method: 'POST',
+                body: formData,
+            });
 
             if (response.ok) {
                 console.log('Audio téléversé avec succès.');

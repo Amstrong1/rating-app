@@ -104,6 +104,12 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         try {
+            $evaluates = $user->rates()->get();
+
+            foreach ($evaluates as $evaluate) {
+                $evaluate->delete();
+            }
+
             $user = $user->delete();
             Alert::success('Opération effectuée', 'Suppression éffectué');
             return redirect('user');

@@ -62,7 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/place', PlaceController::class);
     Route::resource('/user', UserController::class);
     Route::resource('/quiz', QuizController::class);
-    Route::resource('/evaluate', EvaluateController::class);
+    Route::match(['get', 'post'], '/evaluate', [EvaluateController::class, 'index'])->name('evaluate.index');
     Route::get('/voices', [VoiceController::class, 'index'])->name('voice.index');
     Route::get('/clients', [VoiceController::class, 'customers'])->name('customer.index');
 });

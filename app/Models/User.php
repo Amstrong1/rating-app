@@ -69,7 +69,11 @@ class User extends Authenticatable
 
     public function getPlaceNameAttribute()
     {
-        return $this->place ?? 'Administrateur';
+        if ($this->role === 'admin') {
+            return 'Administrateur';
+        } else {
+            return $this->place ?? 'Aucun poste affecté';
+        }
     }
 
     /**

@@ -1,12 +1,18 @@
 <?php
 
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 
 function getFormattedDate($date): String
 {
     Carbon::setLocale('fr');
     $new_date = Carbon::createFromDate($date);
-    $new_date_format = $new_date->day . ' ' . $new_date->monthName . ' ' . $new_date->year;
+    if (Str::length($new_date->minute) == 1) {
+        $prefix = '0';
+    } else {
+        $prefix = '';
+    }
+    $new_date_format = $new_date->day . ' ' . $new_date->monthName . ' ' . $new_date->year . ' à ' . $new_date->hour . 'h' . $prefix . $new_date->minute . 'min';
     return $new_date_format;
 }
 

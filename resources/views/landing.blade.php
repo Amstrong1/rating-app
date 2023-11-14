@@ -543,7 +543,7 @@
                           </defs>
     
                           <!-- Phone screen -->
-                          <image clip-path="url(#svgf3)" xlink:href="src/img-min/app/app1.jpg" height="92%" width="100%" style="transform:translateY(30px);"></image>
+                          <image clip-path="url(#svgf3)" xlink:href="{{ asset('img/1.jpg') }}" height="92%" width="100%" style="transform:translateY(30px);"></image>
     
                           <!-- Phone cover -->
                           <image xlink:href="src/img-min/app/device/iphone-dark.png" height="100%" width="100%"></image>
@@ -563,7 +563,7 @@
                           </defs>
     
                           <!-- Phone screen -->
-                          <image clip-path="url(#svgf4)" xlink:href="src/img-min/app/app2.jpg" height="92%" width="100%" style="transform:translateY(30px);"></image>
+                          <image clip-path="url(#svgf4)" xlink:href="{{ asset('img/2.jpg') }}" height="92%" width="100%" style="transform:translateY(30px);"></image>
     
                           <!-- Phone cover -->
                           <image xlink:href="src/img-min/app/device/iphone-dark.png" height="100%" width="100%"></image>
@@ -583,7 +583,7 @@
                           </defs>
     
                           <!-- Phone screen -->
-                          <image clip-path="url(#svgf5)" xlink:href="src/img-min/app/app3.jpg" height="92%" width="100%" style="transform:translateY(30px);"></image>
+                          <image clip-path="url(#svgf5)" xlink:href="{{ asset('img/3.jpg') }}" height="92%" width="100%" style="transform:translateY(30px);"></image>
     
                           <!-- Phone cover -->
                           <image xlink:href="src/img-min/app/device/iphone-dark.png" height="100%" width="100%"></image>
@@ -603,27 +603,7 @@
                           </defs>
     
                           <!-- Phone screen -->
-                          <image clip-path="url(#svgf6)" xlink:href="src/img-min/app/app4.jpg" height="92%" width="100%" style="transform:translateY(30px);"></image>
-    
-                          <!-- Phone cover -->
-                          <image xlink:href="src/img-min/app/device/iphone-dark.png" height="100%" width="100%"></image>
-                        </svg>
-                      </figure>
-                    </div>
-                  </div>
-                  <div class="max-w-full w-full md:w-1/2 lg:w-1/3 px-24 md:px-12 text-center">
-                    <div class="slider-item">
-                      <figure class="relative">
-                        <svg version="1.0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480.000000 906.000000">
-                          <!-- Clip path image -->
-                          <defs>
-                            <clipPath id="svgf7">
-                              <rect x="52" y="10" width="380" height="818"/>
-                            </clipPath>
-                          </defs>
-    
-                          <!-- Phone screen -->
-                          <image clip-path="url(#svgf7)" xlink:href="src/img-min/app/app5.jpg" height="92%" width="100%" style="transform:translateY(30px);"></image>
+                          <image clip-path="url(#svgf6)" xlink:href="{{ asset('img/4.jpg') }}" height="92%" width="100%" style="transform:translateY(30px);"></image>
     
                           <!-- Phone cover -->
                           <image xlink:href="src/img-min/app/device/iphone-dark.png" height="100%" width="100%"></image>

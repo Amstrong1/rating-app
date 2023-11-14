@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appreciation;
 use App\Models\File;
 use App\Models\Quiz;
 use App\Models\Rate;
@@ -17,7 +18,6 @@ class WelcomeController extends Controller
 {
     public function index(Request $request, $user_id)
     {
-        //dd($request->file('audio'));
         if ($request->method() == 'POST') {
 
             if ($request->form_type == 'classic') {
@@ -31,8 +31,8 @@ class WelcomeController extends Controller
                     $rate->user_id = $request->user;
                     $rate->quiz_id = $request->input('quiz_id' . $i);
                     $rate->answer = $request->input('answer' . $i);
-                    $rate->description = $request->input('description' . $i);
-                    if ($rate->save()) {
+                    if ($rate->save()) {                       
+
                         Alert::toast("Merci de votre attention", 'success');
 
                         foreach ($admins as $admin) {
@@ -42,13 +42,19 @@ class WelcomeController extends Controller
                         Alert::toast('Une erreur est survenue', 'error');
                     }
                 }
+                if ($request->appreciation !== null) {
+                    $appreciation = new Appreciation();
+                    $appreciation->appreciation = $request->appreciation;
+                    $appreciation->structure_id = $request->structure;
+                    $appreciation->user_id = $request->user;
+                    $appreciation->save();
+                }
                 // } else {
                 //     Alert::toast('Vérifier votre position géographique', 'error');
                 // }
             } else {
 
                 $fileName = time() . '.' . $request->audio->extension();
-                // $path = $request->file('logo')->storeAs('logos', $fileName, 'public');
 
                 $request->audio->move(public_path('storage'), $fileName);
 
@@ -80,10 +86,7 @@ class WelcomeController extends Controller
     public function voice(Request $request)
     {
 
-        // dd($request->all());
         $fileName = time() . '.' . $request->audio->extension();
-        // $path = $request->file('logo')->storeAs('logos', $fileName, 'public');
-
         $request->audio->move(public_path('storage'), $fileName);
 
         $path = $fileName;
