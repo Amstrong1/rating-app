@@ -27,7 +27,7 @@
         </div>
 
         <!-- latitude -->
-        <div class="mt-4">
+        {{-- <div class="mt-4">
             <x-input-label for="latitude" :value="__('Latitude')" />
             <x-text-input id="latitude" class="block mt-1 w-full" type="text" name="latitude" :value="old('latitude')"
                 required autocomplete="username" />
@@ -40,7 +40,7 @@
             <x-text-input id="longitude" class="block mt-1 w-full" type="text" name="longitude" :value="old('longitude')"
                 required autocomplete="username" />
             <x-input-error :messages="$errors->get('longitude')" class="mt-2" />
-        </div>
+        </div> --}}
 
         <!-- Password -->
         <div class="mt-4">

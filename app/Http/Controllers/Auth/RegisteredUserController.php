@@ -33,8 +33,8 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'latitude' => ['required', 'numeric'],
-            'longitude' => ['required', 'numeric'],
+            // 'latitude' => ['required', 'numeric'],
+            // 'longitude' => ['required', 'numeric'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'company_email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'exists:structures,email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -50,9 +50,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $structure->latitude = $request->latitude;
-        $structure->longitude = $request->longitude;
-        $structure->save();
+        // $structure->latitude = $request->latitude;
+        // $structure->longitude = $request->longitude;
+        // $structure->save();
 
         event(new Registered($user));
 

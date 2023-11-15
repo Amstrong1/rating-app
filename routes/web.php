@@ -27,7 +27,7 @@ use App\Http\Controllers\NewsletterController;
 Route::post('lang', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
 Route::get('/migrate', function(){
-    Artisan::call('migrate:fresh --seed');
+    Artisan::call('migrate');
     dd('migrated!');
 });
 
@@ -62,7 +62,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/place', PlaceController::class);
     Route::resource('/user', UserController::class);
     Route::resource('/quiz', QuizController::class);
-    Route::match(['get', 'post'], '/evaluate', [EvaluateController::class, 'index'])->name('evaluate.index');
+    Route::resource('/evaluate', EvaluateController::class);
     Route::get('/voices', [VoiceController::class, 'index'])->name('voice.index');
     Route::get('/clients', [VoiceController::class, 'customers'])->name('customer.index');
 });

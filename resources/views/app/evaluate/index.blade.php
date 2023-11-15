@@ -9,21 +9,30 @@
                     <div class="mt-4 data-te-datatable-init">
                         {{-- <x-tables.default :resources="$evaluates" :mattributes="$my_attributes" type="evaluate" :mactions="$my_actions" /> --}}
                         <div style="background-color: #00558b" class="text-white p-4 border border-slate-500">
-
-                            @if ($evaluates !== null && $evaluates->count() !== 0)
-                                <form id="sortForm" action="" method="post">
-                                    @csrf
-                                    <input type="hidden" name="sortType" id="sortType" value="desc">
-                                    <h2 class="flex items-center cursor-pointer" onclick="change_submit()">Trier par
-                                        date de
-                                        publication &nbsp;
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                            stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
-                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-                                        </svg>
-                                    </h2>
-                                </form>
+                            {{-- @php
+                                $check1 = 0;
+                                $check2 = 0;
+                                if ($evaluates == null || $evaluates->count() == 0) {
+                                    $check1 = 0;
+                                } else {
+                                    $check1 = 1;
+                                }
+                                if ($voices == null || $voices->count() == 0) {
+                                    $check2 = 0;
+                                } else {
+                                    $check2 = 1;
+                                }
+                            @endphp --}}
+                            @if ($users->count() != 0 && $users != null)
+                                <h2 class="flex items-center cursor-pointer">Trier par
+                                    date de
+                                    publication &nbsp;
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                    </svg>
+                                </h2>
                             @else
                                 <h2>Aucun élément à afficher</h2>
                             @endif
@@ -31,24 +40,25 @@
                         @php
                             $c = 0;
                         @endphp
-                        @foreach ($evaluates as $evaluate)
-                            @if ($evaluate !== null)
+                        {{-- @for ($i = 0; $i < $evaluates->count(); $i++) --}}
+                        @foreach ($users as $user)
+                            @if ($user->rates()->count() !== 0)
                                 <div class="grid grid-cols-12">
                                     <div style="background-color: #00558b; border-color: #cae1f1; border-right-color: #09beaf"
                                         class="flex flex-col justify-center items-center text-white col-span-2 p-4 border-2 border-r-4">
                                         <span class="text-2xl font-bold my-2">
-                                            {{ number_format($evaluate->user->rates()->where('answer', true)->count() *(10 / $evaluate->user->rates()->count()),0,',',' ') }}
+                                            {{ number_format($user->rates()->where('answer', true)->count() *(10 / ($user->rates()->count() )),0,',',' ') }}
                                             /
-                                            {{ $evaluate->user->rates()->count() * (10 / $evaluate->user->rates()->count()) }}
+                                            {{ $user->rates()->count() * (10 / $user->rates()->count()) }}
                                         </span>
                                         <div class="flex flex-row my-2">
                                             @for ($i = 0;
-    $i <
-    ceil(
-        $evaluate->user->rates()->where('answer', true)->count() *
-            (5 / $evaluate->user->rates()->count()),
-    );
-    $i++)
+                                                $i <
+                                                ceil(
+                                                    $user->rates()->where('answer', true)->count() *
+                                                        (5 / $user->rates()->count()),
+                                                );
+                                                $i++)
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="orange"
                                                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                     class="w-4 h-4">
@@ -58,12 +68,12 @@
                                             @endfor
 
                                             @for ($i = 0;
-    $i <
-    floor(
-        $evaluate->user->rates()->where('answer', false)->count() *
-            (5 / $evaluate->user->rates()->count()),
-    );
-    $i++)
+                                                $i <
+                                                floor(
+                                                    $user->rates()->where('answer', false)->count() *
+                                                        (5 / $user->rates()->count()),
+                                                );
+                                                $i++)
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                     viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                                                     class="w-4 h-4">
@@ -75,8 +85,8 @@
                                     </div>
                                     <div class="col-span-10 p-4 border-2" style="border-color: #cae1f1;">
                                         <div class="my-2">
-                                            {{ $evaluate->user->name }} -
-                                            {{ $evaluate->user->place->name ?? 'Aucun poste' }}
+                                            {{ $user->name }} -
+                                            {{ $user->place->name ?? 'Aucun poste' }}
                                         </div>
                                         <div id="{{ 'accordionExample' . $c }}">
                                             <div
@@ -145,37 +155,41 @@
                                                                                         class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                                                                                         <div class="overflow-hidden">
                                                                                             <table
-                                                                                                class="min-w-full text-left text-sm font-light">
+                                                                                                class="voices-table min-w-full text-left text-sm font-light">
                                                                                                 <thead
                                                                                                     class="border-b font-medium dark:border-neutral-500">
                                                                                                     <tr>
                                                                                                         <th scope="col"
                                                                                                             class="px-6 py-4">
-                                                                                                            Audio</th>
+                                                                                                            Audio
+                                                                                                        </th>
                                                                                                         <th scope="col"
                                                                                                             class="px-6 py-4">
-                                                                                                            Date</th>
+                                                                                                            Date
+                                                                                                        </th>
                                                                                                     </tr>
                                                                                                 </thead>
                                                                                                 <tbody>
-                                                                                                    @foreach ($voices as $voice)
-                                                                                                        @if ($voice !== null)
-                                                                                                            <tr
-                                                                                                                class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
-                                                                                                                <td
-                                                                                                                    class="whitespace-nowrap px-6 py-4 font-medium">
-                                                                                                                    <audio
-                                                                                                                        controls
-                                                                                                                        src="/storage/{{ $voice->file }}">
-                                                                                                                    </audio>
-                                                                                                                </td>
-                                                                                                                <td
-                                                                                                                    class="whitespace-nowrap px-6 py-4">
-                                                                                                                    {{ $voice->formated_date }}
-                                                                                                                </td>
-                                                                                                            </tr>
-                                                                                                        @endif
-                                                                                                    @endforeach
+                                                                                                    {{-- @for ($i = 0; $i < count($voices); $i++) --}}
+                                                                                                        @foreach ($user->voices() as $voice)
+                                                                                                            @if ($voice !== null)
+                                                                                                                <tr
+                                                                                                                    class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+                                                                                                                    <td
+                                                                                                                        class="whitespace-nowrap px-6 py-4 font-medium">
+                                                                                                                        <audio
+                                                                                                                            controls
+                                                                                                                            src="/storage/{{ $voice->file }}">
+                                                                                                                        </audio>
+                                                                                                                    </td>
+                                                                                                                    <td
+                                                                                                                        class="whitespace-nowrap px-6 py-4">
+                                                                                                                        {{ $voice->formated_date }}
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            @endif
+                                                                                                        @endforeach
+                                                                                                    {{-- @endfor --}}
                                                                                                 </tbody>
                                                                                             </table>
                                                                                         </div>
@@ -210,13 +224,14 @@
                                                                                                         </th>
                                                                                                         <th scope="col"
                                                                                                             class="px-6 py-4">
-                                                                                                            Date</th>
+                                                                                                            Date
+                                                                                                        </th>
 
                                                                                                     </tr>
                                                                                                 </thead>
                                                                                                 <tbody>
-                                                                                                    @for ($i = 0; $i < count($descriptions); $i++)
-                                                                                                        @foreach ($descriptions[$i] as $description)
+                                                                                                    {{-- @for ($i = 0; $i < count($descriptions); $i++) --}}
+                                                                                                        @foreach ($user->appreciations() as $description)
                                                                                                             @if ($description !== null)
                                                                                                                 <tr
                                                                                                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
@@ -232,7 +247,7 @@
                                                                                                                 </tr>
                                                                                                             @endif
                                                                                                         @endforeach
-                                                                                                    @endfor
+                                                                                                    {{-- @endfor --}}
                                                                                                 </tbody>
                                                                                             </table>
                                                                                         </div>
@@ -255,6 +270,7 @@
                                 @endphp
                             @endif
                         @endforeach
+                        {{-- @endfor --}}
                     </div>
                 </div>
             </div>
@@ -267,6 +283,11 @@
         tables = document.getElementsByClassName('comments-table');
         for (let i = 0; i < tables.length; i++) {
             $(tables[i]).DataTable();
+        }
+
+        voicetables = document.getElementsByClassName('voices-table');
+        for (let i = 0; i < tables.length; i++) {
+            $(voicetables[i]).DataTable();
         }
     });
 </script>

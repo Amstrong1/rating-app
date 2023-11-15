@@ -83,4 +83,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(Rate::class);
     }
+    
+    public function voices(): HasMany
+    {
+        return $this->hasMany(File::class);
+    }
+    
+    public function appreciations(): HasMany
+    {
+        return $this->hasMany(Appreciation::class);
+    }
 }
