@@ -210,8 +210,8 @@
                                                                                                         </th>
                                                                                                         <th scope="col"
                                                                                                             class="px-6 py-4">
-                                                                                                            Date</th>
-
+                                                                                                            Date
+                                                                                                        </th>
                                                                                                     </tr>
                                                                                                 </thead>
                                                                                                 <tbody>
