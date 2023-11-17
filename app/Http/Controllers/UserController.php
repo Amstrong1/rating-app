@@ -123,7 +123,7 @@ class UserController extends Controller
     {
         $columns = (object) array(
             'name' => 'Nom',
-            'place_name' => "Unité",
+            'place_name' => "Poste",
         );
         return $columns;
     }
@@ -147,7 +147,7 @@ class UserController extends Controller
                 'field' => 'text'
             ],
             'place' => [
-                'title' => 'Unité',
+                'title' => 'Poste',
                 'field' => 'model',
                 'options' => Place::where('structure_id', Auth::user()->structure_id)->get(),
             ],

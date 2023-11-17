@@ -63,9 +63,7 @@
 </head>
 
 
-<body class="font-sans text-gray-900 antialiased"
- {{-- onload="geolocal()" --}}
->
+<body class="font-sans text-gray-900 antialiased" {{-- onload="geolocal()" --}}>
 
     <header>
         <!-- Navigation bar -->
@@ -106,7 +104,7 @@
         <div class="bg-center bg-contain bg-no-repeat h-96"
             style="background-position: 50%; background-image: url('assets/img/146.jpg');">
             <div class="px-8 md:px-14 mx-auto flex flex-wrap flex-col md:flex-row items-center h-full py-2"
-                style="background-color: rgba(0, 0, 0, 0.50)">
+                style="background-color: rgba(0, 0, 0, .2)">
             </div>
         </div>
     </header>
@@ -344,7 +342,10 @@
         formData.append('user', '{{ $user->id }}');
 
         try {
-            const response = await fetch('/voice/', {
+            // online
+            // const response = await fetch("https://avis-client.online/voice/", {
+            // for local
+            const response = await fetch('/voice/', { 
                 method: 'POST',
                 body: formData,
             });
