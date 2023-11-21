@@ -44,28 +44,25 @@
                                                         : 'https://ui-avatars.com/api/?background=random&name=' . $resource->fullname }}"
                                                     alt="" loading="lazy">
                                             </div>
-                                            {{-- <div>
-                                <p class="font-semibold capitalize">{{ $resource->name }}</p>
-                            </div> --}}
                                         </a>
-                                        @elseif ($column == 'status')
-                                            <span @class([
-                                                'whitespace-nowrap px-2 py-1 font-semibold leading-tight rounded-full',
-                                                'text-green-700 bg-green-100  dark:bg-green-700 dark:text-green-100' =>
-                                                    $resource->$column == 'Terminé',
-                                                ' text-gray-700 bg-gray-100 dark:text-gray-100  dark:bg-gray-700' =>
-                                                    $resource->$column == 'En cours',
-                                                ' text-gray-700 bg-yellow-100 dark:text-gray-100 dark:bg-yellow-700' =>
-                                                    $resource->$column == 'En attente',
-                                            ])>
-                                                {{  $resource->{$column} }}
-                                            </span>
-                                            @elseif ($column == 'file')
-                                                <span @class([
-                                                    'whitespace-nowrap flex items-center justify-center px-2 py-1 font-semibold leading-tight rounded-full',
-                                                ])>
-                                                    <audio src="/storage/{{ $resource->$column }}" controls></audio>
-                                                </span>
+                                    @elseif ($column == 'status')
+                                        <span @class([
+                                            'whitespace-nowrap px-2 py-1 font-semibold leading-tight rounded-full',
+                                            'text-green-700 bg-green-100  dark:bg-green-700 dark:text-green-100' =>
+                                                $resource->$column == 'Terminé',
+                                            ' text-gray-700 bg-gray-100 dark:text-gray-100  dark:bg-gray-700' =>
+                                                $resource->$column == 'En cours',
+                                            ' text-gray-700 bg-yellow-100 dark:text-gray-100 dark:bg-yellow-700' =>
+                                                $resource->$column == 'En attente',
+                                        ])>
+                                            {{ $resource->{$column} }}
+                                        </span>
+                                    @elseif ($column == 'audio')
+                                        <span @class([
+                                            'whitespace-nowrap flex items-center justify-center px-2 py-1 font-semibold leading-tight rounded-full',
+                                        ])>
+                                            <audio src="/storage/{{ $resource->$column }}" controls></audio>
+                                        </span>
                                     @else
                                         @if (is_object($resource->{$column}))
                                             {{ $resource->{$column}->title ??

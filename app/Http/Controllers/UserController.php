@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         $structure = Auth::user()->structure;
         return view('app.user.index', [
-            'users' => $structure->users()->get(),
+            'users' => $structure->users()->where('role', 'user')->get(),
             'my_actions' => $this->user_actions(),
             'my_attributes' => $this->user_columns(),
         ]);
