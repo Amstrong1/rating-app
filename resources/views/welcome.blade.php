@@ -343,7 +343,7 @@
 
         try {
             // online
-            // const response = await fetch("https://avis-client.online/voice/", {
+            // const response = await fetch("https://avis-client.online/public/voice/", {
             // for local
             const response = await fetch('/voice/', { 
                 method: 'POST',

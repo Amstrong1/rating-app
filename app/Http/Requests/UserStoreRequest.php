@@ -26,4 +26,14 @@ class UserStoreRequest extends FormRequest
             'place' => 'required',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Ce champ est requis.',
+            'name.string' => 'Ce champ doit etre une chaine de caractère.',
+            'name.max:255' => 'Ce champ ne doit pas avoir plus de 255 caractères.',
+            'place.required' => 'Ce champ est requis.',
+        ];
+    }
 }
