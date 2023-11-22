@@ -50,6 +50,7 @@ if (datasTable2.find("tbody tr").length > 0) {
     // Initialize DataTables or perform any operations
     const dataTableInstance2 = datasTable2
         .DataTable({
+            ordering: false,
             // responsive: true,
             // dom: 'rlftbp',
             pageLength: 25,
@@ -62,7 +63,8 @@ if (datasTable2.find("tbody tr").length > 0) {
                 infoEmpty: "Aucun élément",
                 infoFiltered: "(filtrés parmi _MAX_ éléments)",
                 infoPostFix: "",
-                thousands: ",",
+                thousands: " ",
+                zeroRecords: "Aucun élément correspondant",
                 lengthMenu: "Affichage de _MENU_ éléments",
                 loadingRecords: "Chargement",
                 processing: "",
