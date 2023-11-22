@@ -214,7 +214,6 @@
 </body>
 <!-- Votre code HTML existant -->
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-
 <script>
     // collect DOMs
     const display = document.querySelector('.display');
@@ -342,10 +341,8 @@
         formData.append('user', '{{ $user->id }}');
 
         try {
-            // online
-            // const response = await fetch("https://avis-client.online/public/voice/", {
-            // for local
-            const response = await fetch('/voice/', { 
+            // const response = await fetch("https://avis-client.online/public/voice", {
+            const response = await fetch("/voice/", { 
                 method: 'POST',
                 body: formData,
             });
@@ -373,7 +370,7 @@
             audioURL = window.URL.createObjectURL(blob);
 
             sendAudioToController(blob); // Envoyer le blob audio au contrôleur
-            alert("Audio envoyé avec succé");
+            alert("Audio envoyé avec succes");
             application(stateIndex);
         };
     }

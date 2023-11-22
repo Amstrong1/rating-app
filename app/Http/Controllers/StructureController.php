@@ -128,8 +128,8 @@ class StructureController extends Controller
         $columns = (object) array(
             'logo' => '',
             'name' => 'Nom',
-            'contact' => "Email",
-            'email' => "Contact",
+            'email' => "Email",
+            'contact' => "Contact",
             'address' => "Adresse",
             "formated_date" => "Date de Creation",
             'slug' => "Lien",

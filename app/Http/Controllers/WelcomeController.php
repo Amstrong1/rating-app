@@ -85,14 +85,14 @@ class WelcomeController extends Controller
 
     public function voice(Request $request)
     {
-
+        
         $fileName = time() . '.' . $request->audio->extension();
         $request->audio->move(public_path('storage'), $fileName);
 
         $path = $fileName;
 
         $file = new File();
-        $file->file = $path;
+        $file->audio = $path;
         $file->structure_id = $request->structure;
         $file->user_id = $request->user;
         if ($file->save()) {

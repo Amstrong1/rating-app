@@ -83,7 +83,7 @@ class UserController extends Controller
 
     public function print(User $user)
     {
-        $qrcode = QrCode::size(200)->generate(str_replace('print', 'site', url()->current()));
+        $qrcode = QrCode::size(200)->generate(str_replace('user/print', 'site', url()->current()));
         $pdf = PDF::loadView('app.user.print', compact('user', 'qrcode'));
         return $pdf->stream();
     }
