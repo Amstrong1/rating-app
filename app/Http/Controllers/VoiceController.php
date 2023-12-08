@@ -20,14 +20,13 @@ class VoiceController extends Controller
     {
         $columns = (object) array(
             'user_name' => 'Nom Employé',
-            'file' => "Audio",
+            'audio' => "Audio",
             'formated_date' => "Date",
         );
         return $columns;
     }
 
     public function customers(){
-
         return view('app.customers.index');
     }
 }

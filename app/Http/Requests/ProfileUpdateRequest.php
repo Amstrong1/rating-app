@@ -20,4 +20,18 @@ class ProfileUpdateRequest extends FormRequest
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Ce champ est requis.',
+            'name.string' => 'Ce champ doit etre une chaine de caractère.',
+            'name.max:255' => 'Ce champ ne doit pas avoir plus de 255 caractères.',
+            'email.required' => 'Ce champ est requis.',
+            'email.string' => 'Ce champ doit etre une chaine de caractère.',
+            'email.lowercase' => 'Email doit etre en miniscule.',
+            'email.email' => 'Email non valide.',
+            'email.max:255' => 'Ce champ ne doit pas avoir plus de 255 caractères.',
+        ];
+    }
 }

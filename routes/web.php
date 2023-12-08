@@ -24,20 +24,21 @@ use App\Http\Controllers\NewsletterController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 Route::post('lang', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
-Route::get('/migrate', function(){
+Route::get('/migrate', function () {
     Artisan::call('migrate');
     dd('migrated!');
 });
 
-Route::get('reboot',function(){
+Route::get('reboot', function () {
     Artisan::call('view:clear');
     Artisan::call('route:clear');
     Artisan::call('config:clear');
     Artisan::call('cache:clear');
-      dd('All done!');
-  });
+    dd('All done!');
+});
 
 Route::match(['get', 'post'], '/site/{id}', [WelcomeController::class, 'index']);
 
@@ -49,11 +50,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::controller(WelcomeController::class)->group(function(){
-
-    Route::post('voice','voice');
-    
-});
+Route::post('/voice', [WelcomeController::class, 'voice']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', HomeController::class)->name('dashboard');

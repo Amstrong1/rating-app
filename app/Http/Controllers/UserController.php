@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         $structure = Auth::user()->structure;
         return view('app.user.index', [
-            'users' => $structure->users()->get(),
+            'users' => $structure->users()->where('role', 'user')->get(),
             'my_actions' => $this->user_actions(),
             'my_attributes' => $this->user_columns(),
         ]);
@@ -83,7 +83,7 @@ class UserController extends Controller
 
     public function print(User $user)
     {
-        $qrcode = QrCode::size(200)->generate(str_replace('print', 'site', url()->current()));
+        $qrcode = QrCode::size(200)->generate(str_replace('user/print', 'site', url()->current()));
         $pdf = PDF::loadView('app.user.print', compact('user', 'qrcode'));
         return $pdf->stream();
     }
