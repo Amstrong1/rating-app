@@ -2,7 +2,7 @@
 
 return [
     'welcome' => 'Bienvenue sur notre application!',
-    'menu1' => 'Acceuil',
+    'menu1' => 'Accueil',
     'menu2' => 'Nos Solutions',
     'menu3' => 'Contact',
     'menu4' => 'Espace Client',
@@ -10,10 +10,10 @@ return [
     'header2' => 'étude',
     'header3' => 'interprétation',
     'header4' => 'et partage',
-    'header5' => 'Solution de gestion des avis clients.',
+    'header5' => 'Solution de gestion des avis clients',
     'header6' => 'des retours clients',
     'header7' => 'Espace Client',
-    'header8' => 'Contactez Nous',
+    'header8' => 'Contactez-Nous',
     'domaine1' => "Nos domaines d'expertise",
     'domaine2' => "Nous vous accompagnons de la création à la diffusion de vos enquêtes de satisfaction.Et ce, dans tous les domaines pour obtenir vos clients.",
     'domaine3' => "Baromatre Social",
