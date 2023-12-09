@@ -37,7 +37,7 @@
                                         <div style="background-color: #00558b; border-color: #cae1f1; border-right-color: #09beaf"
                                             class="flex flex-col justify-center items-center text-white col-span-2 p-4 border-2 border-r-4">
                                             <span class="text-2xl font-bold my-2">
-                                                {{ number_format($user->rates()->where('answer', true)->count() *(10 / $user->rates()->count()),0,',',' ') }}
+                                                {{ number_format($user->rates()->where('answer', true)->count() * (10 / $user->rates()->count()),0,',',' ') }}
                                                 /
                                                 {{ $user->rates()->count() * (10 / $user->rates()->count()) }}
                                             </span>
@@ -73,7 +73,6 @@
                                                 @endfor
                                             </div>
                                         </div>
-<<<<<<< HEAD
                                     </div>
                                     <div class="col-span-10 p-4 border-2" style="border-color: #cae1f1;">
                                         <div class="my-2">
@@ -163,6 +162,7 @@
                                                                                                 </thead>
                                                                                                 <tbody>
                                                                                                     {{-- @for ($i = 0; $i < count($voices); $i++) --}}
+                                                                                                    
                                                                                                         @foreach ($user->voices() as $voice)
                                                                                                             @if ($voice !== null)
                                                                                                                 <tr
@@ -223,6 +223,10 @@
                                                                                                 <tbody>
                                                                                                     {{-- @for ($i = 0; $i < count($descriptions); $i++) --}}
                                                                                                         @foreach ($user->appreciations() as $description)
+                                                                                                        {{-- @php
+                                                                                                        dd($user->appreciations());
+                                                                                                             @endphp 
+                                                                                                       --}}
                                                                                                             @if ($description !== null)
                                                                                                                 <tr
                                                                                                                     class="border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
@@ -248,7 +252,6 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-=======
                                         <div class="col-span-10 p-4 border-2" style="border-color: #cae1f1;">
                                             <div class="my-2">
                                                 {{ $user->name }} -
@@ -285,7 +288,6 @@
                                                             <div class="px-5 py-4">
                                                                 <x-tables.default :resources="$user->appreciations()->orderBy('created_at', 'desc')->get()" :mattributes="$comment_attributes"
                                                                     type="voice" />
->>>>>>> ebeae22186dfa7c56fd946fba15fcd823cf1c84b
                                                             </div>
                                                         </div>
                                                     </div>

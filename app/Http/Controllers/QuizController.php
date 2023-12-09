@@ -20,7 +20,7 @@ class QuizController extends Controller
     {
         $structure = Auth::user()->structure;
         return view('app.quiz.index', [
-            'quizzes' => $structure->quizzes()->get(),
+            'quizzes' => $structure->quizzes()->where('status', '1')->orWhere('status', '')->get(),
             'my_actions' => $this->quiz_actions(),
             'my_attributes' => $this->quiz_columns(),
             'my_fields' => $this->quiz_fields(),
@@ -133,14 +133,25 @@ class QuizController extends Controller
      */
     public function destroy(Quiz $quiz)
     {
-        try {
-            $quiz = $quiz->delete();
-            Alert::success('Opération effectuée', 'Suppression éffectué');
-            return redirect('quiz');
-        } catch (\Exception $e) {
-            Alert::error('Erreur', 'Element introuvable');
-            return redirect()->back();
-        }
+
+        $quiz = Quiz::find($quiz->id);
+
+        $quiz->status = '0';
+
+        $quiz->save();
+
+        Alert::toast('Supprimé avec succès', 'success');
+        
+        return redirect('quiz');
+        
+        // try {
+        //     $quiz = $quiz->delete();
+        //     Alert::success('Opération effectuée', 'Suppression éffectué');
+        //     return redirect('quiz');
+        // } catch (\Exception $e) {
+        //     Alert::error('Erreur', 'Element introuvable');
+        //     return redirect()->back();
+        // }
     }
 
     private function quiz_columns()

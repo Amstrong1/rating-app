@@ -18,7 +18,10 @@ class WelcomeController extends Controller
 {
     public function index(Request $request, $user_id)
     {
+        
         if ($request->method() == 'POST') {
+            
+            //dd($request->quizzes);
 
             if ($request->form_type == 'classic') {
                 $structure = Structure::find($request->structure);
@@ -77,8 +80,11 @@ class WelcomeController extends Controller
         $quizzes_id = PlaceQuiz::where('place_id', $user->place_id)->get('quiz_id');
         $quizzes = new EloquentCollection();
         foreach ($quizzes_id as $quiz) {
-            $quizzes[] = Quiz::find($quiz->quiz_id);
+            //'quizzes' => $structure->quizzes()->where('status', '1')->orWhere('status', '')->get(),
+
+            $quizzes[] = Quiz::where('id',$quiz->quiz_id)->where('status', '1')->get();
         }
+        $quizzes = $quizzes->collapse();
         return view('welcome', compact('user', 'structure', 'quizzes'));
     }
 

@@ -124,8 +124,10 @@
 
                     <input type="hidden" name="quizzes" value="{{ $quizzes->count() }}">
 
-                    @php $i = 0; @endphp
+                    @php $i = 0;  @endphp
                     @foreach ($quizzes as $quiz)
+                    @if ($quiz !== null)
+
                         <div class="relative mb-6 md:w-1/2 md:mx-auto">
                             <label for="{{ 'quiz' . $i }}" class="">
                                 {{ $quiz->question }}
@@ -141,6 +143,8 @@
                             <x-input-error :messages="$errors->get("{{ 'answer' . $i }}")" class="mt-2" />
                         </div>
                         <input type="hidden" name="{{ 'quiz_id' . $i }}" value="{{ $quiz->id }}">
+                        
+                    @endif
 
                         @php $i++; @endphp
                     @endforeach
