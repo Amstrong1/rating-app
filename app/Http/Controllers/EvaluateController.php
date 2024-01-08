@@ -49,17 +49,19 @@ class EvaluateController extends Controller
     private function rate_columns()
     {
         return [
+            'rate_date' => 'Date',
             'question' => 'Question',
             'answer_formatted' => 'Reponse',
-            'rate_date' => 'Date',
+            'rater_name' => 'Auteur',
+            'rater_contact' => 'Contact',
         ];
     }
 
     private function comment_columns()
     {
         return [
-            'appreciation' => 'Commentaire',
             'formated_date' => 'Date',
+            'appreciation' => 'Commentaire',
         ];
     }
 

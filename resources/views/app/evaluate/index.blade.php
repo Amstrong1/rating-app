@@ -40,45 +40,6 @@
                             @foreach ($users as $user)
                                 @if ($user->rates()->count() !== 0)
                                     <div class="grid grid-cols-12">
-                                        {{-- <div style="background-color: #00558b; border-color: #cae1f1; border-right-color: #09beaf"
-                                            class="flex flex-col justify-center items-center text-white col-span-2 p-4 border-2 border-r-4">
-                                            <span class="text-2xl font-bold my-2">
-                                                {{ number_format($user->rates()->where('answer', true)->count() *(10 / $user->rates()->count()),0,',',' ') }}
-                                                /
-                                                {{ $user->rates()->count() * (10 / $user->rates()->count()) }}
-                                            </span>
-                                            <div class="flex flex-row my-2">
-                                                @for ($i = 0;
-                                                        $i <
-                                                        ceil(
-                                                            $user->rates()->where('answer', true)->count() *
-                                                                (5 / $user->rates()->count()),
-                                                        );
-                                                        $i++)
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="orange"
-                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                        class="w-4 h-4">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                                                    </svg>
-                                                @endfor
-
-                                                @for ($i = 0;
-                                                            $i <
-                                                            floor(
-                                                                $user->rates()->where('answer', false)->count() *
-                                                                    (5 / $user->rates()->count()),
-                                                            );
-                                                            $i++)
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                        viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                        class="w-4 h-4">
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                                                    </svg>
-                                                @endfor
-                                            </div>
-                                        </div> --}}
                                         <div class="col-span-12 p-4 border-2" style="border-color: #cae1f1;">
                                             <div class="my-2">
                                                 {{ $user->name }} -
@@ -113,7 +74,7 @@
                                                             aria-labelledby="{{ 'headingOne' . $d }}"
                                                             data-te-parent="{{ '#accordionExample' . $d }}">
                                                             <div class="px-5 py-4">
-                                                                <x-tables.default :mactions="$my_actions" :resources="$user->rates()->orderBy('created_at', 'desc')->get()" :mattributes="$rates_attributes"
+                                                                <x-tables.default :resources="$user->rates()->orderBy('created_at', 'desc')->get()" :mattributes="$rates_attributes"
                                                                     type="evaluate" />
                                                             </div>
                                                         </div>

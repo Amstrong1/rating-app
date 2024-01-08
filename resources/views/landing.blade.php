@@ -239,7 +239,7 @@
             </ul>
 
             {{-- <div class="fixed left-0 top-1/2 transform -translate-y-1/3"> --}}
-              <div class="sm:flex sm:items-center sm:ml-2 mt-6">
+              {{-- <div class="sm:flex sm:items-center sm:ml-2 mt-6">
                 <x-dropdown align="right">
                     <x-slot name="trigger">
                         <button
@@ -282,7 +282,7 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
-            </div>
+            </div> --}}
             
               <div class="left-0 mt-2 top-1/2 transform -translate-y-1/3 ">
                 <form method="POST" action="{{ route('lang.switch') }}" class="flex p-1 bg-white border border-gray-100 rounded-l-lg shadow-lg">

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Appreciation;
 use App\Models\File;
 use App\Models\Quiz;
 use App\Models\Rate;
 use App\Models\User;
 use App\Models\PlaceQuiz;
 use App\Models\Structure;
+use App\Models\Appreciation;
 use Illuminate\Http\Request;
 use App\Notifications\UserRated;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -31,10 +31,12 @@ class WelcomeController extends Controller
                     $rate->user_id = $request->user;
                     $rate->quiz_id = $request->input('quiz_id' . $i);
                     $rate->answer = $request->input('answer' . $i);
-                    if ($rate->save()) {                       
+                    $rate->rater_name = $request->name;
+                    $rate->rater_contact = $request->contact;
 
+                    $rate->answer = $request->input('answer' . $i);
+                    if ($rate->save()) {
                         Alert::toast("Merci de votre attention", 'success');
-
                         foreach ($admins as $admin) {
                             $admin->notify(new UserRated());
                         }
@@ -85,7 +87,7 @@ class WelcomeController extends Controller
 
     public function voice(Request $request)
     {
-        
+
         $fileName = time() . '.' . $request->audio->extension();
         $request->audio->move(public_path('storage'), $fileName);
 
