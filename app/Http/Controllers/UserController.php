@@ -58,6 +58,10 @@ class UserController extends Controller
             $placeQuizzes = $user->place->quizzes()->where('status', '1')->count();
             // $placeQuizzes = $user->place->places_quizzes()->count();
             // $quizzes = $user->place->quizzes()->get();
+            $quizzes = $user->place->quizzes()->where('status', '1')->get();
+            $placeQuizzes = $user->place->quizzes()->where('status', '1')->count();
+            // $placeQuizzes = $user->place->places_quizzes()->count();
+            // $quizzes = $user->place->quizzes()->get();
             $rates = $user->rates()->count();
             $rateYes = $user->rates()->where('answer', true)->count();
             $rateNo = $user->rates()->where('answer', false)->count();
