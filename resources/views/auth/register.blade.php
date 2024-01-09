@@ -5,25 +5,37 @@
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Nom')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required
+            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" 
                 autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                @if ($errors->has('name'))
+
+                <x-input-error messages="Nom incorrect" class="mt-2" />
+                    
+                @endif
         </div>
 
         <!-- Company Address -->
         <div class="mt-4">
             <x-input-label for="company_email" :value="__('Email de la structure')" />
             <x-text-input id="company_email" class="block mt-1 w-full" type="email" name="company_email"
-                :value="old('email')" required autocomplete="username" />
-            <x-input-error messages="Adresse e-mail incorrect" class="mt-2" />
+                :value="old('email')"  autocomplete="username" />
+                @if ($errors->has('company_email'))
+
+                <x-input-error messages="Adresse e-mail incorrect" class="mt-2" />
+                    
+                @endif
         </div>
 
         <!-- Email Address -->
         <div class="mt-4">
             <x-input-label for="email" :value="__('Email')" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"
-                required autocomplete="username" />
-            <x-input-error messages="Vérifier votre adresse e-mail" class="mt-2" />
+                 autocomplete="username" />
+                 @if ( $errors->has('email')) 
+                 
+                 <x-input-error messages="Vérifier votre adresse e-mail" class="mt-2" />
+
+                 @endif
         </div>
 
         <!-- latitude -->
@@ -46,10 +58,13 @@
         <div class="mt-4">
             <x-input-label for="password" :value="__('Mot de passe')" />
 
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
+            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" 
                 autocomplete="new-password" />
-
+                @if ($errors->has('password'))
+                
                 <x-input-error messages="Vérifier votre mot de passe" class="mt-2" />
+                    
+                @endif
             </div>
 
         <!-- Confirm Password -->
@@ -57,9 +72,12 @@
             <x-input-label for="password_confirmation" :value="__('Confirmation Mot de passe')" />
 
             <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
-                name="password_confirmation" required autocomplete="new-password" />
+                name="password_confirmation"  autocomplete="new-password" />
+                @if ($errors->has('password'))
 
                 <x-input-error messages="Vérifier votre mot de passe" class="mt-2" />
+                    
+                @endif
             </div>
 
         <div class="flex items-center justify-end mt-4">

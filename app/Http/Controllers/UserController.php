@@ -51,10 +51,13 @@ class UserController extends Controller
     public function show(User $user)
     {
         if ($user->place !== null) {
-            $qrcode = QrCode::size(200)->generate(str_replace('user', 'site', url()->current()));
+            //  $qrcode = QrCode::size(200)->generate(str_replace('user', 'site', url()->current()));
+            $qrcode = QrCode::size(200)->generate(str_replace('user', 'y$10$wHsZAdDo8uF2YZpyoZiQesGDTOdXRh1BQjFcTs', url()->current()));
             // dd($user->place);
-            $placeQuizzes = $user->place->places_quizzes()->count();
-            $quizzes = $user->place->quizzes()->get();
+            $quizzes = $user->place->quizzes()->where('status', '1')->get();
+            $placeQuizzes = $user->place->quizzes()->where('status', '1')->count();
+            // $placeQuizzes = $user->place->places_quizzes()->count();
+            // $quizzes = $user->place->quizzes()->get();
             $rates = $user->rates()->count();
             $rateYes = $user->rates()->where('answer', true)->count();
             $rateNo = $user->rates()->where('answer', false)->count();
@@ -83,7 +86,9 @@ class UserController extends Controller
 
     public function print(User $user)
     {
-        $qrcode = QrCode::size(200)->generate(str_replace('user/print', 'site', url()->current()));
+        //  $qrcode = QrCode::size(200)->generate(str_replace('user/print', 'site', url()->current()));
+        $qrcode = QrCode::size(200)->generate(str_replace('user/print', 'y$10$wHsZAdDo8uF2YZpyoZiQesGDTOdXRh1BQjFcTs', url()->current()));
+
         $pdf = PDF::loadView('app.user.print', compact('user', 'qrcode'));
         return $pdf->stream();
     }

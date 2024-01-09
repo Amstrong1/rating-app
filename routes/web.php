@@ -41,7 +41,8 @@ Route::get('reboot', function () {
     dd('All done!');
 });
 
-Route::match(['get', 'post'], '/site/{id}', [WelcomeController::class, 'index']);
+Route::match(['get', 'post'], '/y$10$wHsZAdDo8uF2YZpyoZiQesGDTOdXRh1BQjFcTs/{id}', [WelcomeController::class, 'index']);
+// Route::match(['get', 'post'], '/site/{id}', [WelcomeController::class, 'index']);
 
 Route::get('/', function () {
     return view('landing');

@@ -171,8 +171,13 @@
                                                             aria-labelledby="{{ 'headingOne' . $c }}"
                                                             data-te-parent="{{ '#accordionExample' . $c }}">
                                                             <div class="px-5 py-4">
+<<<<<<< HEAD
+                                                                <x-tables.default :resources="$user->appreciations()->orderBy('created_at', 'desc')->get()" :mattributes="$comment_attributes"
+                                                                    type="voice" />
+=======
                                                                 <x-tables.default :mactions="$my_actions" :resources="$user->appreciations()->orderBy('created_at', 'desc')->get()" :mattributes="$comment_attributes"
                                                                     type="evaluate" />
+>>>>>>> 075412f14ddabfc9619577133518bb1212b89ad7
                                                             </div>
                                                         </div>
                                                     </div>
