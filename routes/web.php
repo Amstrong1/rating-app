@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\HomeController;
@@ -54,6 +55,13 @@ Route::get('/dashboard', function () {
 Route::post('/voice', [WelcomeController::class, 'voice']);
 
 Route::middleware('auth')->group(function () {
+    Route::post('/markAsRead', function () {
+        foreach (Auth::user()->unreadNotifications as $notification) {
+            $notification->markAsRead();
+        }
+        return back();
+    })->name('markAsRead');
+
     Route::get('/dashboard', HomeController::class)->name('dashboard');
     Route::get('/user/print/{user}', [UserController::class, 'print'])->name('user.print');
     Route::resource('/structure', StructureController::class);

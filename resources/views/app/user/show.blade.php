@@ -5,7 +5,7 @@
                 <div class="p-6 text-gray-900 text-center">
                     <h1>Voir les informations de {{ $user->name }}</h1>
 
-                    <section class="pt-16 flex">
+                    <section class="pt-16 md:flex">
                         <div class="w-full md:w-1/2 px-4">
                             <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 rounded-lg mt-8">
                                 <div class="px-6">
@@ -47,7 +47,7 @@
                                                             dd($user->rates);
                                                         @endphp --}}
                                                         @if ($user->rates !== null)
-                                                            {{ $user->rates->count() }}
+                                                            {{ $user->rates->count() / $placeQuizzes }}
                                                         @else
                                                             0
                                                         @endif

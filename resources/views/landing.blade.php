@@ -133,7 +133,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                             </svg>
-                            Espace Client
+                            Espace Entreprise
                           </span>
                           
                         </a>     
@@ -239,18 +239,50 @@
             </ul>
 
             {{-- <div class="fixed left-0 top-1/2 transform -translate-y-1/3"> --}}
-              <div class="left-0 mt-2 top-1/2 transform -translate-y-1/3 ">
-                <form method="POST" action="{{ route('lang.switch') }}" class="flex p-1 bg-white border border-gray-100 rounded-l-lg shadow-lg">
-                    @csrf
-                    <div
-                        <select name="lang" id="lang" class="w-18 py-0 px-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300">
-                            <option value="fr">Français</option>
-                            <option value="en">English</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-semibold py-0 px-1 rounded focus:outline-none focus:ring focus:border-blue-300">Change</button>
-                </form>
-            </div>
+              {{-- <div class="sm:flex sm:items-center sm:ml-2 mt-6">
+                <x-dropdown align="right">
+                    <x-slot name="trigger">
+                        <button
+                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-black focus:text-black hover:text-black focus:outline-none transition ease-in-out duration-150">
+                            <div>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802" />
+                                </svg>
+                            </div>
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+                        <!-- french form -->
+                        <form method="POST" action="">
+                            @csrf
+                            <input type="hidden" name="lang" value="fr">
+                            <button type="submit">
+                                <div class="flex items-center p-4">
+                                    <img class="w-8" src="{{ asset('assets/img/fr.png') }}" alt="fr">
+                                    &nbsp;
+                                    {{ __('FR') }}
+                                </div>
+                            </button>
+                        </form>
+
+                        <!-- english form -->
+                        <form method="POST" action="">
+                            @csrf
+                            <input type="hidden" name="lang" value="en">
+                            <button type="submit">
+                                <div class="flex items-center p-4">
+                                    <img class="w-8" src="{{ asset('assets/img/en.png') }}" alt="en">
+                                    &nbsp;
+                                    {{ __('EN') }}
+                                </div>
+                            </button>
+                        </form>
+                    </x-slot>
+                </x-dropdown>
+            </div> --}}
           
           </div>
           <!-- end desktop menu -->

@@ -124,6 +124,7 @@
 
                     <input type="hidden" name="quizzes" value="{{ $quizzes->count() }}">
 
+<<<<<<< HEAD
                     @php $i = 0;  @endphp
                     @foreach ($quizzes as $quiz)
                         <div class="relative mb-6 md:w-1/2 md:mx-auto">
@@ -146,6 +147,53 @@
 
                         @php $i++; @endphp
                        
+=======
+                    <div class="relative my-6 md:w-1/2 md:mx-auto">
+                        <h3>Souhaitez vous décliner votre identité ? </h3>
+                        <select id="identity" onchange="displayId(this.value)"
+                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none">
+                            <option value="no">Non</option>
+                            <option value="yes">Oui</option>
+                        </select>
+                    </div>
+                    <div id="idForm" class="hidden relative my-6 md:w-1/2 md:mx-auto">
+                        <label for="name" class="">
+                            Nom et Prénoms
+                        </label>
+                        <input id="name"
+                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                            type="text" name="name" />
+
+                        <label for="name" class="">
+                            Contact
+                        </label>
+                        <input id="contact"
+                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                            type="tel" name="contact" />
+                    </div>
+
+                    @php $i = 0; @endphp
+                    @foreach ($quizzes as $quiz)
+                        @if ($quiz !== null)
+                            <div class="relative my-6 md:w-1/2 md:mx-auto">
+                                <label for="{{ 'quiz' . $i }}" class="">
+                                    {{ $quiz->question }}
+                                </label>
+                                <select
+                                    class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                    name="{{ 'answer' . $i }}" id="{{ 'quiz' . $i }}" required>
+                                    <option value="">Reponse</option>
+                                    <option value="1">Oui</option>
+                                    <option value="0">Non</option>
+                                </select>
+
+                                <x-input-error :messages="$errors->get("{{ 'answer' . $i }}")" class="mt-2" />
+                            </div>
+                            <input type="hidden" name="{{ 'quiz_id' . $i }}" value="{{ $quiz->id }}">
+
+                            @php $i++; @endphp
+                        @endif
+>>>>>>> 075412f14ddabfc9619577133518bb1212b89ad7
                     @endforeach
                     <div class="relative mb-6 md:w-1/2 md:mx-auto">
                         <textarea name="{{ 'appreciation' }}" placeholder="Appréciations(Facultatif)"
@@ -172,7 +220,10 @@
         </div>
     </section>
     <!-----------------------------  vocal ---------------------------->
-    <div>
+    <div class="p-4">
+        <div class="relative my-2 md:w-1/2 md:mx-auto">
+            <h3>Vous pouvez juste envoyer une note vocale si vous ne souhaitez pas remplir le formulaire ci dessus</h3>
+        </div>
         <div class="display"></div>
         <div class="controllers"></div>
 
@@ -282,6 +333,7 @@
         btn.id = id;
         btn.setAttribute('onclick', funString);
         btn.textContent = text;
+        btn.style = 'border-radius: 5px; padding: 10px 20px; background-color: #ed4337; color: white; border: none; cursor: pointer;';
         controllerWrapper.append(btn);
     }
 
@@ -345,7 +397,7 @@
 
         try {
             // const response = await fetch("https://avis-client.online/public/voice", {
-            const response = await fetch("/voice/", { 
+            const response = await fetch("/voice/", {
                 method: 'POST',
                 body: formData,
             });
@@ -378,6 +430,25 @@
         };
     }
     application(stateIndex);
+
+    function displayId(param) {
+        switch (param) {
+            case 'yes':
+                change1();
+                break;
+            case 'no':
+                change2();
+                break;
+        }
+    }
+
+    function change1() {
+        document.getElementById("idForm").style.display = "block";
+    }
+
+    function change2() {
+        document.getElementById("idForm").style.display = "none";
+    }
 </script>
 
 </html>

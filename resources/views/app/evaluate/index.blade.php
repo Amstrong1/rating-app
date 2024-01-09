@@ -11,23 +11,87 @@
                         class="text-white p-4mb-5 flex list-none flex-row flex-wrap border-b-0 pl-0" role="tablist"
                         data-te-nav-ref>
                         <li role="presentation">
-                            <a href="#tabs-home"
+                            <a href="#tabs-quiz"
                                 class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-slate-300 hover:isolate hover:border-transparent  focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-white dark:text-white dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-white"
-                                data-te-toggle="pill" data-te-target="#tabs-home" data-te-nav-active role="tab"
-                                aria-controls="tabs-home" aria-selected="true">Commentaires</a>
+                                data-te-toggle="pill" data-te-target="#tabs-quiz" data-te-nav-active role="tab"
+                                aria-controls="tabs-quiz" aria-selected="true">Questions/Réponses</a>
                         </li>
                         <li role="presentation">
-                            <a href="#tabs-profile"
+                            <a href="#tabs-comment"
+                                class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-slate-300 hover:isolate hover:border-transparent  focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-white dark:text-white dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-white"
+                                data-te-toggle="pill" data-te-target="#tabs-comment" role="tab"
+                                aria-controls="tabs-comment" aria-selected="false">Commentaires</a>
+                        </li>
+                        <li role="presentation">
+                            <a href="#tabs-audio"
                                 class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-slate-300 hover:isolate hover:border-transparent focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-white dark:text-white dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-white"
-                                data-te-toggle="pill" data-te-target="#tabs-profile" role="tab"
-                                aria-controls="tabs-profile" aria-selected="false">Commentaires Audios</a>
+                                data-te-toggle="pill" data-te-target="#tabs-audio" role="tab"
+                                aria-controls="tabs-audio" aria-selected="false">Commentaires Audios</a>
                         </li>
                     </ul>
 
                     <!--Tabs content-->
                     <div class="mb-6">
                         <div class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
-                            id="tabs-home" role="tabpanel" aria-labelledby="tabs-home-tab" data-te-tab-active>
+                            id="tabs-quiz" role="tabpanel" aria-labelledby="tabs-quiz-tab" data-te-tab-active>
+                            @php
+                                $d = 0;
+                            @endphp
+                            @foreach ($users as $user)
+                                @if ($user->rates()->count() !== 0)
+                                    <div class="grid grid-cols-12">
+                                        <div class="col-span-12 p-4 border-2" style="border-color: #cae1f1;">
+                                            <div class="my-2">
+                                                {{ $user->name }} -
+                                                {{ $user->place->name ?? 'Aucun poste' }}
+                                            </div>
+                                            <div id="{{ 'accordionExample' . $d }}">
+                                                <div
+                                                    class="rounded-lg border border-neutral-200 bg-white dark:border-neutral-600 dark:bg-neutral-800">
+                                                    <h2 class="mb-0" id="{{ 'headingOne' . $d }}">
+                                                        <button
+                                                            class="group relative flex w-full items-center rounded-t-[15px] border-0 bg-white px-5 py-4 text-left text-base text-neutral-800 transition"
+                                                            type="button" data-te-collapse-init
+                                                            data-te-target="{{ '#collapseOne' . $d }}"
+                                                            data-te-collapse-collapsed aria-expanded="false"
+                                                            aria-controls="{{ 'collapseOne' . $d }}">
+                                                            Voir toutes les réponses
+                                                            <span
+                                                                class="ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                                    viewBox="0 0 24 24" stroke-width="1.5"
+                                                                    stroke="currentColor" class="h-6 w-6">
+                                                                    <path stroke-linecap="round"
+                                                                        stroke-linejoin="round"
+                                                                        d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                                                </svg>
+                                                            </span>
+                                                        </button>
+                                                    </h2>
+                                                    <div class="mb-6">
+                                                        <div id="{{ 'collapseOne' . $d }}" class="!visible hidden"
+                                                            data-te-collapse-item
+                                                            aria-labelledby="{{ 'headingOne' . $d }}"
+                                                            data-te-parent="{{ '#accordionExample' . $d }}">
+                                                            <div class="px-5 py-4">
+                                                                <x-tables.default :resources="$user->rates()->orderBy('created_at', 'desc')->get()" :mattributes="$rates_attributes"
+                                                                    type="evaluate" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                                @php
+                                    $d++;
+                                @endphp
+                            @endforeach                            
+                        </div>
+
+                        <div class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+                            id="tabs-comment" role="tabpanel" aria-labelledby="tabs-comment-tab">
                             @php
                                 $c = 0;
                             @endphp
@@ -107,8 +171,13 @@
                                                             aria-labelledby="{{ 'headingOne' . $c }}"
                                                             data-te-parent="{{ '#accordionExample' . $c }}">
                                                             <div class="px-5 py-4">
+<<<<<<< HEAD
                                                                 <x-tables.default :resources="$user->appreciations()->orderBy('created_at', 'desc')->get()" :mattributes="$comment_attributes"
                                                                     type="voice" />
+=======
+                                                                <x-tables.default :mactions="$my_actions" :resources="$user->appreciations()->orderBy('created_at', 'desc')->get()" :mattributes="$comment_attributes"
+                                                                    type="evaluate" />
+>>>>>>> 075412f14ddabfc9619577133518bb1212b89ad7
                                                             </div>
                                                         </div>
                                                     </div>
@@ -124,7 +193,7 @@
                         </div>
 
                         <div class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
-                            id="tabs-profile" role="tabpanel" aria-labelledby="tabs-profile-tab">
+                            id="tabs-audio" role="tabpanel" aria-labelledby="tabs-audio-tab">
                             @php
                                 $b = 0;
                             @endphp

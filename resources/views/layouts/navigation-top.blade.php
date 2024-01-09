@@ -21,6 +21,71 @@
             </div>
 
             <ul class="flex items-center flex-shrink-0 space-x-6">
+                <!-- Notification Dropdown -->
+                <x-dropdown align="right" width="48">
+                    <x-slot name="trigger">
+                        <button class="inline-flex items-center justify-center mx-2 p-2 rounded-md text-white">
+                            <div>
+                                <a class="hidden-arrow mr-4 flex items-center text-white transition duration-200 hover:text-white hover:ease-in-out focus:text-white disabled:text-black/30 motion-reduce:transition-none dark:text-white dark:hover:text-white dark:focus:text-white [&.active]:text-black/90 dark:[&.active]:text-white"
+                                    href="#" id="dropdownMenuButton1" role="button" data-te-dropdown-toggle-ref
+                                    aria-expanded="false">
+                                    <!-- Dropdown trigger icon -->
+                                    <span class="[&>svg]:w-6">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
+                                        </svg>
+                                    </span>
+                                    <!-- Notification counter -->
+                                    <span
+                                        class="absolute -mt-6 ml-4 rounded-full bg-danger px-1 py-[0.15rem] text-xs font-bold leading-none text-white">
+                                        {{ Auth::user()->unreadNotifications->count() }}
+                                    </span>
+                                </a>
+                            </div>
+                        </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+                        @if (Auth::user()->unreadNotifications->count() !== 0)
+                            <form action="{{ route('markAsRead') }}" method="post">
+                                @csrf
+                                <div class="flex p-4 justify-end">
+                                    <button type="submit" class="border-0">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="red"
+                                                class="w-4 h-4">
+                                                <path fill-rule="evenodd"
+                                                    d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        @endif
+
+                        @forelse (Auth::user()->unreadNotifications as $notification)
+                            <x-dropdown-link href="{{ route('evaluate.index') }}">
+                                <div class="flex">
+                                    <div>
+                                        <p class="text-sm">
+                                            {{ $notification->data['message'] }}
+                                        </p>
+
+                                        <p class="text-xs">{{ getFormattedDate($notification->created_at) }}</p>
+                                    </div>
+                                </div>
+                            </x-dropdown-link>
+                        @empty
+                            <p class="text-sm p-4 text-black">
+                                Aucune notification
+                            </p>
+                        @endforelse
+                    </x-slot>
+                </x-dropdown>
+
                 <!-- Profile menu -->
                 <div class="sm:flex sm:items-center sm:ml-6 mt-6">
                     <x-dropdown align="right" width="48">
