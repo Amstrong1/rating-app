@@ -54,10 +54,7 @@ class UserController extends Controller
             //  $qrcode = QrCode::size(200)->generate(str_replace('user', 'site', url()->current()));
             $qrcode = QrCode::size(200)->generate(str_replace('user', 'y$10$wHsZAdDo8uF2YZpyoZiQesGDTOdXRh1BQjFcTs', url()->current()));
             // dd($user->place);
-            $quizzes = $user->place->quizzes()->where('status', '1')->get();
-            $placeQuizzes = $user->place->quizzes()->where('status', '1')->count();
-            // $placeQuizzes = $user->place->places_quizzes()->count();
-            // $quizzes = $user->place->quizzes()->get();
+            
             $quizzes = $user->place->quizzes()->where('status', '1')->get();
             $placeQuizzes = $user->place->quizzes()->where('status', '1')->count();
             // $placeQuizzes = $user->place->places_quizzes()->count();

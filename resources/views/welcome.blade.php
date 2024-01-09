@@ -124,30 +124,6 @@
 
                     <input type="hidden" name="quizzes" value="{{ $quizzes->count() }}">
 
-<<<<<<< HEAD
-                    @php $i = 0;  @endphp
-                    @foreach ($quizzes as $quiz)
-                        <div class="relative mb-6 md:w-1/2 md:mx-auto">
-                            <label for="{{ 'quiz' . $i }}" class="">
-                                {{ $quiz->question }}
-                            </label>
-                            <select
-                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
-                                name="{{ 'answer' . $i }}" id="{{ 'quiz' . $i }}" required>
-                                <option value="">Reponse</option>
-                                <option value="1">Oui</option>
-                                <option value="0">Non</option>
-                            </select>
-
-                            <x-input-error :messages="$errors->get("{{ 'answer' . $i }}")" class="mt-2" />
-                        </div>
-                        <input type="hidden" name="{{ 'quiz_id' . $i }}" value="{{ $quiz->id }}">
-                        
-                   
-
-                        @php $i++; @endphp
-                       
-=======
                     <div class="relative my-6 md:w-1/2 md:mx-auto">
                         <h3>Souhaitez vous décliner votre identité ? </h3>
                         <select id="identity" onchange="displayId(this.value)"
@@ -193,7 +169,6 @@
 
                             @php $i++; @endphp
                         @endif
->>>>>>> 075412f14ddabfc9619577133518bb1212b89ad7
                     @endforeach
                     <div class="relative mb-6 md:w-1/2 md:mx-auto">
                         <textarea name="{{ 'appreciation' }}" placeholder="Appréciations(Facultatif)"
