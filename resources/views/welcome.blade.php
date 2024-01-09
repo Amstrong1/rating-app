@@ -126,8 +126,6 @@
 
                     @php $i = 0;  @endphp
                     @foreach ($quizzes as $quiz)
-                    @if ($quiz !== null)
-
                         <div class="relative mb-6 md:w-1/2 md:mx-auto">
                             <label for="{{ 'quiz' . $i }}" class="">
                                 {{ $quiz->question }}
@@ -144,9 +142,10 @@
                         </div>
                         <input type="hidden" name="{{ 'quiz_id' . $i }}" value="{{ $quiz->id }}">
                         
-                    @endif
+                   
 
                         @php $i++; @endphp
+                       
                     @endforeach
                     <div class="relative mb-6 md:w-1/2 md:mx-auto">
                         <textarea name="{{ 'appreciation' }}" placeholder="Appréciations(Facultatif)"

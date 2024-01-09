@@ -12,8 +12,6 @@ class EvaluateController extends Controller
         $structure = Auth::user()->structure;
         $users = $structure->users()->where('role', 'user')->get();
 
-        dd($this->voice_columns());
-
         return view('app.evaluate.index', [
             'users' => $users,
             'voices_attributes' => $this->voice_columns(),
