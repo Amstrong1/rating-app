@@ -54,7 +54,7 @@
                                                     </span>
                                                     <span class="text-sm text-blueGray-400">EVALUATIONS</span>
                                                 </div>
-                                                <div class="mr-4 p-3 text-center">
+                                                {{-- <div class="mr-4 p-3 text-center">
                                                     <span
                                                         class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
                                                         @if ($user->rates !== null)
@@ -75,7 +75,7 @@
                                                         @endif
                                                     </span>
                                                     <span class="text-sm text-blueGray-400">NON</span>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>

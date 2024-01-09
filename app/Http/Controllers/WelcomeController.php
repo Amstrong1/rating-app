@@ -39,10 +39,7 @@ class WelcomeController extends Controller
 
                     $rate->answer = $request->input('answer' . $i);
                     if ($rate->save()) {
-                        Alert::toast("Merci de votre attention", 'success');
-                        foreach ($admins as $admin) {
-                            $admin->notify(new UserRated());
-                        }
+                        Alert::toast("Merci de votre attention", 'success');                        
                     } else {
                         Alert::toast('Une erreur est survenue', 'error');
                     }
@@ -53,6 +50,9 @@ class WelcomeController extends Controller
                     $appreciation->structure_id = $request->structure;
                     $appreciation->user_id = $request->user;
                     $appreciation->save();
+                }
+                foreach ($admins as $admin) {
+                    $admin->notify(new UserRated());
                 }
                 // } else {
                 //     Alert::toast('Vérifier votre position géographique', 'error');
