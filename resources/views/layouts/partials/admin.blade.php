@@ -66,7 +66,7 @@
         </x-nav-link>
     </li>
 
-    <li class="mx-1 static" data-te-nav-item-ref>
+    {{-- <li class="mx-1 static" data-te-nav-item-ref>
         <x-nav-link
             class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white dark:hover:text-white dark:focus:text-white"
             :href="route('customer.index')" :active="request()->routeIs('customer.*')" data-te-ripple-init data-te-ripple-color="light">
@@ -75,6 +75,6 @@
               </svg>&nbsp;
              Mes Clients
         </x-nav-link>
-    </li>
+    </li> --}}
 
 </ul>

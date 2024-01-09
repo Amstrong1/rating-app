@@ -256,7 +256,7 @@
 
                     <x-slot name="content">
                         <!-- french form -->
-                        <form method="POST" action="{{ route('user_lang.store') }}">
+                        <form method="POST" action="">
                             @csrf
                             <input type="hidden" name="lang" value="fr">
                             <button type="submit">
@@ -269,7 +269,7 @@
                         </form>
 
                         <!-- english form -->
-                        <form method="POST" action="{{ route('user_lang.store') }}">
+                        <form method="POST" action="">
                             @csrf
                             <input type="hidden" name="lang" value="en">
                             <button type="submit">
@@ -283,19 +283,6 @@
                     </x-slot>
                 </x-dropdown>
             </div> --}}
-            
-              <div class="left-0 mt-2 top-1/2 transform -translate-y-1/3 ">
-                <form method="POST" action="{{ route('lang.switch') }}" class="flex p-1 bg-white border border-gray-100 rounded-l-lg shadow-lg">
-                    @csrf
-                    <div
-                        <select name="lang" id="lang" class="w-18 py-0 px-1 border border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300">
-                            <option value="fr">Français</option>
-                            <option value="en">English</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="text-sm bg-blue-500 hover:bg-blue-600 text-white font-semibold py-0 px-1 rounded focus:outline-none focus:ring focus:border-blue-300">Change</button>
-                </form>
-            </div>
           
           </div>
           <!-- end desktop menu -->

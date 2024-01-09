@@ -47,7 +47,7 @@
                                                             dd($user->rates);
                                                         @endphp --}}
                                                         @if ($user->rates !== null)
-                                                            {{ $user->rates->count() }}
+                                                            {{ $user->rates->count() / $placeQuizzes }}
                                                         @else
                                                             0
                                                         @endif
