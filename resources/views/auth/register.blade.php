@@ -67,7 +67,7 @@
                 @endif
             </div>
 
-        <!-- Confirm Password -->
+        <!-- Confirmer mot de passe -->
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirmation Mot de passe')" />
 
