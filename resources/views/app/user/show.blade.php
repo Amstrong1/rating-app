@@ -47,7 +47,11 @@
                                                             dd($user->rates);
                                                         @endphp --}}
                                                         @if ($user->rates !== null)
-                                                            {{ $user->rates->count() / $placeQuizzes }}
+                                                            @if ($placeQuizzes !== 0)
+                                                                {{ $user->rates->count() / $placeQuizzes }}
+                                                            @else
+                                                                0
+                                                            @endif
                                                         @else
                                                             0
                                                         @endif
@@ -143,7 +147,6 @@
                                     </table>
                                 </div>
                             </div>
-
                         </div>
                     </section>
                 </div>
