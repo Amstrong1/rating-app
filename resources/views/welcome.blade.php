@@ -139,13 +139,6 @@
                         <input id="name"
                             class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
                             type="text" name="name" />
-
-                        <label for="name" class="">
-                            Contact
-                        </label>
-                        <input id="contact"
-                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
-                            type="tel" name="contact" />
                     </div>
 
                     @php $i = 0; @endphp
@@ -170,6 +163,15 @@
                             @php $i++; @endphp
                         @endif
                     @endforeach
+
+                    <div class="relative mb-6 md:w-1/2 md:mx-auto">
+                        <label for="name" class="">
+                           Votre Contact (Nécessaire optimiser notre service)
+                        </label>
+                        <input id="contact" type="tel" name="contact" required
+                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none" />
+                    </div>
+
                     <div class="relative mb-6 md:w-1/2 md:mx-auto">
                         <textarea name="{{ 'appreciation' }}" placeholder="Appréciations(Facultatif)"
                             class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"></textarea>
