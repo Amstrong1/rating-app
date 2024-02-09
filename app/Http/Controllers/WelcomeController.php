@@ -69,6 +69,7 @@ class WelcomeController extends Controller
                 $file->file = $path;
                 $file->structure_id = $request->structure;
                 $file->user_id = $request->user;
+                $file->contact = $request->contact;
                 if ($file->save()) {
                     Alert::toast("Merci de votre attention", 'success');
                 } else {

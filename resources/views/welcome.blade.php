@@ -63,7 +63,31 @@
 </head>
 
 
-<body class="font-sans text-gray-900 antialiased" {{-- onload="geolocal()" --}}>
+<body x-data="{ showModal1: true }" class="font-sans text-gray-900 antialiased" {{-- onload="geolocal()" --}}>
+
+    <div x-show="showModal1" class="fixed inset-0 overflow-y-auto z-50" x-cloak>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white w-full max-w-md p-4 rounded-lg shadow-lg">
+                
+                <div class="mt-4">
+                    <h1 class="text-lg font-semibold">{{ $user->structure->name }},</h1>
+                    <p>
+                        Bienvenu cher client(e)
+                        Merci d'être passé(e). Nous vous prions de nous laisser votre contact avant de continuer.
+                    </p>
+                    <div class="mt-4">
+                        <input type="tel" id="tel" class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none">
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button @click="showModal1 = false; setContact()"
+                        class="px-4 py-2 bg-green-500 text-white rounded-md">
+                        Suivant
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <header>
         <!-- Navigation bar -->
@@ -102,9 +126,9 @@
 
         <!-- Hero section with background image, heading, subheading and button -->
         <div class="bg-center bg-contain bg-no-repeat h-96"
-            style="background-position: 50%; background-image: url('assets/img/146.png');">
+            style="background-position: 50%; background-image: url('/assets/img/146.jpg');">
             <div class="px-8 md:px-14 mx-auto flex flex-wrap flex-col md:flex-row items-center h-full py-2"
-                style="background-color: rgba(0, 0, 0, .2)">
+                style="background-color: rgba(4, 46, 70, .5)">
             </div>
         </div>
     </header>
@@ -133,12 +157,22 @@
                         </select>
                     </div>
                     <div id="idForm" class="hidden relative my-6 md:w-1/2 md:mx-auto">
-                        <label for="name" class="">
-                            Nom et Prénoms
-                        </label>
-                        <input id="name"
-                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
-                            type="text" name="name" />
+                        <div>
+                            <label for="name" class="">
+                                Nom et Prénoms
+                            </label>
+                            <input id="name"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="text" name="name" />
+                        </div>
+                        <div>
+                            <label for="email" class="">
+                                Email
+                            </label>
+                            <input id="email"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="email" name="email" />
+                        </div>
                     </div>
 
                     @php $i = 0; @endphp
@@ -164,13 +198,13 @@
                         @endif
                     @endforeach
 
-                    <div class="relative mb-6 md:w-1/2 md:mx-auto">
+                    {{-- <div class="relative mb-6 md:w-1/2 md:mx-auto">
                         <label for="name" class="">
                            Votre Contact (Nécessaire optimiser notre service)
                         </label>
                         <input id="contact" type="tel" name="contact" required
                             class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none" />
-                    </div>
+                    </div> --}}
 
                     <div class="relative mb-6 md:w-1/2 md:mx-auto">
                         <textarea name="{{ 'appreciation' }}" placeholder="Appréciations(Facultatif)"
@@ -183,8 +217,7 @@
                     <input type="hidden" id="latitude" name="latitude" value="">
                     <input type="hidden" id="longitude" name="longitude" value="">
                     <input type="hidden" id="form_type" name="form_type" value="classic">
-
-
+                    <input type="hidden" name="contact" id="contact1">
 
                     <!--Submit button-->
                     <button type="submit"
@@ -210,7 +243,7 @@
             <input type="hidden" name="structure" value="{{ $structure->id }}">
             <input type="hidden" name="user" value="{{ $user->id }}">
             <input type="hidden" name="audio" id="aud">
-
+            <input type="hidden" name="contact" id="contact2">
         </form>
     </div>
 
@@ -246,6 +279,12 @@
 <!-- Votre code HTML existant -->
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 <script>
+
+    function setContact() {
+        document.getElementById('contact1').value = document.getElementById('tel').value;
+        document.getElementById('contact2').value = document.getElementById('tel').value;
+    }
+
     // collect DOMs
     const display = document.querySelector('.display');
     const controllerWrapper = document.querySelector('.controllers');

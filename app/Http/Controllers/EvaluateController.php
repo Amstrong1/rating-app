@@ -43,6 +43,7 @@ class EvaluateController extends Controller
         return [
             'formated_date' => 'Date',
             'audio' => 'Audio',
+            'contact' => 'Contact',
         ];
     }
 

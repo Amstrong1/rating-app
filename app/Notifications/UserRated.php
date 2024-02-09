@@ -36,7 +36,7 @@ class UserRated extends Notification
     {
         return (new MailMessage)
                     ->line('Un employé a recu de nouvelles notes')
-                    ->action('Notification Action', url('/'))
+                    ->action('Voir la note', url('/evaluate'))
                     ->line('');
     }
 
