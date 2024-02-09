@@ -91,7 +91,7 @@
             },
         };
     </script>
-
+    @laravelPWA
 </head>
 
 <body class="font-sans antialiased">
