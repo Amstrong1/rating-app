@@ -63,12 +63,12 @@
 </head>
 
 
-<body x-data="{ showModal1: true }" class="font-sans text-gray-900 antialiased" {{-- onload="geolocal()" --}}>
+<body x-data="{ showModal1: true, showModal2: false }" class="font-sans text-gray-900 antialiased" {{-- onload="geolocal()" --}}>
 
     <div x-show="showModal1" class="fixed inset-0 overflow-y-auto z-50" x-cloak>
         <div class="flex items-center justify-center min-h-screen p-4">
             <div class="bg-white w-full max-w-md p-4 rounded-lg shadow-lg">
-                
+
                 <div class="mt-4">
                     <h1 class="text-lg font-semibold">{{ $user->structure->name }},</h1>
                     <p>
@@ -76,12 +76,62 @@
                         Merci d'être passé(e). Nous vous prions de nous laisser votre contact avant de continuer.
                     </p>
                     <div class="mt-4">
-                        <input type="tel" id="tel" class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none">
+                        <input type="tel" id="tel"
+                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none">
                     </div>
                 </div>
                 <div class="mt-6 flex justify-end">
-                    <button @click="showModal1 = false; setContact()"
+                    <button @click="showModal1 = false; showModal2 = true; setContact()"
                         class="px-4 py-2 bg-green-500 text-white rounded-md">
+                        Suivant
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div x-show="showModal2" class="fixed inset-0 overflow-y-auto z-50" x-cloak>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white w-full max-w-md p-4 rounded-lg shadow-lg">
+
+                <div class="mt-4">
+                    <p>
+                        Vous avez la possibité de donner votre avis par message vocal ou en répondant à des questions
+                        <label for="choice">Laquelle préférez vous?</label>
+                    </p>
+
+                    <div class="m-4">
+                        <div class="mb-4 block min-h-[1.5rem] pl-[1.5rem]">
+                            <input onclick="showAudioForm()"
+                                class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                                type="radio" name="flexRadioDefault" id="radioDefault01" />
+                            <label onclick="showAudioForm()" class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer" for="radioDefault01">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block mx-auto">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
+                                </svg>
+                                Enregistrement audio
+                            </label>
+                        </div>
+                        <div class="mb-4 block min-h-[1.5rem] pl-[1.5rem]">
+                            <input onclick="showTextForm()"
+                                class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                                type="radio" name="flexRadioDefault" id="radioDefault02" />
+                            <label onclick="showTextForm()" class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer" for="radioDefault02">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block mx-auto">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                                </svg>
+                                Formulaire
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button @click="showModal2 = false" class="px-4 py-2 bg-green-500 text-white rounded-md">
                         Suivant
                     </button>
                 </div>
@@ -133,7 +183,7 @@
         </div>
     </header>
 
-    <section class="text-gray-600 body-font">
+    <section id="form" class="text-gray-600 body-font hidden">
         <div class="container md:px-5 py-12 mx-auto">
             <div class="p-4">
                 @if (Session::has('success'))
@@ -198,14 +248,6 @@
                         @endif
                     @endforeach
 
-                    {{-- <div class="relative mb-6 md:w-1/2 md:mx-auto">
-                        <label for="name" class="">
-                           Votre Contact (Nécessaire optimiser notre service)
-                        </label>
-                        <input id="contact" type="tel" name="contact" required
-                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none" />
-                    </div> --}}
-
                     <div class="relative mb-6 md:w-1/2 md:mx-auto">
                         <textarea name="{{ 'appreciation' }}" placeholder="Appréciations(Facultatif)"
                             class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"></textarea>
@@ -230,7 +272,7 @@
         </div>
     </section>
     <!-----------------------------  vocal ---------------------------->
-    <div class="p-4">
+    <div id="vocal" class="p-4 hidden">
         <div class="relative my-2 md:w-1/2 md:mx-auto">
             <h3>Vous pouvez juste envoyer une note vocale si vous ne souhaitez pas remplir le formulaire ci dessus</h3>
         </div>
@@ -279,10 +321,19 @@
 <!-- Votre code HTML existant -->
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 <script>
-
     function setContact() {
         document.getElementById('contact1').value = document.getElementById('tel').value;
         document.getElementById('contact2').value = document.getElementById('tel').value;
+    }
+
+    function showAudioForm() {
+        document.getElementById('vocal').style.display = 'block';
+        document.getElementById('form').style.display = 'none';
+    }
+
+    function showTextForm() {
+        document.getElementById('form').style.display = 'block';
+        document.getElementById('vocal').style.display = 'none';
     }
 
     // collect DOMs
