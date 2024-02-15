@@ -63,7 +63,7 @@
 </head>
 
 
-<body x-data="{ showModal1: true, showModal2: false }" class="font-sans text-gray-900 antialiased" {{-- onload="geolocal()" --}}>
+<body x-data="{ showModal1: true, showModal2: false }" class="font-sans text-gray-900 antialiased">
 
     <div x-show="showModal1" class="fixed inset-0 overflow-y-auto z-50" x-cloak>
         <div class="flex items-center justify-center min-h-screen p-4">
@@ -104,7 +104,8 @@
                             <input onclick="showTextForm()" checked
                                 class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
                                 type="radio" name="flexRadioDefault" id="radioDefault02" />
-                            <label onclick="showTextForm()" class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer" for="radioDefault02">
+                            <label onclick="showTextForm()" class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer"
+                                for="radioDefault02">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-8 h-8 inline-block mx-auto">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -117,7 +118,8 @@
                             <input onclick="showAudioForm()"
                                 class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
                                 type="radio" name="flexRadioDefault" id="radioDefault01" />
-                            <label onclick="showAudioForm()" class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer" for="radioDefault01">
+                            <label onclick="showAudioForm()"
+                                class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer" for="radioDefault01">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-8 h-8 inline-block mx-auto">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -130,7 +132,8 @@
 
                 </div>
                 <div class="mt-6 flex justify-end">
-                    <button @click="showModal2 = false; showTextForm()" class="px-4 py-2 bg-green-500 text-white rounded-md">
+                    <button @click="showModal2 = false; showForm()"
+                        class="px-4 py-2 bg-green-500 text-white rounded-md">
                         Suivant
                     </button>
                 </div>
@@ -181,6 +184,8 @@
             </div>
         </div>
     </header>
+
+    <input id="form_type" type="hidden" value="text">
 
     <section id="form" class="hidden text-gray-600 body-font">
         <div class="container md:px-5 py-12 mx-auto">
@@ -289,7 +294,8 @@
     </div>
 
 
-    <footer id="footer" class="hidden px-6 mx-auto flex-wrap flex-col md:flex-row items-center" style="background-color: #03224c">
+    <footer id="footer" class="hidden px-6 mx-auto flex-wrap flex-col md:flex-row items-center"
+        style="background-color: #03224c">
         <!--Footer-->
 
         <div class="w-full pt-8 pb-8 text-md text-center fade-in flex flex-col md:flex-row justify-between">
@@ -325,18 +331,23 @@
         document.getElementById('contact2').value = document.getElementById('tel').value;
     }
 
+    function showTextForm() {
+        document.getElementById('form_type').value = "text";
+    }
     function showAudioForm() {
+        document.getElementById('form_type').value = "audio";
+    }
+
+    function showForm() {
         document.getElementById('vocal').style.display = 'block';
         document.getElementById('header').style.display = 'block';
         document.getElementById('footer').style.display = 'flex';
-        document.getElementById('form').style.display = 'none';
-    }
 
-    function showTextForm() {
-        document.getElementById('form').style.display = 'block';
-        document.getElementById('header').style.display = 'block';
-        document.getElementById('footer').style.display = 'flex';
-        document.getElementById('vocal').style.display = 'none';
+        if (document.getElementById('form_type').value == 'text') {
+            document.getElementById('form').style.display = 'block';
+        } else {
+            document.getElementById('vocal').style.display = 'block';
+        }
     }
 
     // collect DOMs
