@@ -313,7 +313,7 @@
         </div>
 
         <div class="my-2 flex justify-center items-center w-full">
-            <a class="text-white no-underline hover:no-underline" href="#"><i>Made by Vibecro Corp</i></a>
+            <a class="text-white no-underline hover:no-underline" href="#"><i>Vibecro Corp</i></a>
             &nbsp; &nbsp;
             <a class="text-white no-underline hover:no-underline"> <i> <u>Tel:</u> +229 58 28 25 58</i></a>
         </div>
