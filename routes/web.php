@@ -11,6 +11,7 @@ use App\Http\Controllers\VoiceController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EvaluateController;
 use App\Http\Controllers\StructureController;
 use App\Http\Controllers\UserPrintController;
@@ -72,7 +73,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/quiz', QuizController::class);
     Route::resource('/evaluate', EvaluateController::class);
     Route::get('/voices', [VoiceController::class, 'index'])->name('voice.index');
-    Route::get('/clients', [VoiceController::class, 'customers'])->name('customer.index');
+    Route::resource('/customer', CustomerController::class);
 });
 
 Route::middleware('auth')->group(function () {

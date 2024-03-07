@@ -48,7 +48,7 @@
                         class="block mt-1 w-full border-2 p-2 rounded outline-0">
                         @foreach ($value['options'] as $item)
                             <option value="{{ $item->id }}" @selected(old($attr))>
-                                {{ $item->name ?? $item->task }} {{ $item->firstname ?? '' }}
+                                {{ $item->name ?? $item->task ?? $item->rater_name}} {{ $item->firstname ?? '' }}
                             </option>
                         @endforeach
                     </x-dynamic-component>

@@ -21,8 +21,6 @@ class WelcomeController extends Controller
         
         if ($request->method() == 'POST') {
             
-            //dd($request->quizzes);
-
             if ($request->form_type == 'classic') {
                 $structure = Structure::find($request->structure);
                 $admins = User::where('role', 'admin')->where('structure_id', $structure->id)->get();
@@ -36,6 +34,7 @@ class WelcomeController extends Controller
                     $rate->answer = $request->input('answer' . $i);
                     $rate->rater_name = $request->name;
                     $rate->rater_contact = $request->contact;
+                    $rate->rater_email= $request->email;
 
                     $rate->answer = $request->input('answer' . $i);
                     if ($rate->save()) {

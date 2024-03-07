@@ -23,12 +23,13 @@
         .dataTables_wrapper .row:first-child {
             display: flex;
             justify-content: space-between;
-            
+
         }
+
         .dataTables_wrapper .row:last-child {
             display: flex;
             justify-content: space-between;
-            
+
         }
 
         .select2 {
@@ -91,6 +92,8 @@
             },
         };
     </script>
+    <script src="{{ asset('assets/vendor/ckeditor5/build/ckeditor.js') }}"></script>
+
     @laravelPWA
 </head>
 
@@ -155,6 +158,14 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script defer src="{{ asset('js/main.js') }}"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 
 </body>
 
