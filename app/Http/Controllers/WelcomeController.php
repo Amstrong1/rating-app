@@ -56,25 +56,28 @@ class WelcomeController extends Controller
                 // } else {
                 //     Alert::toast('Vérifier votre position géographique', 'error');
                 // }
-            } else {
+            } 
+            // else {
 
-                $fileName = time() . '.' . $request->audio->extension();
+            //     $fileName = time() . '.' . $request->audio->extension();
 
-                $request->audio->move(public_path('storage'), $fileName);
+            //     $request->audio->move(public_path('storage'), $fileName);
 
-                $path = $fileName;
+            //     $path = $fileName;
 
-                $file = new File();
-                $file->file = $path;
-                $file->structure_id = $request->structure;
-                $file->user_id = $request->user;
-                $file->contact = $request->contact;
-                if ($file->save()) {
-                    Alert::toast("Merci de votre attention", 'success');
-                } else {
-                    Alert::toast('Une erreur est survenue', 'error');
-                }
-            }
+            //     $file = new File();
+            //     $file->file = $path;
+            //     $file->structure_id = $request->structure;
+            //     $file->user_id = $request->user;
+            //     $file->contact = $request->contact;
+            //     if ($file->save()) {
+            //         Alert::toast("Merci de votre attention", 'success');
+            //     } else {
+            //         Alert::toast('Une erreur est survenue', 'error');
+            //     }
+            // }
+
+            return redirect('done');
         }
 
         $user = User::find($user_id);
@@ -103,10 +106,12 @@ class WelcomeController extends Controller
         $file->audio = $path;
         $file->structure_id = $request->structure;
         $file->user_id = $request->user;
+        $file->contact = $request->contact;
         if ($file->save()) {
             Alert::toast("Merci de votre attention", 'success');
         } else {
             Alert::toast('Une erreur est survenue', 'error');
+            return back();
         }
     }
 }

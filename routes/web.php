@@ -54,6 +54,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+Route::get('/done', function () {
+    return view('done');
+});
+
 Route::post('/voice', [WelcomeController::class, 'voice']);
 
 Route::middleware('auth')->group(function () {

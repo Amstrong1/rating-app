@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="mt-6 flex justify-end">
-                    <button @click="showModal1 = false; showModal2 = true; setContact()"
+                    <button @click="showModal1 = false; showModal2 = true;"
                         class="px-4 py-2 bg-green-500 text-white rounded-md">
                         Suivant
                     </button>
@@ -132,7 +132,7 @@
 
                 </div>
                 <div class="mt-6 flex justify-end">
-                    <button @click="showModal2 = false; showForm()"
+                    <button @click="showModal2 = false; showForm(); setContact()"
                         class="px-4 py-2 bg-green-500 text-white rounded-md">
                         Suivant
                     </button>
@@ -203,7 +203,7 @@
                     <input type="hidden" name="quizzes" value="{{ $quizzes->count() }}">
 
                     <div class="relative my-6 md:w-1/2 md:mx-auto">
-                        <h3>Souhaitez vous décliner votre identité ? </h3>
+                        <h3 class="font-bold">Souhaitez vous décliner votre identité ? </h3>
                         <select id="identity" onchange="displayId(this.value)"
                             class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none">
                             <option value="no">Non</option>
@@ -212,7 +212,7 @@
                     </div>
                     <div id="idForm" class="hidden relative my-6 md:w-1/2 md:mx-auto">
                         <div>
-                            <label for="name" class="">
+                            <label for="name" class="font-bold">
                                 Nom et Prénoms
                             </label>
                             <input id="name"
@@ -220,7 +220,7 @@
                                 type="text" name="name" />
                         </div>
                         <div>
-                            <label for="email" class="">
+                            <label for="email" class="font-bold">
                                 Email
                             </label>
                             <input id="email"
@@ -233,7 +233,7 @@
                     @foreach ($quizzes as $quiz)
                         @if ($quiz !== null)
                             <div class="relative my-6 md:w-1/2 md:mx-auto">
-                                <label for="{{ 'quiz' . $i }}" class="">
+                                <label for="{{ 'quiz' . $i }}" class="font-bold">
                                     {{ $quiz->question }}
                                 </label>
                                 <select
@@ -244,7 +244,7 @@
                                     <option value="0">Non</option>
                                 </select>
 
-                                <x-input-error :messages="$errors->get("{{ 'answer' . $i }}")" class="mt-2" />
+                                <x-input-error :messages="$errors->get('answer{{ $i }}')" class="mt-2" />
                             </div>
                             <input type="hidden" name="{{ 'quiz_id' . $i }}" value="{{ $quiz->id }}">
 
@@ -289,7 +289,6 @@
             <input type="hidden" name="structure" value="{{ $structure->id }}">
             <input type="hidden" name="user" value="{{ $user->id }}">
             <input type="hidden" name="audio" id="aud">
-            <input type="hidden" name="contact" id="contact2">
         </form>
     </div>
 
@@ -327,19 +326,20 @@
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 <script>
     function setContact() {
-        document.getElementById('contact1').value = document.getElementById('tel').value;
-        document.getElementById('contact2').value = document.getElementById('tel').value;
+        if (document.getElementById('contact1')) {
+            document.getElementById('contact1').value = document.getElementById('tel').value;
+        }
     }
 
     function showTextForm() {
         document.getElementById('form_type').value = "text";
     }
+
     function showAudioForm() {
         document.getElementById('form_type').value = "audio";
     }
 
     function showForm() {
-        document.getElementById('vocal').style.display = 'block';
         document.getElementById('header').style.display = 'block';
         document.getElementById('footer').style.display = 'flex';
 
@@ -449,7 +449,8 @@
                 addButton('stop', 'stopRecording()', 'Stoppez le vocal');
                 break
 
-            case 'Download':
+            case 'Download':            return redirect('done');
+
                 clearControls();
                 clearDisplay();
 
@@ -458,7 +459,8 @@
                 break
 
             default:
-                clearControls();
+                clearControls();            return redirect('done');
+
                 clearDisplay();
 
                 addMessage('Your browser does not support mediaDevices');
@@ -469,6 +471,7 @@
     function send() {
         document.getElementById("send").value = document.getElementsByTagName("audio")[0].src;
     }
+
     const sendAudioToController = async (audioBlob) => {
         const formData = new FormData();
         formData.append('audio', audioBlob);
@@ -476,6 +479,7 @@
         formData.append('form_type', 'audio');
         formData.append('structure', '{{ $structure->id }}');
         formData.append('user', '{{ $user->id }}');
+        formData.append('contact', document.getElementById('tel').value);
 
         try {
             // const response = await fetch("https://avis-client.online/public/voice", {
@@ -486,6 +490,7 @@
 
             if (response.ok) {
                 console.log('Audio téléversé avec succès.');
+                window.location.replace('/done');
             } else {
                 console.error('Erreur lors du téléversement de l\'audio.');
             }

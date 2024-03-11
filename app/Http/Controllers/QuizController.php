@@ -78,7 +78,10 @@ class QuizController extends Controller
      */
     public function show(Quiz $quiz)
     {
-        //
+        return view('app.quiz.show', [
+            'quiz' => $quiz,
+            'my_fields' => $this->show_fields(),
+        ]);
     }
 
     /**
@@ -167,6 +170,7 @@ class QuizController extends Controller
     {
         $actions = (object) array(
             'edit' => 'Modifier',
+            'show' => 'Voir',
             'delete' => "Supprimer",
         );
         return $actions;
@@ -177,12 +181,24 @@ class QuizController extends Controller
         $fields = [
             'question' => [
                 'title' => 'Question',
-                'field' => 'text'
+                'field' => 'textarea',
             ],
             'places' => [
                 'title' => 'Poste',
                 'field' => 'multiple-select',
                 'options' => Place::where('structure_id', Auth::user()->structure_id)->get(),
+            ],
+        ];
+        return $fields;
+    }
+
+    private function show_fields()
+    {
+        $fields = [
+            'question' => [
+                'title' => 'Question',
+                'field' => 'textarea',
+                'colspan' => true
             ],
         ];
         return $fields;
