@@ -61,13 +61,13 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="mr-4 p-3 text-center">
+                                        {{-- <div class="mr-4 p-3 text-center">
                                             <a href="{{ route('user.print2', $user->id) }}">
                                                 <button class="bg-green-800 text-white active:bg-green-900 font-bold uppercase text-xs px-4 py-2 rounded-md shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
                                                     Imprimer le QR
                                                 </button>
                                             </a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
