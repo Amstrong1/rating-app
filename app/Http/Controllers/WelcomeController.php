@@ -35,6 +35,7 @@ class WelcomeController extends Controller
                     $rate->rater_name = $request->name;
                     $rate->rater_contact = $request->contact;
                     $rate->rater_email= $request->email;
+                    $rate->room= $request->room;
 
                     $rate->answer = $request->input('answer' . $i);
                     if ($rate->save()) {

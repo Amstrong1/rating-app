@@ -11,9 +11,9 @@
                     $fill = $item->{$attr};
                 @endphp
 
-                @if ($value['field'] === 'model')
-                    <x-input-label for="{{ $attr }}" value="{!! $value['title'] !!}"></x-input-label>
+                <x-input-label for="{{ $attr }}" value="{!! $value['title'] !!}"></x-input-label>
 
+                @if ($value['field'] === 'model')
                     <x-dynamic-component :component="$component" id="{{ $attr }}" name="{{ $attr }}"
                         class="block mt-2 w-full border-2 p-2 rounded outline-0">
                         <option value="">Cliquer pour sélectionner</option>
@@ -27,8 +27,6 @@
                         <x-input-error messages="{{ $message }}" class="mt-2" />
                     @enderror
                 @elseif ($value['field'] === 'select')
-                    <x-input-label for="{{ $attr }}" value="{!! $value['title'] !!}"></x-input-label>
-
                     <x-dynamic-component :component="$component" id="{{ $attr }}" name="{{ $attr }}"
                         class="block mt-1 w-full border-2 p-2 rounded outline-0">
                         <option value="">Sélectionner</option>
@@ -43,8 +41,6 @@
                         </p>
                     @enderror
                 @elseif ($value['field'] === 'multiple-select')
-                    <x-input-label for="{{ $attr }}" value="{!! $value['title'] !!}"></x-input-label>
-
                     <x-dynamic-component :component="$component" id="{{ $attr }}" name="{{ $attr }}[]"
                         class="block mt-1 w-full border-2 p-2 rounded outline-0">
                         @foreach ($value['options'] as $item)
@@ -59,8 +55,6 @@
                         </p>
                     @enderror
                 @elseif ($value['field'] === 'textarea')
-                    <x-input-label for="{{ $attr }}" value="{!! $value['title'] !!}"></x-input-label>
-
                     <x-dynamic-component :component="$component" id="{{ $attr }}" name="{{ $attr }}"
                         type="{{ $value['field'] }}" class="block mt-1 w-full border-2 p-2 rounded outline-0">
                         {{ old($attr) ?? $fill }}</x-dynamic-component>
@@ -70,8 +64,6 @@
                         </p>
                     @enderror
                 @elseif ($value['field'] === 'richtext')
-                    <x-input-label for="{{ $attr }}" value="{!! $value['title'] !!}"></x-input-label>
-
                     <x-dynamic-component :component="$component" name="{{ $attr }}" type="{{ $value['field'] }}"
                         class="block mt-1 w-full border-2 p-2 rounded outline-0">
                         {!! old($attr) ?? $fill !!}</x-dynamic-component>
@@ -89,27 +81,32 @@
                         </x-input-label>
                     </div>
                 @elseif ($value['field'] === 'multiple-file')
-                    <x-input-label style="color: #000" for="{{ $attr }}"
-                        value="{!! $value['title'] !!}"></x-input-label>
-
                     <input type="file" name="{{ $attr }}[]" id="{{ $attr }}"
                         class="block mt-1 w-full border-2 p-2 rounded outline-0" multiple>
+
+                    @error($attr)
+                        <p class="text-red-500 text-sm pl-2 pt-2">
+                            {{ $message }}
+                        </p>
+                    @enderror
+                @elseif ($value['field'] === 'date')
+                    <input type="date" name="{{ $attr }}" id="{{ $attr }}"
+                        value="{{ old($attr) ?? $fill->format('Y-m-d') }}" class="block mt-1 w-full border-2 p-2 rounded outline-0">
+                        {{-- @php
+                            dd($fill->format('Y-m-d'))
+                        @endphp --}}
                     @error($attr)
                         <p class="text-red-500 text-sm pl-2 pt-2">
                             {{ $message }}
                         </p>
                     @enderror
                 @else
-                    <x-input-label style="color: #000" for="{{ $attr }}"
-                        value="{!! $value['title'] !!}"></x-input-label>
-
                     @if ($value['field'] == 'file')
                         <div class="w-1/2 p-1 md:p-2">
                             <img alt="gallery" class="block h-full w-full rounded-lg object-cover object-center"
                                 src="{{ asset('storage/' . $fill) }}" />
                         </div>
                     @endif
-                    <x-input-label for="{{ $attr }}" value="{!! $value['title'] !!}"></x-input-label>
 
                     <x-dynamic-component :component="$component" id="{{ $attr }}"
                         class="block mt-1 w-full border-2 p-2 rounded outline-0" type="{{ $value['field'] }}"

@@ -229,6 +229,17 @@
                         </div>
                     </div>
 
+                    @if ($user->structure->type == 'Hotel')
+                        <div class="relative my-6 md:w-1/2 md:mx-auto">
+                            <label for="room" class="font-bold">
+                                Entrez le numéro de votre chambre
+                            </label>
+                            <input id="room"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="text" name="room" />
+                        </div>
+                    @endif
+
                     @php $i = 0; @endphp
                     @foreach ($quizzes as $quiz)
                         @if ($quiz !== null)
@@ -314,7 +325,8 @@
         <div class="my-2 flex justify-center items-center w-full">
             <a class="text-white no-underline hover:no-underline" href="#"><i>Vibecro Corp</i></a>
             &nbsp; &nbsp;
-            <a class="text-white no-underline hover:no-underline"> <i> <u>Tel:</u> +229 58 28 25 58</i></a>
+            <a class="text-white no-underline hover:no-underline" href="tel:+22955695656"> <i> <u>Tel:</u> +229 55 69
+                    56 56</i></a>
         </div>
     </footer>
 
@@ -449,7 +461,8 @@
                 addButton('stop', 'stopRecording()', 'Stoppez le vocal');
                 break
 
-            case 'Download':            return redirect('done');
+            case 'Download':
+                return redirect('done');
 
                 clearControls();
                 clearDisplay();
@@ -459,7 +472,8 @@
                 break
 
             default:
-                clearControls();            return redirect('done');
+                clearControls();
+                return redirect('done');
 
                 clearDisplay();
 
@@ -482,8 +496,8 @@
         formData.append('contact', document.getElementById('tel').value);
 
         try {
-            // const response = await fetch("https://avis-client.online/public/voice", {
-            const response = await fetch("/voice/", {
+            const response = await fetch("https://avis-client.online/public/voice", {
+                // const response = await fetch("/voice/", {
                 method: 'POST',
                 body: formData,
             });
