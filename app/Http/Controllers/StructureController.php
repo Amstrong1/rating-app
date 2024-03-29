@@ -160,7 +160,7 @@ class StructureController extends Controller
                 'options' => [
                     'Hotel' => 'Hotel',
                     'Pharmacie' => 'Pharmacie',
-                    'Supermarché' => 'Supermarché'
+                    'Supermarché' => 'Supermarche'
                 ]
             ],
             'name' => [

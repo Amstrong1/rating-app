@@ -20,6 +20,7 @@ class StructureSeeder extends Seeder
             'email' => 'contact@vibecro-corp.com',
             'slug' => 'www.vibecro-corp.net',
             'logo' => 'logos/vibecro.png',
+            'created_at' => now(),
         ]);
     }
 }
