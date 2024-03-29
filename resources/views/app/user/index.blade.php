@@ -5,7 +5,7 @@
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-between">
                         <h1 class="font-bold text-lg my-2">Liste des employés</h1>
-                        <a href="{{ route('user.create') }}">
+                        <a href="{{ route('user.create') }}" class="hidden md:block">
                             <x-primary-button>
                                 Nouveau
                             </x-primary-button>

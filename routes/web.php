@@ -33,7 +33,7 @@ Route::get('/migrate', function () {
     dd('migrated!');
 });
 
-Route::get('reboot', function () {
+Route::get('/reboot', function () {
     Artisan::call('view:clear');
     Artisan::call('route:clear');
     Artisan::call('config:clear');
