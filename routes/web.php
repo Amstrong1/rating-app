@@ -11,8 +11,10 @@ use App\Http\Controllers\VoiceController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\EvaluateController;
 use App\Http\Controllers\StructureController;
+use App\Http\Controllers\UserPrintController;
 use App\Http\Controllers\NewsletterController;
 
 /*
@@ -52,6 +54,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+Route::get('/done', function () {
+    return view('done');
+});
+
 Route::post('/voice', [WelcomeController::class, 'voice']);
 
 Route::middleware('auth')->group(function () {
@@ -64,13 +70,14 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', HomeController::class)->name('dashboard');
     Route::get('/user/print/{user}', [UserController::class, 'print'])->name('user.print');
+    Route::get('/user/print2/{user}', [UserPrintController::class, 'print'])->name('user.print2');
     Route::resource('/structure', StructureController::class);
     Route::resource('/place', PlaceController::class);
     Route::resource('/user', UserController::class);
     Route::resource('/quiz', QuizController::class);
     Route::resource('/evaluate', EvaluateController::class);
     Route::get('/voices', [VoiceController::class, 'index'])->name('voice.index');
-    Route::get('/clients', [VoiceController::class, 'customers'])->name('customer.index');
+    Route::resource('/customer', CustomerController::class);
 });
 
 Route::middleware('auth')->group(function () {

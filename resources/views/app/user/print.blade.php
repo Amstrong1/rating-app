@@ -9,10 +9,10 @@
 
     <style>
         .qr {
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             margin: 0 auto;
-            margin-top: 100px;
+            margin-top: 150px;
         }
 
         .text-center {
@@ -41,33 +41,28 @@
     </style>
 </head>
 
-<body>
+<body style="">
 
-    <div class="qr">
-        <img src="data:image/png;base64,{{ base64_encode($qrcode) }}" alt="QR Code">
+    <h1 class="text-center" style="margin: 30px">
+        NOUS EPROUVONS DU PLAISIR A RECUEILLIR VOS AVIS AFIN D'AMELIORER LA QUALITE DE NOS PRESTATIONS
+    </h1>
+
+    <div class="qr" style="border: black solid 1px; padding: 5px">
+        <img width="250px" src="data:image/png;base64,{{ base64_encode($qrcode) }}" alt="QR Code">
     </div>
-    <h3 class="text-center">
-        Scannez ici pour noter cet agent.
-    </h3>
-    <table>
-        <thead>
-            <th>Sur android</th>
-            <th>Sur iOS</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <ul>
-                        <li>Télécharger une application de lecteur de code QR</li>
-                        <li>Ouvrez l'application et scannez le code QR</li>
-                    </ul>
-                </td>
-                <td>                    
-                    <li>Ouvrez votre application de photographie et scannez le code QR</li>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+
+    <div style="margin-top: 100px; padding: 10px; border: black solid 1px; border-radius: 20px">
+        <div style="display: inline-block; font-size: 25px; width: 49%">
+            Scannez ce code QR à l'aide de l'appareil photo de votre téléphone (smartphone) ou à partir de l'application
+            Scan QR
+        </div>
+        <div style="display: inline-block; width: 50%; margin: 0 auto; position: relative; top: 35px; left: 40px">
+            <img src="img/qrscan.jpg" alt="qrscan">
+        </div>
+    </div>
+    <p style="text-align: right; font-style: italic; font-size: 24px">
+        Nous vous remercions !
+    </p>
 </body>
 
 </html>

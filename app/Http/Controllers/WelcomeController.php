@@ -21,8 +21,6 @@ class WelcomeController extends Controller
         
         if ($request->method() == 'POST') {
             
-            //dd($request->quizzes);
-
             if ($request->form_type == 'classic') {
                 $structure = Structure::find($request->structure);
                 $admins = User::where('role', 'admin')->where('structure_id', $structure->id)->get();
@@ -36,6 +34,8 @@ class WelcomeController extends Controller
                     $rate->answer = $request->input('answer' . $i);
                     $rate->rater_name = $request->name;
                     $rate->rater_contact = $request->contact;
+                    $rate->rater_email= $request->email;
+                    $rate->room= $request->room;
 
                     $rate->answer = $request->input('answer' . $i);
                     if ($rate->save()) {
@@ -57,24 +57,28 @@ class WelcomeController extends Controller
                 // } else {
                 //     Alert::toast('Vérifier votre position géographique', 'error');
                 // }
-            } else {
+            } 
+            // else {
 
-                $fileName = time() . '.' . $request->audio->extension();
+            //     $fileName = time() . '.' . $request->audio->extension();
 
-                $request->audio->move(public_path('storage'), $fileName);
+            //     $request->audio->move(public_path('storage'), $fileName);
 
-                $path = $fileName;
+            //     $path = $fileName;
 
-                $file = new File();
-                $file->file = $path;
-                $file->structure_id = $request->structure;
-                $file->user_id = $request->user;
-                if ($file->save()) {
-                    Alert::toast("Merci de votre attention", 'success');
-                } else {
-                    Alert::toast('Une erreur est survenue', 'error');
-                }
-            }
+            //     $file = new File();
+            //     $file->file = $path;
+            //     $file->structure_id = $request->structure;
+            //     $file->user_id = $request->user;
+            //     $file->contact = $request->contact;
+            //     if ($file->save()) {
+            //         Alert::toast("Merci de votre attention", 'success');
+            //     } else {
+            //         Alert::toast('Une erreur est survenue', 'error');
+            //     }
+            // }
+
+            return redirect('done');
         }
 
         $user = User::find($user_id);
@@ -103,10 +107,12 @@ class WelcomeController extends Controller
         $file->audio = $path;
         $file->structure_id = $request->structure;
         $file->user_id = $request->user;
+        $file->contact = $request->contact;
         if ($file->save()) {
             Alert::toast("Merci de votre attention", 'success');
         } else {
             Alert::toast('Une erreur est survenue', 'error');
+            return back();
         }
     }
 }

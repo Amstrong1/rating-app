@@ -63,9 +63,85 @@
 </head>
 
 
-<body class="font-sans text-gray-900 antialiased" {{-- onload="geolocal()" --}}>
+<body x-data="{ showModal1: true, showModal2: false }" class="font-sans text-gray-900 antialiased">
 
-    <header>
+    <div x-show="showModal1" class="fixed inset-0 overflow-y-auto z-50" x-cloak>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white w-full max-w-md p-4 rounded-lg shadow-lg">
+
+                <div class="mt-4">
+                    <h1 class="text-lg font-semibold">{{ $user->structure->name }},</h1>
+                    <p>
+                        Bienvenu cher client(e)
+                        Merci d'être passé(e). Nous vous prions de nous laisser votre contact avant de continuer.
+                    </p>
+                    <div class="mt-4">
+                        <input type="tel" id="tel"
+                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none">
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button @click="showModal1 = false; showModal2 = true;"
+                        class="px-4 py-2 bg-green-500 text-white rounded-md">
+                        Suivant
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div x-show="showModal2" class="fixed inset-0 overflow-y-auto z-50" x-cloak>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white w-full max-w-md p-4 rounded-lg shadow-lg">
+
+                <div class="mt-4">
+                    <p>
+                        Vous avez la possibité de donner votre avis par message audio ou écrit
+                    </p>
+
+                    <div class="m-4">
+                        <div class="mb-4 flex items-center min-h-[1.5rem] pl-[1.5rem]">
+                            <input onclick="showTextForm()" checked
+                                class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                                type="radio" name="flexRadioDefault" id="radioDefault02" />
+                            <label onclick="showTextForm()" class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer"
+                                for="radioDefault02">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-8 h-8 inline-block mx-auto">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                                </svg>
+                                Ecrit
+                            </label>
+                        </div>
+                        <div class="mb-4 flex items-center min-h-[1.5rem] pl-[1.5rem]">
+                            <input onclick="showAudioForm()"
+                                class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                                type="radio" name="flexRadioDefault" id="radioDefault01" />
+                            <label onclick="showAudioForm()"
+                                class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer" for="radioDefault01">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-8 h-8 inline-block mx-auto">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 0 1-3-3V4.5a3 3 0 1 1 6 0v8.25a3 3 0 0 1-3 3Z" />
+                                </svg>
+                                Audio
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button @click="showModal2 = false; showForm(); setContact()"
+                        class="px-4 py-2 bg-green-500 text-white rounded-md">
+                        Suivant
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header id="header" class="hidden">
         <!-- Navigation bar -->
         <nav class="relative flex w-full items-center justify-between bg-white text-white py-2 shadow-lg md:flex- md:justify-start"
             style="background-color: #03224c" data-te-navbar-ref>
@@ -104,12 +180,14 @@
         <div class="bg-center bg-contain bg-no-repeat h-96"
             style="background-position: 50%; background-image: url('/assets/img/146.jpg');">
             <div class="px-8 md:px-14 mx-auto flex flex-wrap flex-col md:flex-row items-center h-full py-2"
-                style="background-color: rgba(0, 0, 0, .2)">
+                style="background-color: rgba(4, 46, 70, .5)">
             </div>
         </div>
     </header>
 
-    <section class="text-gray-600 body-font">
+    <input id="form_type" type="hidden" value="text">
+
+    <section id="form" class="hidden text-gray-600 body-font">
         <div class="container md:px-5 py-12 mx-auto">
             <div class="p-4">
                 @if (Session::has('success'))
@@ -125,7 +203,7 @@
                     <input type="hidden" name="quizzes" value="{{ $quizzes->count() }}">
 
                     <div class="relative my-6 md:w-1/2 md:mx-auto">
-                        <h3>Souhaitez vous décliner votre identité ? </h3>
+                        <h3 class="font-bold">Souhaitez vous décliner votre identité ? </h3>
                         <select id="identity" onchange="displayId(this.value)"
                             class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none">
                             <option value="no">Non</option>
@@ -133,26 +211,40 @@
                         </select>
                     </div>
                     <div id="idForm" class="hidden relative my-6 md:w-1/2 md:mx-auto">
-                        <label for="name" class="">
-                            Nom et Prénoms
-                        </label>
-                        <input id="name"
-                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
-                            type="text" name="name" />
-
-                        <label for="name" class="">
-                            Contact
-                        </label>
-                        <input id="contact"
-                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
-                            type="tel" name="contact" />
+                        <div>
+                            <label for="name" class="font-bold">
+                                Nom et Prénoms
+                            </label>
+                            <input id="name"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="text" name="name" />
+                        </div>
+                        <div>
+                            <label for="email" class="font-bold">
+                                Email
+                            </label>
+                            <input id="email"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="email" name="email" />
+                        </div>
                     </div>
+
+                    @if ($user->structure->type == 'Hotel')
+                        <div class="relative my-6 md:w-1/2 md:mx-auto">
+                            <label for="room" class="font-bold">
+                                Entrez le numéro de votre chambre
+                            </label>
+                            <input id="room"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="text" name="room" />
+                        </div>
+                    @endif
 
                     @php $i = 0; @endphp
                     @foreach ($quizzes as $quiz)
                         @if ($quiz !== null)
                             <div class="relative my-6 md:w-1/2 md:mx-auto">
-                                <label for="{{ 'quiz' . $i }}" class="">
+                                <label for="{{ 'quiz' . $i }}" class="font-bold">
                                     {{ $quiz->question }}
                                 </label>
                                 <select
@@ -163,13 +255,14 @@
                                     <option value="0">Non</option>
                                 </select>
 
-                                <x-input-error :messages="$errors->get("{{ 'answer' . $i }}")" class="mt-2" />
+                                <x-input-error :messages="$errors->get('answer{{ $i }}')" class="mt-2" />
                             </div>
                             <input type="hidden" name="{{ 'quiz_id' . $i }}" value="{{ $quiz->id }}">
 
                             @php $i++; @endphp
                         @endif
                     @endforeach
+
                     <div class="relative mb-6 md:w-1/2 md:mx-auto">
                         <textarea name="{{ 'appreciation' }}" placeholder="Appréciations(Facultatif)"
                             class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"></textarea>
@@ -181,8 +274,7 @@
                     <input type="hidden" id="latitude" name="latitude" value="">
                     <input type="hidden" id="longitude" name="longitude" value="">
                     <input type="hidden" id="form_type" name="form_type" value="classic">
-
-
+                    <input type="hidden" name="contact" id="contact1">
 
                     <!--Submit button-->
                     <button type="submit"
@@ -195,9 +287,9 @@
         </div>
     </section>
     <!-----------------------------  vocal ---------------------------->
-    <div class="p-4">
+    <div id="vocal" class="p-4 hidden">
         <div class="relative my-2 md:w-1/2 md:mx-auto">
-            <h3>Vous pouvez juste envoyer une note vocale si vous ne souhaitez pas remplir le formulaire ci dessus</h3>
+            <h3>Message audio</h3>
         </div>
         <div class="display"></div>
         <div class="controllers"></div>
@@ -208,12 +300,12 @@
             <input type="hidden" name="structure" value="{{ $structure->id }}">
             <input type="hidden" name="user" value="{{ $user->id }}">
             <input type="hidden" name="audio" id="aud">
-
         </form>
     </div>
 
 
-    <footer class="px-6 mx-auto flex flex-wrap flex-col md:flex-row items-center" style="background-color: #03224c">
+    <footer id="footer" class="hidden px-6 mx-auto flex-wrap flex-col md:flex-row items-center"
+        style="background-color: #03224c">
         <!--Footer-->
 
         <div class="w-full pt-8 pb-8 text-md text-center fade-in flex flex-col md:flex-row justify-between">
@@ -231,9 +323,10 @@
         </div>
 
         <div class="my-2 flex justify-center items-center w-full">
-            <a class="text-white no-underline hover:no-underline" href="#"><i>Made by Vibecro Corp</i></a>
+            <a class="text-white no-underline hover:no-underline" href="#"><i>Vibecro Corp</i></a>
             &nbsp; &nbsp;
-            <a class="text-white no-underline hover:no-underline"> <i> <u>Tel:</u> +229 58 28 25 58</i></a>
+            <a class="text-white no-underline hover:no-underline" href="tel:+22955695656"> <i> <u>Tel:</u> +229 55 69
+                    56 56</i></a>
         </div>
     </footer>
 
@@ -244,6 +337,31 @@
 <!-- Votre code HTML existant -->
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 <script>
+    function setContact() {
+        if (document.getElementById('contact1')) {
+            document.getElementById('contact1').value = document.getElementById('tel').value;
+        }
+    }
+
+    function showTextForm() {
+        document.getElementById('form_type').value = "text";
+    }
+
+    function showAudioForm() {
+        document.getElementById('form_type').value = "audio";
+    }
+
+    function showForm() {
+        document.getElementById('header').style.display = 'block';
+        document.getElementById('footer').style.display = 'flex';
+
+        if (document.getElementById('form_type').value == 'text') {
+            document.getElementById('form').style.display = 'block';
+        } else {
+            document.getElementById('vocal').style.display = 'block';
+        }
+    }
+
     // collect DOMs
     const display = document.querySelector('.display');
     const controllerWrapper = document.querySelector('.controllers');
@@ -344,6 +462,8 @@
                 break
 
             case 'Download':
+                return redirect('done');
+
                 clearControls();
                 clearDisplay();
 
@@ -353,6 +473,8 @@
 
             default:
                 clearControls();
+                return redirect('done');
+
                 clearDisplay();
 
                 addMessage('Your browser does not support mediaDevices');
@@ -363,6 +485,7 @@
     function send() {
         document.getElementById("send").value = document.getElementsByTagName("audio")[0].src;
     }
+
     const sendAudioToController = async (audioBlob) => {
         const formData = new FormData();
         formData.append('audio', audioBlob);
@@ -370,16 +493,18 @@
         formData.append('form_type', 'audio');
         formData.append('structure', '{{ $structure->id }}');
         formData.append('user', '{{ $user->id }}');
+        formData.append('contact', document.getElementById('tel').value);
 
         try {
-            // const response = await fetch("https://avis-client.online/public/voice", {
-            const response = await fetch("/voice/", {
+            const response = await fetch("https://avis-client.online/public/voice", {
+                // const response = await fetch("/voice/", {
                 method: 'POST',
                 body: formData,
             });
 
             if (response.ok) {
                 console.log('Audio téléversé avec succès.');
+                window.location.replace('/done');
             } else {
                 console.error('Erreur lors du téléversement de l\'audio.');
             }

@@ -58,30 +58,16 @@
                                                     </span>
                                                     <span class="text-sm text-blueGray-400">EVALUATIONS</span>
                                                 </div>
-                                                {{-- <div class="mr-4 p-3 text-center">
-                                                    <span
-                                                        class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                                        @if ($user->rates !== null)
-                                                            {{ $user->rates->where('answer', true)->count() }}
-                                                        @else
-                                                            0
-                                                        @endif
-                                                    </span>
-                                                    <span class="text-sm text-blueGray-400">OUI</span>
-                                                </div>
-                                                <div class="lg:mr-4 p-3 text-center">
-                                                    <span
-                                                        class="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
-                                                        @if ($user->rates !== null)
-                                                            {{ $user->rates->where('answer', false)->count() }}
-                                                        @else
-                                                            0
-                                                        @endif
-                                                    </span>
-                                                    <span class="text-sm text-blueGray-400">NON</span>
-                                                </div> --}}
                                             </div>
                                         </div>
+                                        
+                                        {{-- <div class="mr-4 p-3 text-center">
+                                            <a href="{{ route('user.print2', $user->id) }}">
+                                                <button class="bg-green-800 text-white active:bg-green-900 font-bold uppercase text-xs px-4 py-2 rounded-md shadow hover:shadow-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150">
+                                                    Imprimer le QR
+                                                </button>
+                                            </a>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Structure;
+use Illuminate\Support\Facades\Route;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Requests\StoreStructureRequest;
 use App\Http\Requests\UpdateStructureRequest;
@@ -40,7 +41,7 @@ class StructureController extends Controller
 
         $fileName = time() . '.' . $request->logo->extension();
         // $path = $request->file('logo')->storeAs('logos', $fileName, 'public');
-        
+
         $request->logo->move(public_path('storage'), $fileName);
         $path = $fileName;
 
@@ -49,6 +50,7 @@ class StructureController extends Controller
         $structure->email = $request->email;
         $structure->address = $request->address;
         $structure->slug = $request->slug;
+        $structure->type = $request->type;
         $structure->logo = $path;
 
         if ($structure->save()) {
@@ -93,17 +95,17 @@ class StructureController extends Controller
             $path = $fileName;
         }
 
-      
-
         $structure->name = $request->name;
         $structure->contact = $request->contact;
         $structure->email = $request->email;
         $structure->address = $request->address;
         $structure->slug = $request->slug;
+        $structure->type = $request->type;
+        $structure->created_at = $request->created_at;
         if (isset($path)) {
             $structure->logo = $path;
         }
-        
+
         if ($structure->save()) {
             Alert::toast('Les informations ont été modifiées', 'success');
             return redirect('structure');
@@ -129,12 +131,13 @@ class StructureController extends Controller
     {
         $columns = (object) array(
             'logo' => '',
+            'type' => 'Catégorie',
             'name' => 'Nom',
             'email' => "Email",
             'contact' => "Contact",
             'address' => "Adresse",
             "formated_date" => "Date de Creation",
-            'slug' => "Lien",
+            // 'slug' => "Lien",
         );
         return $columns;
     }
@@ -151,6 +154,15 @@ class StructureController extends Controller
     private function structure_fields()
     {
         $fields = [
+            'type' => [
+                'title' => 'Categorie',
+                'field' => 'select',
+                'options' => [
+                    'Hotel' => 'Hotel',
+                    'Pharmacie' => 'Pharmacie',
+                    'Supermarché' => 'Supermarché'
+                ]
+            ],
             'name' => [
                 'title' => 'Dénomination',
                 'field' => 'text'
@@ -167,15 +179,23 @@ class StructureController extends Controller
                 'title' => 'Adresse',
                 'field' => 'text'
             ],
-            'logo' => [
-                'title' => 'Logo',
-                'field' => 'file'
-            ],
             'slug' => [
                 'title' => 'Lien',
                 'field' => 'url'
             ],
+            'logo' => [
+                'title' => 'Logo',
+                'field' => 'file'
+            ],
         ];
+
+        if (Route::currentRouteName() == 'structure.edit') {
+            $fields['created_at'] = [
+                'title' => 'Date de début',
+                'field' => 'date'
+            ];
+        }
+
         return $fields;
     }
 }

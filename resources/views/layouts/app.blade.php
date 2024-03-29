@@ -23,12 +23,13 @@
         .dataTables_wrapper .row:first-child {
             display: flex;
             justify-content: space-between;
-            
+
         }
+
         .dataTables_wrapper .row:last-child {
             display: flex;
             justify-content: space-between;
-            
+
         }
 
         .select2 {
@@ -91,7 +92,9 @@
             },
         };
     </script>
+    <script src="{{ asset('assets/vendor/ckeditor5/build/ckeditor.js') }}"></script>
 
+    @laravelPWA
 </head>
 
 <body class="font-sans antialiased">
@@ -108,7 +111,14 @@
             <div class="">
                 <!-- Page Content -->
                 <main class="pb-16 md:pb-20 lg:pb-12">
-                    {{ $slot }}
+                    @if (Auth::user()->structure->created_at->addYear() < now())
+                        <h1 class="text-center m-4 text-white font-bold">
+                            Votre licence n'est plus valide. Veuillez contacter le service client
+                        </h1>
+                    
+                    @else
+                        {{ $slot }}
+                    @endif
                 </main>
 
                 <footer class="fixed bottom-0 w-full">
@@ -131,7 +141,7 @@
 
                         <div class="flex justify-end font-semibold p-4 md:p-2 text-sm text-white"
                             style="background-color: #03224c">
-                            Support Technique : &nbsp; <a href="tel:+22958282558"> 58 28 25 58 </a>
+                            Support Technique : &nbsp; <a href="tel:+22955695656"> +229 55 69 56 56</a>
                         </div>
                     @endif
                 </footer>
@@ -155,6 +165,14 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script defer src="{{ asset('js/main.js') }}"></script>
+
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 
 </body>
 

@@ -14,15 +14,13 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Scripts -->
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/geolocation.js') }}"></script>
-
+    @laravelPWA
 </head>
 
-<body class="font-sans text-gray-900 antialiased" 
-{{-- @if (request()->routeIs('register')) onload="geolocal()" @endif --}}
->
+<body class="font-sans text-gray-900 antialiased" {{-- @if (request()->routeIs('register')) onload="geolocal()" @endif --}}>
     <div class="min-h-screen flex flex-col justify-center items-center pt-6 sm:pt-0">
         <div>
             <a href="">
@@ -30,10 +28,33 @@
             </a>
         </div>
 
-        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+        <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden">
             {{ $slot }}
         </div>
     </div>
+
+    <script>
+        function showPassword() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+                document.getElementById('view1').classList.add("hidden");
+                document.getElementById('view2').classList.remove("hidden");
+
+                if (document.getElementById('password_confirmation') !== null) {
+                    document.getElementById('password_confirmation').type = "text";
+                }
+            } else {
+                x.type = "password";
+                document.getElementById('view1').classList.remove("hidden");
+                document.getElementById('view2').classList.add("hidden");
+
+                if (document.getElementById('password_confirmation') !== null) {
+                    document.getElementById('password_confirmation').type = "password";
+                }
+            }
+        }
+    </script>
 </body>
 
 </html>

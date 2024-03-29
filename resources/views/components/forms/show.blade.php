@@ -11,11 +11,11 @@
 
             <x-input-label for="{{ $attr }}" value="{!! $value['title'] !!}"></x-input-label>
 
-            @if ($value['field'] === 'richtext')
+            @if ($value['field'] === 'richtext' || $value['field'] === 'textarea')
                 <textarea class="block mt-1 w-full border-2 p-2 rounded outline-0" rows="8" readonly>{!! old($attr) ?? $fill !!}</textarea>
-            @elseif ($value['field'] === 'model')
+            @elseif ($value['field'] === 'model' || $value['field'] === 'multiple-select')
                 <x-text-input class="block mt-1 w-full border-2 p-2 rounded outline-0"
-                    value="{{ $item->name ?? $item->task }} {{ $item->firstname ?? '' }}" readonly />
+                    value="{{ $item->name }}" readonly />
             @else
                 <x-text-input class="block mt-1 w-full border-2 p-2 rounded outline-0" value="{{ old($attr) ?? $fill }}"
                     readonly />
