@@ -8,6 +8,8 @@
                     @include('layouts.partials.superadmin')
                 @elseif (Auth::user()->role === 'admin')
                     @include('layouts.partials.admin')
+                @elseif (Auth::user()->role === 'collaborator')
+                    @include('layouts.partials.collaborator')
                 @endif
             </div>
         </div>

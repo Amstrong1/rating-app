@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\CollaboratorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\UserController;
@@ -75,6 +76,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/structure', StructureController::class);
     Route::resource('/place', PlaceController::class);
     Route::resource('/user', UserController::class);
+    Route::resource('/collaborator', CollaboratorController::class);
     Route::resource('/quiz', QuizController::class);
     Route::resource('/evaluate', EvaluateController::class);
     Route::get('/voices', [VoiceController::class, 'index'])->name('voice.index');

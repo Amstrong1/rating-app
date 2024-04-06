@@ -2,6 +2,8 @@
     @include('layouts.partials.mobile.superadmin')
 @elseif (Auth::user()->role === 'admin')
     @include('layouts.partials.mobile.admin')
+@elseif (Auth::user()->role === 'collaborator')
+    @include('layouts.partials.mobile.collaborator')
 @endif
 
 <script src="https://unpkg.com/@popperjs/core@2.9.1/dist/umd/popper.min.js" charset="utf-8"></script>

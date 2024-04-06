@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                         </div>
-                    @elseif (Auth::user()->role === 'admin')
+                    @elseif (Auth::user()->role === 'admin' || Auth::user()->role === 'collaborator')
                         <!-- Cards -->
                         <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                             <!-- Card -->
@@ -55,9 +55,12 @@
                                     <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-200">
                                     </p>
                                     <hr>
+                                    @if (Auth::user()->role === 'admin')
+                                        
                                     <p class="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                         <a href="{{ route('place.index') }}">Voir plus</a>
                                     </p>
+                                    @endif
                                 </div>
                             </div>
                             <!-- Card -->
@@ -77,9 +80,12 @@
                                     <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-200">
                                     </p>
                                     <hr>
+                                    @if (Auth::user()->role === 'admin')
+                                        
                                     <p class="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                         <a href="{{ route('user.index') }}">Voir plus</a>
                                     </p>
+                                    @endif
                                 </div>
                             </div>
                             <!-- Card -->
@@ -99,10 +105,13 @@
                                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">
                                     </p>
                                     <hr>
+                                    @if (Auth::user()->role === 'admin')
+                                        
                                     <p
                                         class="inline-block align-baseline mt-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                         <a href="{{ route('quiz.index') }}">Voir plus</a>
                                     </p>
+                                    @endif
                                 </div>
                             </div>
                             <!-- Card -->
@@ -122,10 +131,13 @@
                                     <p class="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-2">
                                     </p>
                                     <hr>
+                                    @if (Auth::user()->role === 'admin')
+                                        
                                     <p
                                         class="inline-block align-baseline mt-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                         <a href="{{ route('evaluate.index') }}">Voir plus</a>
                                     </p>
+                                    @endif
                                 </div>
                             </div>
                             <!-- Card -->
@@ -145,9 +157,12 @@
                                     <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-200">
                                     </p>
                                     <hr>
+                                    @if (Auth::user()->role === 'admin')
+                                        
                                     <p class="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                         <a href="{{ route('evaluate.index') }}">Voir plus</a>
                                     </p>
+                                    @endif
                                 </div>
                             </div>
                             <!-- Card -->
@@ -167,9 +182,12 @@
                                     <p class="mb-2 text-lg font-semibold text-gray-700 dark:text-gray-200">
                                     </p>
                                     <hr>
+                                    @if (Auth::user()->role === 'admin')
+                                        
                                     <p class="mt-2 text-sm font-medium text-gray-600 dark:text-gray-400">
                                         <a href="{{ route('evaluate.index') }}">Voir plus</a>
                                     </p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

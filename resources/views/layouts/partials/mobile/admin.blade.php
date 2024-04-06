@@ -65,10 +65,6 @@
                 Questionnaire
             </div>
         </x-nav-link>
-<<<<<<< HEAD
-    </li> --}}
-
-=======
     </li>
     <li>
         <x-nav-link :href="route('evaluate.index')" :active="request()->routeIs('evaluate.*')"
@@ -96,5 +92,4 @@
             </div>
         </x-nav-link>
     </li>
->>>>>>> a6ab323be4c2e8c18f005ddb9105ce4cc7aa9739
 </ul>
