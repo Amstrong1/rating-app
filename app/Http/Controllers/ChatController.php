@@ -21,12 +21,13 @@ class ChatController extends Controller
 
         $structure = Auth::user()->structure;
 
-        $messages = Chat::where('category',$structure->type)
-                            ->with('structure')
-                            ->get();
+        $messages = Chat::where('category', $structure->type)
+            ->orWhere('category', 'super_admin')
+            ->with('structure')
+            ->get();
 
-        
-        return view('app.chat.index',compact('messages'));
+
+        return view('app.chat.index', compact('messages'));
     }
 
     /**
@@ -42,29 +43,30 @@ class ChatController extends Controller
      */
     public function store(StoreChatRequest $request)
     {
-            // dd($request->all());
-            $structure = Auth::user()->structure;
+        // dd($request->all());
+        $structure = Auth::user()->structure;
 
-            $chat = new Chat();
-            $chat->category = $structure->type;
-            $chat->message = $request->message;
-            $chat->structure_id = $structure->id;
-          
+        $chat = new Chat();
+        $chat->category = $structure->type;
+        $chat->message = $request->message;
+        $chat->structure_id = $structure->id;
+        if (Auth::user()->role == 'superadmin') {
+            $chat->category = 'super_admin';
+        }
 
-            $structures_emails = Structure::where('type', $structure->type)->pluck('email')->toArray(); 
+        $structures_emails = Structure::where('type', $structure->type)->pluck('email')->toArray();
 
-            foreach ($structures_emails as $email) {
-                Mail::to($email)->send(new ChatMail($structure->name, Auth::user()->name));
-                Mail::to('romuald91303142@gmail.com')->send(new ChatMail($structure->name, Auth::user()->name));
-            }
-            if ( $chat->save()) {
-                Alert::toast("Message envoyé avec succés", 'success');
-                return back();
-            } else {
-                Alert::toast('Une erreur est survenue', 'error');
-                return redirect()->back()->withInput($request->input());
-            }
-            
+        foreach ($structures_emails as $email) {
+            Mail::to($email)->send(new ChatMail($structure->name, Auth::user()->name));
+            Mail::to('romuald91303142@gmail.com')->send(new ChatMail($structure->name, Auth::user()->name));
+        }
+        if ($chat->save()) {
+            Alert::toast("Message envoyé avec succés", 'success');
+            return back();
+        } else {
+            Alert::toast('Une erreur est survenue', 'error');
+            return redirect()->back()->withInput($request->input());
+        }
     }
 
     /**

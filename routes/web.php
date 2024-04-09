@@ -1,10 +1,10 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\ChatController;
-use App\Http\Controllers\CollaboratorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\UserController;
@@ -18,6 +18,7 @@ use App\Http\Controllers\EvaluateController;
 use App\Http\Controllers\StructureController;
 use App\Http\Controllers\UserPrintController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\CollaboratorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +83,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/voices', [VoiceController::class, 'index'])->name('voice.index');
     Route::resource('/customer', CustomerController::class);
     Route::resource('/chat', ChatController::class);
+    Route::post('/consent', function () {
+        $user = User::find(Auth::id());
+        $user->consent = true;
+        $user->save();
+        return back();
+    })->name('chat.consent');
 });
 
 Route::middleware('auth')->group(function () {
