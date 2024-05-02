@@ -255,10 +255,10 @@
                             <div class=""></div>
                         </div>
 
-                        <div class="flex justify-end font-semibold p-4 md:p-2 text-sm text-white"
+                        {{-- <div class="flex justify-end font-semibold p-4 md:p-2 text-sm text-white"
                             style="background-color: #03224c">
                             Support Technique : &nbsp; <a href="tel:+22955695656"> +229 55 69 56 56</a>
-                        </div>
+                        </div> --}}
                     @endif
                 </footer>
             </div>
