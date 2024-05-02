@@ -127,7 +127,7 @@
                 color: #fff;
                 border: none;
                 border-radius: 10px;
-                padding: 12px 20px;
+                padding: 12px;
                 cursor: pointer;
                 transition: background-color 0.3s ease;
             }
