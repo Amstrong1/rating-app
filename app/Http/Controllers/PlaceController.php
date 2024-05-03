@@ -125,7 +125,7 @@ class PlaceController extends Controller
     {
         $fields = [
             'name' => [
-                'title' => 'Poste',
+                'title' => 'Entité',
                 'field' => 'text'
             ],
             'description' => [

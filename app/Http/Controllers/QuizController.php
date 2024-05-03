@@ -161,7 +161,7 @@ class QuizController extends Controller
     {
         $columns = (object) [
             'question' => 'Question',
-            'place' => 'Poste',
+            'place' => 'Entité',
         ];
         return $columns;
     }
@@ -184,7 +184,7 @@ class QuizController extends Controller
                 'field' => 'textarea',
             ],
             'places' => [
-                'title' => 'Poste',
+                'title' => 'Entité',
                 'field' => 'multiple-select',
                 'options' => Place::where('structure_id', Auth::user()->structure_id)->get(),
             ],

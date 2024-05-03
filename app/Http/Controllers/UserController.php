@@ -153,7 +153,7 @@ class UserController extends Controller
                 'field' => 'text'
             ],
             'place' => [
-                'title' => 'Poste',
+                'title' => 'Unité',
                 'field' => 'model',
                 'options' => Place::where('structure_id', Auth::user()->structure_id)->get(),
             ],

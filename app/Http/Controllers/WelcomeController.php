@@ -8,9 +8,11 @@ use App\Models\Rate;
 use App\Models\User;
 use App\Models\PlaceQuiz;
 use App\Models\Structure;
+use App\Mail\UserRatedMail;
 use App\Models\Appreciation;
 use Illuminate\Http\Request;
 use App\Notifications\UserRated;
+use Illuminate\Support\Facades\Mail;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 
@@ -53,6 +55,8 @@ class WelcomeController extends Controller
                 }
                 foreach ($admins as $admin) {
                     $admin->notify(new UserRated());
+                    Mail::to($admin->email)->send(new UserRatedMail($admin->name,$structure->name));
+
                 }
                 // } else {
                 //     Alert::toast('Vérifier votre position géographique', 'error');

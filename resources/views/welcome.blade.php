@@ -70,7 +70,7 @@
             <div class="bg-white w-full max-w-md p-4 rounded-lg shadow-lg">
 
                 <div class="mt-4">
-                    <h1 class="text-lg font-semibold">{{ $user->structure->name }},</h1>
+                    <h1 class="text-lg font-semibold">{{ $user->place->name }},</h1>
                     <p>
                         Bienvenu cher client(e)
                         Merci d'être passé(e). Nous vous prions de nous laisser votre contact avant de continuer.
@@ -145,19 +145,20 @@
         <!-- Navigation bar -->
         <nav class="relative flex w-full items-center justify-between bg-white text-white py-2 shadow-lg md:flex- md:justify-start"
             style="background-color: #03224c" data-te-navbar-ref>
-            <div class="flex w-full flex-wrap items-center justify-between px-3">
+            {{-- <div class="flex w-full flex-wrap items-center justify-between px-3"> --}}
+            <div class="flex w-full flex-wrap items-center justify-center px-3">
 
                 <div>
                     <a class="flex items-center no-underline hover:no-underline font-bold text-2xl lg:text-4xl h-20"
                         href="/">
-                        <img class="w-10" src="{{ url('storage/' . $user->structure->logo) }}" alt=""> &nbsp;
+                        {{-- <img class="w-10" src="{{ url('storage/' . $user->structure->logo) }}" alt=""> &nbsp; --}}
                         <div class="tracking-widest text-sm font-semibold italic rounded text-white">
-                            {{ $user->structure->name }}</div>
+                            {{ $user->place->name }}</div>
                     </a>
                 </div>
 
                 <!-- Navigation links -->
-                <div class="md:flex md:flex-row justify-end content-center">
+                {{-- <div class="md:flex md:flex-row justify-end content-center">
                     <ul class="mr-auto flex flex-col md:flex-row md:justify-end" data-te-navbar-nav-ref>
                         <li class="mb-2 lg:mb-0 lg:pr-2 flex" data-te-nav-item-ref>
 
@@ -172,7 +173,7 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> --}}
             </div>
         </nav>
 
@@ -318,7 +319,7 @@
 
             <div class="mb-2">
                 <a class="text-white no-underline hover:no-underline"
-                    href="#">&copy;{{ $user->structure->name }}&nbsp; 2023</a>
+                    href="#">&copy;{{ $user->place->name }}&nbsp; 2023</a>
             </div>
         </div>
 
