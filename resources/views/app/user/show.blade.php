@@ -3,7 +3,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-lg sm:rounded-lg">
                 <div class="p-6 text-gray-900 text-center">
-                    <h1>Voir les informations de {{ $user->name }}</h1>
+                    <h1>Voir les informations de {{ $user->name }} / {{ $user->place->name }}</h1>
 
                     <section class="pt-16 md:flex">
                         <div class="w-full md:w-1/2 px-4">

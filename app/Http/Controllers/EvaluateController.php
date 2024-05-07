@@ -11,9 +11,15 @@ class EvaluateController extends Controller
     {
         $structure = Auth::user()->structure;
         $users = $structure->users()->where('role', 'user')->get();
+        $count_answers = $structure->rates()->count();
+        $count_answers_false = $structure->rates()->where('answer', false)->count();
+        $count_answers_true = $structure->rates()->where('answer', true)->count();
 
         return view('app.evaluate.index', [
             'users' => $users,
+            'count_answers' => $count_answers,
+            'count_answers_false' => $count_answers_false,
+            'count_answers_true' => $count_answers_true,
             'my_actions' => $this->actions(),
             'rates_attributes' => $this->rate_columns(),
             'voices_attributes' => $this->voice_columns(),

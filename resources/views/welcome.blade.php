@@ -319,15 +319,15 @@
 
             <div class="mb-2">
                 <a class="text-white no-underline hover:no-underline"
-                    href="#">&copy;{{ $user->place->name }}&nbsp; 2023</a>
+                    href="#">&copy;{{ $user->place->name }}&nbsp; 2024</a>
             </div>
         </div>
 
         <div class="my-2 flex justify-center items-center w-full">
-            <a class="text-white no-underline hover:no-underline" href="#"><i>Vibecro Corp</i></a>
+            <a class="text-white no-underline hover:no-underline" href="https://vibecro-corp.tech/"><i>By Vibecro Corporation</i></a>
             &nbsp; &nbsp;
-            <a class="text-white no-underline hover:no-underline" href="tel:+22955695656"> <i> <u>Tel:</u> +229 55 69
-                    56 56</i></a>
+            {{-- <a class="text-white no-underline hover:no-underline" href="tel:+22955695656"> <i> <u>Tel:</u> +229 55 69
+                    56 56</i></a> --}}
         </div>
     </footer>
 

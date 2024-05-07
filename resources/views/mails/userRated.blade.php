@@ -57,7 +57,7 @@
     <div class="container">
         <h1>Nouveau Retour Client</h1>
         <p>Bonjour, {{ $admin_name }}</p>
-        <p>Vous avez un nouveau retour client pour {{ $structure_name }}. Veuillez consulter votre application AVIS CLIENT ou votre plateforme web pour en prendre connaissance.</p>
+        <p>Vous avez un nouveau retour client pour le compte de {{ $place_name }}. Veuillez consulter votre application AVIS CLIENT ou votre plateforme web pour en prendre connaissance.</p>
         {{-- <a class="cta-button" href="{{ $cta_link }}">Voir les retours</a> --}}
         <p>Cordialement,</p>
         <p>L'équipe VIBECRO</p>

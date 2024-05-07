@@ -24,10 +24,13 @@ class WelcomeController extends Controller
         if ($request->method() == 'POST') {
             
             if ($request->form_type == 'classic') {
+
                 $structure = Structure::find($request->structure);
+
                 $admins = User::where('role', 'admin')->where('structure_id', $structure->id)->get();
 
                 // if (distance($request->latitude, $request->longitude, $structure->latitude, $request->longitude) <= 800) {
+
                 for ($i = 0; $i < $request->quizzes; $i++) {
                     $rate = new Rate();
                     $rate->structure_id = $request->structure;
@@ -36,8 +39,8 @@ class WelcomeController extends Controller
                     $rate->answer = $request->input('answer' . $i);
                     $rate->rater_name = $request->name;
                     $rate->rater_contact = $request->contact;
-                    $rate->rater_email= $request->email;
-                    $rate->room= $request->room;
+                    $rate->rater_email = $request->email;
+                    $rate->room = $request->room;
 
                     $rate->answer = $request->input('answer' . $i);
                     if ($rate->save()) {
@@ -46,6 +49,7 @@ class WelcomeController extends Controller
                         Alert::toast('Une erreur est survenue', 'error');
                     }
                 }
+
                 if ($request->appreciation !== null) {
                     $appreciation = new Appreciation();
                     $appreciation->appreciation = $request->appreciation;
@@ -53,11 +57,17 @@ class WelcomeController extends Controller
                     $appreciation->user_id = $request->user;
                     $appreciation->save();
                 }
+
+                $user = User::find($request->user);
+
                 foreach ($admins as $admin) {
+
                     $admin->notify(new UserRated());
-                    Mail::to($admin->email)->send(new UserRatedMail($admin->name,$structure->name));
+                    
+                    Mail::to($admin->email)->send(new UserRatedMail($admin->name,$structure->name,$user->place->name));
 
                 }
+
                 // } else {
                 //     Alert::toast('Vérifier votre position géographique', 'error');
                 // }

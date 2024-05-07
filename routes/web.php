@@ -71,6 +71,14 @@ Route::middleware('auth')->group(function () {
         return back();
     })->name('markAsRead');
 
+    Route::post('/notifications/{id}', function ($id) {
+        $notification = Auth::user()->unreadNotifications->where('id', $id)->first();
+        if ($notification) {
+            $notification->markAsRead();
+        }
+        return back();
+    })->name('notifications.read');
+
     Route::get('/dashboard', HomeController::class)->name('dashboard');
     Route::get('/user/print/{user}', [UserController::class, 'print'])->name('user.print');
     Route::get('/user/print2/{user}', [UserPrintController::class, 'print'])->name('user.print2');

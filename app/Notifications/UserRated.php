@@ -35,7 +35,7 @@ class UserRated extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('Un employé a recu de nouvelles notes')
+                    ->line('Une entité vient de recevoir l\'avis d\'un client')
                     ->action('Voir la note', url('/evaluate'))
                     ->line('');
     }
@@ -48,7 +48,7 @@ class UserRated extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'message' => 'Un employé a recu de nouvelles notes'
+            'message' => 'Une entité vient de recevoir l\'avis d\'un client'
         ];
     }
 }

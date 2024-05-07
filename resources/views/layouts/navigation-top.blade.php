@@ -67,16 +67,19 @@
                         @endif
 
                         @forelse (Auth::user()->unreadNotifications as $notification)
-                            <x-dropdown-link href="{{ route('evaluate.index') }}">
+                            <x-dropdown-link href="{{ route('evaluate.index') }}" onclick="event.preventDefault();
+                                document.getElementById('mark-as-read-{{ $notification->id }}').submit();">
                                 <div class="flex">
                                     <div>
                                         <p class="text-sm">
                                             {{ $notification->data['message'] }}
                                         </p>
-
                                         <p class="text-xs">{{ getFormattedDate($notification->created_at) }}</p>
                                     </div>
                                 </div>
+                                <form id="mark-as-read-{{ $notification->id }}" action="{{ route('notifications.read', $notification->id) }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </x-dropdown-link>
                         @empty
                             <p class="text-sm p-4 text-black">

@@ -15,16 +15,18 @@ class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = Rate::select('rater_name', 'id', 'rater_email', 'rater_contact')
+        $customers = Rate::where('structure_id', Auth::user()->structure_id)
             ->where('rater_email', '!=', null)
-            ->orWhere('rater_contact', '!=', null)
-            ->where('structure_id', Auth::user()->structure_id)
+            ->select('rater_name','id','rater_email','rater_contact','structure_id')
             ->get();
+
+        //dd($customers);
 
         return view('app.customers.index', [
             'customers' => $customers,
             'my_attributes' => $this->customer_columns(),
         ]);
+
     }
 
     public function create()

@@ -14,14 +14,16 @@ class UserRatedMail extends Mailable
     use Queueable, SerializesModels;
     public $structure_name;
     public $admin_name;
+    public $place_name;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($admin_name,$structure_name)
+    public function __construct($admin_name,$structure_name,$place_name)
     {
         $this->structure_name = $structure_name;
         $this->admin_name = $admin_name;
+        $this->place_name = $place_name;
     }
 
     /**

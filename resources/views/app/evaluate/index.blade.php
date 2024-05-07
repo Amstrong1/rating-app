@@ -5,26 +5,44 @@
                 <div class="p-6 text-gray-900">
                     <div class="flex justify-between">
                         <h1 class="font-bold text-lg my-2">Evaluation</h1>
+                        <span class="flex items-center gap-2 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+                            Total réponses :
+                            <span class="font-semibold text-slate-700 dark:text-slate-300">
+                                {{$count_answers}}
+                            </span>
+                        </span>
+                        <span class="flex items-center gap-2  text-sm font-medium text-neutral-600 dark:text-neutral-400">
+                            Total réponses positives :
+                            <span class="font-semibold text-green-600 dark:text-green-400">
+                                {{$count_answers_true}}
+                            </span>
+                        </span>
+                        <span class="flex items-center gap-2 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+                            Total réponses négatives :
+                            <span class="font-semibold text-red-600 dark:text-red-400">
+                                {{$count_answers_false}}
+                            </span>
+                        </span>
                     </div>
                     <!--Tabs navigation-->
                     <ul style="background-color: #00558b"
-                        class="text-white p-4mb-5 flex list-none flex-row flex-wrap border-b-0 pl-0" role="tablist"
+                        class="text-white mx-auto p-4 mb-5 flex list-none flex-row flex-wrap border-b-0 justify-center pl-0" role="tablist"
                         data-te-nav-ref>
                         <li role="presentation">
                             <a href="#tabs-quiz"
-                                class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-slate-300 hover:isolate hover:border-transparent  focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-white dark:text-white dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-white"
+                                class="my-2 mx-4 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-slate-300 hover:isolate hover:border-transparent  focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-white dark:text-white dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-white"
                                 data-te-toggle="pill" data-te-target="#tabs-quiz" data-te-nav-active role="tab"
                                 aria-controls="tabs-quiz" aria-selected="true">Questions/Réponses</a>
                         </li>
                         <li role="presentation">
                             <a href="#tabs-comment"
-                                class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-slate-300 hover:isolate hover:border-transparent  focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-white dark:text-white dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-white"
+                                class="my-2 mx-4 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-slate-300 hover:isolate hover:border-transparent  focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-white dark:text-white dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-white"
                                 data-te-toggle="pill" data-te-target="#tabs-comment" role="tab"
                                 aria-controls="tabs-comment" aria-selected="false">Commentaires</a>
                         </li>
                         <li role="presentation">
                             <a href="#tabs-audio"
-                                class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-slate-300 hover:isolate hover:border-transparent focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-white dark:text-white dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-white"
+                                class="my-2 mx-4 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-slate-300 hover:isolate hover:border-transparent focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-white dark:text-white dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-white"
                                 data-te-toggle="pill" data-te-target="#tabs-audio" role="tab"
                                 aria-controls="tabs-audio" aria-selected="false">Commentaires Audios</a>
                         </li>
@@ -55,7 +73,24 @@
                                                             data-te-target="{{ '#collapseOne' . $d }}"
                                                             data-te-collapse-collapsed aria-expanded="false"
                                                             aria-controls="{{ 'collapseOne' . $d }}">
-                                                            Voir toutes les réponses
+                                                            <span class="flex items-center gap-2 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+                                                                Total réponses :
+                                                                <span class="font-semibold text-slate-700 dark:text-slate-300">
+                                                                    {{$user->rates()->count()}}
+                                                                </span>
+                                                            </span>
+                                                            <span class="flex items-center gap-2 ml-4 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+                                                                Total réponses positives :
+                                                                <span class="font-semibold text-green-600 dark:text-green-400">
+                                                                    {{$user->rates()->where('answer', '1')->count()}}
+                                                                </span>
+                                                            </span>
+                                                            <span class="flex items-center gap-2 ml-4 text-sm font-medium text-neutral-600 dark:text-neutral-400">
+                                                                Total réponses négatives :
+                                                                <span class="font-semibold text-red-600 dark:text-red-400">
+                                                                    {{$user->rates()->where('answer', '0')->count()}}
+                                                                </span>
+                                                            </span>
                                                             <span
                                                                 class="ml-auto h-5 w-5 shrink-0 rotate-[-180deg] fill-[#336dec] transition-transform duration-200 ease-in-out group-[[data-te-collapse-collapsed]]:rotate-0 group-[[data-te-collapse-collapsed]]:fill-[#212529] motion-reduce:transition-none dark:fill-blue-300 dark:group-[[data-te-collapse-collapsed]]:fill-white">
                                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none"
