@@ -43,10 +43,17 @@ class Structure extends Model
     {
         return $this->hasMany(Rate::class);
     }
+    
+    public function answers(): HasMany
+    {
+        return $this->hasMany(Answer::class);
+    }
+
     public function files(): HasMany
     {
         return $this->hasMany(File::class);
     }
+    
     public function appreciations(): HasMany
     {
         return $this->hasMany(Appreciation::class);

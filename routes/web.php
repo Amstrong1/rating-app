@@ -91,6 +91,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/voices', [VoiceController::class, 'index'])->name('voice.index');
     Route::resource('/customer', CustomerController::class);
     Route::resource('/chat', ChatController::class);
+    Route::get('/answer/{id}', [EvaluateController::class, 'answer'])->name('answer.list');
     Route::post('/consent', function () {
         $user = User::find(Auth::id());
         $user->consent = true;

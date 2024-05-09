@@ -67,21 +67,22 @@
 
     <div x-show="showModal1" class="fixed inset-0 overflow-y-auto z-50" x-cloak>
         <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white w-full max-w-md p-4 rounded-lg shadow-lg">
-
+            <div class="bg-slate-100 w-full max-w-md p-4 rounded">
                 <div class="mt-4">
                     <h1 class="text-lg font-semibold">{{ $user->place->name }},</h1>
                     <p>
                         Bienvenu cher client(e)
-                        Merci d'être passé(e). Nous vous prions de nous laisser votre contact avant de continuer.
+                        Merci d'être passé(e). En saisissant votre numéro de telephone, vous acceptez <a href=""
+                            class="text-blue-500 underline">les conditions générales d'utilisation</a> de l'application.
                     </p>
                     <div class="mt-4">
-                        <input type="tel" id="tel"
-                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none">
+                        <input type="tel" id="tel" placeholder="N° Telephone"
+                            class="bg-slate-100 my-2 peer block min-h-[auto] w-full rounded border px-3 py-[0.32rem] leading-[1.6] outline-none">
                     </div>
                 </div>
                 <div class="mt-6 flex justify-end">
-                    <button @click="showModal1 = false; showModal2 = true;"
+                    <button
+                        @click="(function(){ var tel = document.getElementById('tel').value.trim(); if (tel !== '') { showModal1 = false; showModal2 = true } })()"
                         class="px-4 py-2 bg-green-500 text-white rounded-md">
                         Suivant
                     </button>
@@ -92,8 +93,7 @@
 
     <div x-show="showModal2" class="fixed inset-0 overflow-y-auto z-50" x-cloak>
         <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white w-full max-w-md p-4 rounded-lg shadow-lg">
-
+            <div class="bg-slate-100 w-full max-w-md p-4 rounded">
                 <div class="mt-4">
                     <p>
                         Vous avez la possibité de donner votre avis par message audio ou écrit
@@ -265,8 +265,8 @@
                     @endforeach
 
                     <div class="relative mb-6 md:w-1/2 md:mx-auto">
-                        <textarea name="{{ 'appreciation' }}" placeholder="Appréciations(Facultatif)"
-                            class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"></textarea>
+                        <textarea rows="5" name="{{ 'appreciation' }}" placeholder="Veuillez laisser votre avis"
+                            class="my-2 peer block min-h-[auto] w-full rounded border px-3 py-[0.32rem] leading-[1.6] outline-none"></textarea>
                     </div>
 
                     <input type="hidden" name="structure" value="{{ $structure->id }}">
@@ -324,7 +324,8 @@
         </div>
 
         <div class="my-2 flex justify-center items-center w-full">
-            <a class="text-white no-underline hover:no-underline" href="https://vibecro-corp.tech/"><i>By Vibecro Corporation</i></a>
+            <a class="text-white no-underline hover:no-underline" href="https://vibecro-corp.tech/"><i>By Vibecro
+                    Corporation</i></a>
             &nbsp; &nbsp;
             {{-- <a class="text-white no-underline hover:no-underline" href="tel:+22955695656"> <i> <u>Tel:</u> +229 55 69
                     56 56</i></a> --}}

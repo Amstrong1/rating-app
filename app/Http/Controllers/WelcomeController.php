@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\PlaceQuiz;
 use App\Models\Structure;
 use App\Mail\UserRatedMail;
+use App\Models\Answer;
 use App\Models\Appreciation;
 use Illuminate\Http\Request;
 use App\Notifications\UserRated;
@@ -20,9 +21,9 @@ class WelcomeController extends Controller
 {
     public function index(Request $request, $user_id)
     {
-        
+
         if ($request->method() == 'POST') {
-            
+
             if ($request->form_type == 'classic') {
 
                 $structure = Structure::find($request->structure);
@@ -31,30 +32,38 @@ class WelcomeController extends Controller
 
                 // if (distance($request->latitude, $request->longitude, $structure->latitude, $request->longitude) <= 800) {
 
-                for ($i = 0; $i < $request->quizzes; $i++) {
-                    $rate = new Rate();
-                    $rate->structure_id = $request->structure;
-                    $rate->user_id = $request->user;
-                    $rate->quiz_id = $request->input('quiz_id' . $i);
-                    $rate->answer = $request->input('answer' . $i);
-                    $rate->rater_name = $request->name;
-                    $rate->rater_contact = $request->contact;
-                    $rate->rater_email = $request->email;
-                    $rate->room = $request->room;
+                $rate = new Rate();
+                $rate->structure_id = $request->structure;
+                $rate->user_id = $request->user;
+                // $rate->quiz_id = $request->input('quiz_id' . $i);
+                // $rate->answer = $request->input('answer' . $i);
+                $rate->rater_name = $request->name;
+                $rate->rater_contact = $request->contact;
+                $rate->rater_email = $request->email;
+                $rate->room = $request->room;
+                $rate->save();
 
-                    $rate->answer = $request->input('answer' . $i);
-                    if ($rate->save()) {
-                        Alert::toast("Merci de votre attention", 'success');                        
-                    } else {
-                        Alert::toast('Une erreur est survenue', 'error');
-                    }
+                // if () {
+                //     Alert::toast("Merci de votre attention", 'success');
+                // } else {
+                //     Alert::toast('Une erreur est survenue', 'error');
+                // }
+
+                for ($i = 0; $i < $request->quizzes; $i++) {
+                    $answer = new Answer();
+                    $answer->rate_id = $rate->id;
+                    $answer->structure_id = $request->structure;
+                    $answer->answer = $request->input('answer' . $i);
+                    $answer->quiz_id = $request->input('quiz_id' . $i);
+                    $answer->save();
                 }
 
                 if ($request->appreciation !== null) {
                     $appreciation = new Appreciation();
-                    $appreciation->appreciation = $request->appreciation;
-                    $appreciation->structure_id = $request->structure;
+                    $appreciation->rate_id = $rate->id;
                     $appreciation->user_id = $request->user;
+                    $appreciation->structure_id = $request->structure;
+                    $appreciation->appreciation = $request->appreciation;
                     $appreciation->save();
                 }
 
@@ -63,15 +72,14 @@ class WelcomeController extends Controller
                 foreach ($admins as $admin) {
 
                     $admin->notify(new UserRated());
-                    
-                    Mail::to($admin->email)->send(new UserRatedMail($admin->name,$structure->name,$user->place->name));
 
+                    Mail::to($admin->email)->send(new UserRatedMail($admin->name, $structure->name, $user->place->name));
                 }
 
                 // } else {
                 //     Alert::toast('Vérifier votre position géographique', 'error');
                 // }
-            } 
+            }
             // else {
 
             //     $fileName = time() . '.' . $request->audio->extension();
@@ -100,9 +108,7 @@ class WelcomeController extends Controller
         $quizzes_id = PlaceQuiz::where('place_id', $user->place_id)->get('quiz_id');
         $quizzes = new EloquentCollection();
         foreach ($quizzes_id as $quiz) {
-            //'quizzes' => $structure->quizzes()->where('status', '1')->orWhere('status', '')->get(),
-
-            $quizzes[] = Quiz::where('id',$quiz->quiz_id)->where('status', '1')->get();
+            $quizzes[] = Quiz::where('id', $quiz->quiz_id)->where('status', '1')->get();
         }
         $quizzes = $quizzes->collapse();
         return view('welcome', compact('user', 'structure', 'quizzes'));

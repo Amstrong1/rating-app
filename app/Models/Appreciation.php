@@ -18,7 +18,7 @@ class Appreciation extends Model
     ];
 
     public function getFormatedDateAttribute(){
-        return getFormattedDate($this->created_at);
+        return getFormattedDateTime($this->created_at);
     }
 
     public function structure(): BelongsTo

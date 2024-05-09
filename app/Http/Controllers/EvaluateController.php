@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Rate;
+use App\Models\Answer;
 use App\Models\Appreciation;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class EvaluateController extends Controller
@@ -10,16 +13,16 @@ class EvaluateController extends Controller
     public function index()
     {
         $structure = Auth::user()->structure;
-        $users = $structure->users()->where('role', 'user')->get();
-        $count_answers = $structure->rates()->count();
-        $count_answers_false = $structure->rates()->where('answer', false)->count();
-        $count_answers_true = $structure->rates()->where('answer', true)->count();
 
+        $rates = $structure->rates()->orderBy('created_at', 'desc')->get();
+        $rates = $rates->unique('rater_contact');
+        
         return view('app.evaluate.index', [
-            'users' => $users,
-            'count_answers' => $count_answers,
-            'count_answers_false' => $count_answers_false,
-            'count_answers_true' => $count_answers_true,
+            'rates' => $rates,
+            'users' => $structure->users()->where('role', 'user')->get(),
+            'count_answers' => $structure->answers()->count(),
+            'count_answers_true' => $structure->answers()->where('answer', true)->count(),
+            'count_answers_false' => $structure->answers()->where('answer', false)->count(),
             'my_actions' => $this->actions(),
             'rates_attributes' => $this->rate_columns(),
             'voices_attributes' => $this->voice_columns(),
@@ -27,11 +30,32 @@ class EvaluateController extends Controller
         ]);
     }
 
-    public function show(Appreciation $evaluate)
+    public function show(Rate $evaluate)
     {
+        $rater_contact = $evaluate->rater_contact;
+        $rates = Rate::where('rater_contact', $rater_contact)->get();
+
         return view('app.evaluate.show', [
-            'comment' => $evaluate,
+            'rates' => $rates,
             'my_fields' => $this->fields(),
+            'my_actions' => $this->list_actions(),
+            'rates_attributes' => $this->user_rate_columns(),
+        ]);
+    }
+
+    public function answer($id)
+    {
+        $rate = Rate::find($id);
+        $appreciation = Appreciation::where('rate_id', $id)->first();
+        $answers = Answer::where('rate_id', $id)->get();   
+        $answers->load('quiz');
+
+        return view('app.evaluate.show_list', [
+            'rate' => $rate,
+            'appreciation' => $appreciation,
+            'answers' => $answers,
+            'my_fields' => $this->fields(),
+            'answer_attributes' => $this->answer_columns(),
         ]);
     }
 
@@ -40,6 +64,15 @@ class EvaluateController extends Controller
     {
         $actions = (object) array(
             'show' => 'Voir',
+        );
+        return $actions;
+    }
+
+
+    private function list_actions()
+    {
+        $actions = (object) array(
+            'list' => 'Voir',
         );
         return $actions;
     }
@@ -57,10 +90,30 @@ class EvaluateController extends Controller
     {
         return [
             'rate_date' => 'Date',
-            'question' => 'Question',
-            'answer_formatted' => 'Reponse',
             'rater_name' => 'Auteur',
             'rater_contact' => 'Contact',
+            'satisfaction' => 'Satisfaction',
+        ];
+    }
+
+    private function answer_columns()
+    {
+        return [
+            'question' => 'Question',
+            'formatted_answer' => 'Reponse',
+            'formatted_date' => 'Date',
+         
+        ];
+    }
+
+    private function user_rate_columns()
+    {
+        return [
+            'rate_date' => 'Date',
+            'rater_contact' => 'Contact',
+            'user' => 'Unité',
+            'appreciation' => 'Avis',
+         
         ];
     }
 
@@ -68,7 +121,7 @@ class EvaluateController extends Controller
     {
         return [
             'formated_date' => 'Date',
-            'appreciation' => 'Commentaire',
+            'appreciation' => 'Avis client',
         ];
     }
 
@@ -76,7 +129,7 @@ class EvaluateController extends Controller
     {
         $fields = [
             'appreciation' => [
-                'title' => 'Commentaire',
+                'title' => 'Avis client',
                 'field' => 'richtext',
                 'colspan' => true
             ],
