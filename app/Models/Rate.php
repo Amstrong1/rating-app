@@ -85,7 +85,11 @@ class Rate extends Model
     }
     public function getAppreciationAttribute()
     {
-        $appreciation = $this->appreciation()->first()->appreciation;
+        if ($this->appreciation()->first() !== null) {
+            $appreciation = $this->appreciation()->first()->appreciation;
+        } else {
+            $appreciation = 'Pas d\'avis';
+        }
         return $appreciation;
     }
 }

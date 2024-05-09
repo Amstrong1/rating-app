@@ -42,7 +42,7 @@
                     </table>
                     <div class="my-4 border px-2 py-3 rounded">
                         <p class="font-semibold my-4">Avis du client</p>
-                        {{ $appreciation->appreciation }}
+                        {{ $appreciation->appreciation ?? 'Pas d\'avis' }}
                     </div>
                     <div class="my-4 border px-2 py-3 rounded">
                         <p class="font-semibold my-4">Taux de satisfaction du client</p>
