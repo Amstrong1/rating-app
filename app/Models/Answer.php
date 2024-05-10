@@ -43,6 +43,6 @@ class Answer extends Model
 
     public function getFormattedDateAttribute()
     {
-        return getFormattedDate($this->created_at);
+        return getFormattedDateTime($this->created_at);
     }
 }

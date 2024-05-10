@@ -4,11 +4,12 @@
             <div id="print" class="bg-white overflow-hidden shadow-lg sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <div class="flex justify-between">
-                        <h1 class="my-4">Voir les avis du client</h1>
+                    <div class="flex justify-end">
                         <button onclick="generatePDF()" id="btn"
                             class="bg-green-700 px-4 py-1 text-white rounded">Imprimer</button>
                     </div>
+                    <h1 class="my-4 text-center font-semibold text-lg">Récapitulatif de l'avis du client</h1>
+
                     <ul>
                         @if ($rate->rater_name != null)
                             <li class="font-semibold my-2">Nom : {{ $rate->rater_name }}</li>
@@ -49,6 +50,9 @@
                         {{ $rate->satisfaction }}
                     </div>
                 </div>
+                <p class="m-4">
+                    Cordialement, l'équipe Vibecro.
+                </p>
             </div>
         </div>
     </div>
