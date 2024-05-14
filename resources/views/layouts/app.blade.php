@@ -21,121 +21,123 @@
 
     <style>
         .group-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 20px;
-            }
-            
-            .group-title {
-                margin: 0;
-                font-size: 24px;
-                color: #333;
-            }
-            
-            .group-title::after {
-                content: "";
-                display: block;
-                width: 100%;
-                height: 2px;
-                background-color: #1374c9;
-                margin-top: 5px;
-            }
-            
-            .group-chat {
-                border: 1px solid #ddd;
-                border-radius: 10px;
-                padding: 20px;
-                background-color: #f9f9f9;
-            }
-            
-            .messages-container {
-                height: 300px; /* Height of the messages container */
-                overflow-y: auto; /* Enable vertical scrolling */
-            }
-            
-            .message {
-                display: flex;
-                margin-bottom: 20px;
-            }
-            
-            .message-avatar {
-                margin-right: 10px;
-            }
-            
-            .avatar {
-                width: 40px;
-                height: 40px;
-                border-radius: 50%;
-            }
-            
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-            
-            .message-content {
-                padding: 15px;
-                border-radius: 10px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }
-            
-            
+        .group-title {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
 
-            .sent-message {
-                background-color: #d6e8ff;
-                margin-right: 8px;
-            
-            }
-            
-            .message-timestamp {
-                color: #999;
-                font-size: 0.8em;
-            }
-            
-            .message-input {
-                display: flex;
-                align-items: center;
-                margin-top: 20px;
-            }
-            
-            .message-input textarea {
-                flex: 1;
-                border: none;
-                background-color: #fff;
-                resize: none;
-                padding: 15px;
-                font-size: 14px;
-                border-radius: 10px;
-                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            }
-            
-            .send-button {
-                background-color: #1374c9;
-                color: #fff;
-                border: none;
-                padding: 12px 20px;
-                border-radius: 10px;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-                margin-left: 10px;
-            }
-            
-            .send-button:hover {
-                background-color: #1565c0;
-            }
-            
-            .btn-primary {
-                background-color: #03224C;
-                color: #fff;
-                border: none;
-                border-radius: 10px;
-                padding: 12px;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-            }
-            
-            .btn-primary:hover {
-                background-color: #1565c0;
-            }
-  
+        .group-title::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #1374c9;
+            margin-top: 5px;
+        }
+
+        .group-chat {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .messages-container {
+            height: 300px;
+            /* Height of the messages container */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+        }
+
+        .message {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .message-avatar {
+            margin-right: 10px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+
+
+        .message-content {
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+
+
+        .sent-message {
+            background-color: #d6e8ff;
+            margin-right: 8px;
+
+        }
+
+        .message-timestamp {
+            color: #999;
+            font-size: 0.8em;
+        }
+
+        .message-input {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .message-input textarea {
+            flex: 1;
+            border: none;
+            background-color: #fff;
+            resize: none;
+            padding: 15px;
+            font-size: 14px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .send-button {
+            background-color: #1374c9;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .send-button:hover {
+            background-color: #1565c0;
+        }
+
+        .btn-primary {
+            background-color: #03224C;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 12px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #1565c0;
+        }
+
         .dataTables_wrapper .row:first-child {
             display: flex;
             justify-content: space-between;
@@ -231,39 +233,29 @@
                         <h1 class="text-center m-4 text-white font-bold">
                             Votre licence n'est plus valide. Veuillez contacter le service client
                         </h1>
-                    
                     @else
                         {{ $slot }}
                     @endif
                 </main>
-
-                <footer class="fixed bottom-0 w-full">
-                    @include('layouts.navigation-bottom')
-
-                    @if (request()->routeIs('dashboard'))
-                        <div class="text-center lg:text-left grid grid-cols-6 h-6" style="background-color: #03224c">
-                            <div class=""></div>
-                            <div class="col-span-4 m-2 mb-0 text-center text-white text-md bg-white font-medium"
-                                style="color: #03224c">
-                                <marquee behavior="" direction="">
-                                    Licence accordée à l'entreprise {{ Auth::user()->structure->name }}. Validité 1an :
-                                    Du {{ \Carbon\Carbon::parse(Auth::user()->structure->created_at)->format('d/m/Y') }}
-                                    au
-                                    {{ \Carbon\Carbon::parse(Auth::user()->structure->created_at)->addYear()->format('d/m/Y') }}
-                                </marquee>
-                            </div>
-                            <div class=""></div>
-                        </div>
-
-                        {{-- <div class="flex justify-end font-semibold p-4 md:p-2 text-sm text-white"
-                            style="background-color: #03224c">
-                            Support Technique : &nbsp; <a href="tel:+22955695656"> +229 55 69 56 56</a>
-                        </div> --}}
-                    @endif
-                </footer>
             </div>
         </div>
     </div>
+
+    <footer
+        class="fixed bottom-0 w-full flex flex-col">
+        @if (request()->routeIs('dashboard'))
+            <div class="grid grid-cols-12" style="background-color: #03224c">
+                <div class="col-start-3 col-span-8 text-white text-md bg-white font-medium" style="color: #03224c">
+                    <marquee behavior="" direction="">
+                        Licence accordée à l'entreprise {{ Auth::user()->structure->name }}. Validité 1an :
+                        Du {{ \Carbon\Carbon::parse(Auth::user()->structure->created_at)->format('d/m/Y') }}
+                        au
+                        {{ \Carbon\Carbon::parse(Auth::user()->structure->created_at)->addYear()->format('d/m/Y') }}
+                    </marquee>
+                </div>
+            </div>
+        @endif
+    </footer>
 
     @include('sweetalert::alert')
 

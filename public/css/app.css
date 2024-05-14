@@ -848,11 +848,14 @@ select {
 .col-span-2 {
   grid-column: span 2 / span 2;
 }
-.col-span-4 {
-  grid-column: span 4 / span 4;
+.col-span-8 {
+  grid-column: span 8 / span 8;
 }
 .col-start-2 {
   grid-column-start: 2;
+}
+.col-start-3 {
+  grid-column-start: 3;
 }
 .float-left {
   float: left;
@@ -1280,9 +1283,6 @@ select {
 }
 .grid-cols-3 {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.grid-cols-6 {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
@@ -3562,10 +3562,6 @@ select {
 
   .lg\:pt-40 {
     padding-top: 10rem;
-  }
-
-  .lg\:text-left {
-    text-align: left;
   }
 
   .lg\:text-4xl {

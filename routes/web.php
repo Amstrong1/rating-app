@@ -19,6 +19,7 @@ use App\Http\Controllers\StructureController;
 use App\Http\Controllers\UserPrintController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\CollaboratorController;
+use App\Http\Controllers\MailMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +92,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/voices', [VoiceController::class, 'index'])->name('voice.index');
     Route::resource('/customer', CustomerController::class);
     Route::resource('/chat', ChatController::class);
+    Route::resource('/message', MailMessageController::class);
     Route::get('/answer/{id}', [EvaluateController::class, 'answer'])->name('answer.list');
     Route::post('/consent', function () {
         $user = User::find(Auth::id());

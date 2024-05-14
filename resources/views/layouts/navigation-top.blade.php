@@ -67,8 +67,7 @@
                         @endif
 
                         @forelse (Auth::user()->unreadNotifications as $notification)
-                            <x-dropdown-link href="{{ route('evaluate.index') }}" onclick="event.preventDefault();
-                                document.getElementById('mark-as-read-{{ $notification->id }}').submit();">
+                            <x-dropdown-link href="{{ route('evaluate.index') }}">
                                 <div class="flex">
                                     <div>
                                         <p class="text-sm">

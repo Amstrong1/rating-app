@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Rate;
 use App\Models\Answer;
 use App\Models\Appreciation;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class EvaluateController extends Controller
@@ -13,6 +12,10 @@ class EvaluateController extends Controller
     public function index()
     {
         $structure = Auth::user()->structure;
+
+        foreach (auth()->user()->notifications as $notification) {
+            $notification->markAsRead();
+        }
 
         $rates = $structure->rates()->orderBy('created_at', 'desc')->get();
         $rates = $rates->unique('rater_contact');

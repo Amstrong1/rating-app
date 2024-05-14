@@ -69,13 +69,13 @@
                                                 ($resource->{$column}->name ??
                                                     ($resource->{$column}->fullname ?? ($resource->{$column}->nom_structure ?? $resource->{$column}->adresse))) }}
                                         @elseif (is_string($resource->{$column}) && mb_strlen($resource->{$column}) > 100)
-                                            {{ Str::of($resource->{$column})->limit(100, '(...)') }}
+                                            {!! Str::of($resource->{$column})->limit(100, '(...)') !!}
                                         @elseif (is_array($resource->{$column}))
                                             @for ($i = 0; $i < sizeof($resource->{$column}); $i++)
                                                 {{ $resource->{$column}[$i] }} <br>
                                             @endfor
                                         @else
-                                            {{ $resource->$column }}
+                                            {!! $resource->$column !!}
                                         @endif
                                     @endif
                                 </td>
