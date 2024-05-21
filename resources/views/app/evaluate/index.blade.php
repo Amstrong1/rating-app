@@ -219,7 +219,7 @@
                                                         }
                                                     @endphp
                                                     @if ($answers !== 0)
-                                                        {{ ($answerYes / $answers) * 10 }} / 10
+                                                        {{ round(($answerYes / $answers) * 10) }} / 10
                                                     @else
                                                         0
                                                     @endif
@@ -227,7 +227,7 @@
 
                                                 <div class="flex flex-row my-2">
                                                     @if ($answers !== 0)
-                                                        @for ($i = 0; $i < ceil(($answerYes / $answers) * 5); $i++)
+                                                        @for ($i = 0; $i < round(($answerYes / $answers) * 5); $i++)
                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="orange"
                                                                 viewBox="0 0 24 24" stroke-width="1.5"
                                                                 stroke="currentColor" class="w-4 h-4">
@@ -236,7 +236,7 @@
                                                             </svg>
                                                         @endfor
 
-                                                        @for ($i = 0; $i < floor(($answerNo / $answers) * 5); $i++)
+                                                        @for ($i = 0; $i < round(($answerNo / $answers) * 5); $i++)
                                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                 viewBox="0 0 24 24" stroke-width="1.5"
                                                                 stroke="currentColor" class="w-4 h-4">

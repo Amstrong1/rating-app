@@ -8,6 +8,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PlaceController;
 use App\Http\Controllers\VoiceController;
 use App\Http\Controllers\ContactController;
@@ -18,8 +19,9 @@ use App\Http\Controllers\EvaluateController;
 use App\Http\Controllers\StructureController;
 use App\Http\Controllers\UserPrintController;
 use App\Http\Controllers\NewsletterController;
-use App\Http\Controllers\CollaboratorController;
 use App\Http\Controllers\MailMessageController;
+use App\Http\Controllers\CollaboratorController;
+use App\Http\Controllers\ComplainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +64,17 @@ Route::get('/done', function () {
     return view('done');
 });
 
+Route::get('/order-done', function () {
+    return view('order-done');
+});
+
+Route::get('/complain-done', function () {
+    return view('complain-done');
+});
+
 Route::post('/voice', [WelcomeController::class, 'voice']);
+Route::post('/order-store', [WelcomeController::class, 'order'])->name('store.order');
+Route::post('/complain-store', [WelcomeController::class, 'complain'])->name('store.complain');
 
 Route::middleware('auth')->group(function () {
     Route::post('/markAsRead', function () {
@@ -93,6 +105,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/customer', CustomerController::class);
     Route::resource('/chat', ChatController::class);
     Route::resource('/message', MailMessageController::class);
+    Route::resource('/complain', ComplainController::class);
+    Route::resource('/order', OrderController::class);
     Route::get('/answer/{id}', [EvaluateController::class, 'answer'])->name('answer.list');
     Route::post('/consent', function () {
         $user = User::find(Auth::id());

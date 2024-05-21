@@ -6,11 +6,13 @@ use App\Models\File;
 use App\Models\Quiz;
 use App\Models\Rate;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\Answer;
 use App\Models\PlaceQuiz;
 use App\Models\Structure;
 use App\Mail\UserRatedMail;
-use App\Models\Answer;
 use App\Models\Appreciation;
+use App\Models\Complain;
 use Illuminate\Http\Request;
 use App\Notifications\UserRated;
 use Illuminate\Support\Facades\Mail;
@@ -43,12 +45,6 @@ class WelcomeController extends Controller
                 $rate->room = $request->room;
                 $rate->save();
 
-                // if () {
-                //     Alert::toast("Merci de votre attention", 'success');
-                // } else {
-                //     Alert::toast('Une erreur est survenue', 'error');
-                // }
-
                 for ($i = 0; $i < $request->quizzes; $i++) {
                     $answer = new Answer();
                     $answer->rate_id = $rate->id;
@@ -75,30 +71,7 @@ class WelcomeController extends Controller
 
                     Mail::to($admin->email)->send(new UserRatedMail($admin->name, $structure->name, $user->place->name));
                 }
-
-                // } else {
-                //     Alert::toast('Vérifier votre position géographique', 'error');
-                // }
             }
-            // else {
-
-            //     $fileName = time() . '.' . $request->audio->extension();
-
-            //     $request->audio->move(public_path('storage'), $fileName);
-
-            //     $path = $fileName;
-
-            //     $file = new File();
-            //     $file->file = $path;
-            //     $file->structure_id = $request->structure;
-            //     $file->user_id = $request->user;
-            //     $file->contact = $request->contact;
-            //     if ($file->save()) {
-            //         Alert::toast("Merci de votre attention", 'success');
-            //     } else {
-            //         Alert::toast('Une erreur est survenue', 'error');
-            //     }
-            // }
 
             return redirect('done');
         }
@@ -130,6 +103,50 @@ class WelcomeController extends Controller
         $file->contact = $request->contact;
         if ($file->save()) {
             Alert::toast("Merci de votre attention", 'success');
+            return redirect('done');
+        } else {
+            Alert::toast('Une erreur est survenue', 'error');
+            return back();
+        }
+    }
+
+    public function order(Request $request)
+    {
+        $order = new Order();
+        $order->structure_id = $request->structure;
+        $order->name = $request->name;
+        $order->contact = $request->tel;
+        $order->product = $request->product;
+        $order->quantity = $request->quantity;
+        $order->description = $request->description;
+        $order->delay = $request->delay;
+
+        if ($request->image !== null) {
+            $fileName = time() . '.' . $request->audio->extension();
+            $request->audio->move(public_path('storage'), $fileName);
+            $order->image = $request->image;
+        }
+
+        if ($order->save()) {
+            Alert::toast("Commande enregistré", 'success');
+            return redirect('order-done');
+        } else {
+            Alert::toast('Une erreur est survenue', 'error');
+            return back();
+        }
+    }
+
+    public function complain(Request $request)
+    {
+        $complain = new Complain();
+        $complain->structure_id = $request->structure;
+        $complain->name = $request->name;
+        $complain->contact = $request->tel;
+        $complain->complain = $request->complain;
+
+        if ($complain->save()) {
+            Alert::toast("Plainte enregistrée", 'success');
+            return redirect('complain-done');
         } else {
             Alert::toast('Une erreur est survenue', 'error');
             return back();

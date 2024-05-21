@@ -27,7 +27,6 @@
                     <a class="flex items-center py-2 ltr:mr-4 rtl:ml-4 text-xl" href="index.html">
                         <span class="text-4xl font-semibold dark:text-gray-100">Avis<span
                                 class="text-blue-700">Client</span></span>
-                        <!-- <img class="max-w-full h-auto" src="src/img/logo.png" alt="Logo dark"> -->
                     </a>
 
                     <!-- navbar toggler -->
@@ -80,7 +79,6 @@
                                 <a href="#" class="flex relative">
                                     <span class="text-4xl font-semibold px-4 dark:text-gray-200">Avis<span
                                             class="text-blue-700">Client</span></span>
-                                    <!-- <img src="src/img/logo.png" class="max-w-full h-auto" alt="logo"> -->
                                     <span
                                         class="absolute -bottom-4 transform ltr:translate-x-1/2 rtl:-translate-x-1/2 w-20 h-0 border-t-2 border-opacity-50 border-blue-700 mx-auto"></span>
                                 </a>
@@ -199,7 +197,6 @@
                                                     </svg>
                                                     Espace Entreprise
                                                 </span>
-
                                             </a>
                                         </li>
                                     </ul>
@@ -315,11 +312,8 @@
                                             d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
                                     {{ __('message.menu3') }}
-
                                 </span>
-
                             </a>
-
                         </li>
 
                         <!-- dropdown -->
@@ -336,62 +330,10 @@
                                             d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                                     </svg>&nbsp;&nbsp;
                                     {{ __('message.menu4') }}
-
-                                    {{-- <h3>{{__('message.welcome')}}</h3> --}}
                                 </span>
                             </a>
                         </li>
-
-
-
                     </ul>
-
-                    {{-- <div class="fixed left-0 top-1/2 transform -translate-y-1/3"> --}}
-                    {{-- <div class="sm:flex sm:items-center sm:ml-2 mt-6">
-                <x-dropdown align="right">
-                    <x-slot name="trigger">
-                        <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-black focus:text-black hover:text-black focus:outline-none transition ease-in-out duration-150">
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M10.5 21l5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 016-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 01-3.827-5.802" />
-                                </svg>
-                            </div>
-                        </button>
-                    </x-slot>
-
-                    <x-slot name="content">
-                        <!-- french form -->
-                        <form method="POST" action="">
-                            @csrf
-                            <input type="hidden" name="lang" value="fr">
-                            <button type="submit">
-                                <div class="flex items-center p-4">
-                                    <img class="w-8" src="{{ asset('assets/img/fr.png') }}" alt="fr">
-                                    &nbsp;
-                                    {{ __('FR') }}
-                                </div>
-                            </button>
-                        </form>
-
-                        <!-- english form -->
-                        <form method="POST" action="">
-                            @csrf
-                            <input type="hidden" name="lang" value="en">
-                            <button type="submit">
-                                <div class="flex items-center p-4">
-                                    <img class="w-8" src="{{ asset('assets/img/en.png') }}" alt="en">
-                                    &nbsp;
-                                    {{ __('EN') }}
-                                </div>
-                            </button>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
-            </div> --}}
-
                 </div>
                 <!-- end desktop menu -->
             </div>

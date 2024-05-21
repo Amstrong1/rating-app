@@ -1,7 +1,7 @@
 <ul class="flex flex-row justify-center" data-te-navbar-nav-ref>
     <li class="mx-1 static" data-te-nav-item-ref>
         <x-nav-link
-            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white dark:hover:text-white dark:focus:text-white"
+            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white"
             :href="route('dashboard')" :active="request()->routeIs('dashboard')" data-te-ripple-init data-te-ripple-color="light">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
@@ -14,7 +14,7 @@
 
     <li class="mx-1 static" data-te-nav-item-ref>
         <x-nav-link
-            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white dark:hover:text-white dark:focus:text-white"
+            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white"
             :href="route('place.index')" :active="request()->routeIs('place.*')" data-te-ripple-init data-te-ripple-color="light">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
@@ -25,9 +25,9 @@
         </x-nav-link>
     </li>
 
-    <li class="mx-1 static" data-te-nav-item-ref >
+    <li class="mx-1 static" data-te-nav-item-ref>
         <x-nav-link
-            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white dark:hover:text-white dark:focus:text-white"
+            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white"
             :href="route('user.index')" :active="request()->routeIs('user.*')" data-te-ripple-init data-te-ripple-color="light">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
@@ -41,7 +41,7 @@
 
     <li class="mx-1 static" data-te-nav-item-ref>
         <x-nav-link
-            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white dark:hover:text-white dark:focus:text-white"
+            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white"
             :href="route('quiz.index')" :active="request()->routeIs('quiz.*')" data-te-ripple-init data-te-ripple-color="light">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
@@ -55,7 +55,7 @@
 
     <li class="mx-1 static" data-te-nav-item-ref>
         <x-nav-link
-            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white dark:hover:text-white dark:focus:text-white"
+            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white"
             :href="route('evaluate.index')" :active="request()->routeIs('evaluate.*')" data-te-ripple-init data-te-ripple-color="light">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
@@ -68,7 +68,7 @@
 
     <li class="mx-1 static" data-te-nav-item-ref>
         <x-nav-link
-            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white dark:hover:text-white dark:focus:text-white"
+            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white"
             :href="route('collaborator.index')" :active="request()->routeIs('collaborator.*')" data-te-ripple-init data-te-ripple-color="light">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
@@ -79,10 +79,10 @@
             Collaborateurs
         </x-nav-link>
     </li>
-    
+
     <li class="mx-1 static" data-te-nav-item-ref>
         <x-nav-link
-            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white dark:hover:text-white dark:focus:text-white"
+            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white"
             :href="route('customer.index')" :active="request()->routeIs('customer.*')" data-te-ripple-init data-te-ripple-color="light">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-6 h-6">
@@ -91,6 +91,33 @@
             </svg>
             &nbsp;
             Mes Clients
+        </x-nav-link>
+    </li>
+
+    <li class="mx-1 static" data-te-nav-item-ref>
+        <x-nav-link
+            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white"
+            :href="route('order.index')" :active="request()->routeIs('order.*')" data-te-ripple-init data-te-ripple-color="light">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 7.5h1.5m-1.5 3h1.5m-7.5 3h7.5m-7.5 3h7.5m3-9h3.375c.621 0 1.125.504 1.125 1.125V18a2.25 2.25 0 0 1-2.25 2.25M16.5 7.5V18a2.25 2.25 0 0 0 2.25 2.25M16.5 7.5V4.875c0-.621-.504-1.125-1.125-1.125H4.125C3.504 3.75 3 4.254 3 4.875V18a2.25 2.25 0 0 0 2.25 2.25h13.5M6 7.5h3v3H6v-3Z" />
+            </svg>
+            &nbsp;
+            Commandes
+        </x-nav-link>
+    </li>
+
+    <li class="mx-1 static" data-te-nav-item-ref>
+        <x-nav-link
+            class="text-white flex items-center whitespace-nowrap py-1 transition duration-150 ease-in-out hover:text-white focus:text-white"
+            :href="route('complain.index')" :active="request()->routeIs('complain.*')" data-te-ripple-init data-te-ripple-color="light">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+            &nbsp;
+            Plaintes
         </x-nav-link>
     </li>
 

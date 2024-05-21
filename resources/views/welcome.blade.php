@@ -63,7 +63,7 @@
 </head>
 
 
-<body x-data="{ showModal1: true, showModal2: false }" class="font-sans text-gray-900 antialiased">
+<body x-data="{ showModal3: false, showModal2: false, showModal1: true }" class="font-sans text-gray-900 antialiased">
 
     <div x-show="showModal1" class="fixed inset-0 overflow-y-auto z-50" x-cloak>
         <div class="flex items-center justify-center min-h-screen p-4">
@@ -96,6 +96,77 @@
             <div class="bg-slate-100 w-full max-w-md p-4 rounded">
                 <div class="mt-4">
                     <p>
+                        Que souhaitez vous?
+                    </p>
+
+                    <div class="m-4">
+                        <div class="mb-4 flex items-center min-h-[1.5rem] pl-[1.5rem]">
+                            <input onclick="" checked
+                                class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                                type="radio" name="flexRadioDefault1" id="radioDefault03" value="avis" />
+                            <label onclick="" class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer"
+                                for="radioDefault03">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block mx-auto">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 48.678 48.678 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3-3-3m-12 3c0 1.232.046 2.453.138 3.662a4.006 4.006 0 0 0 3.7 3.7 48.656 48.656 0 0 0 7.324 0 4.006 4.006 0 0 0 3.7-3.7c.017-.22.032-.441.046-.662M4.5 12l3 3m-3-3-3 3" />
+                                </svg>
+                                Avis/Suggestion
+                            </label>
+                        </div>
+                        <div class="mb-4 flex items-center min-h-[1.5rem] pl-[1.5rem]">
+                            <input onclick=""
+                                class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                                type="radio" name="flexRadioDefault1" id="radioDefault05" value="complain" />
+                            <label onclick="" class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer"
+                                for="radioDefault05">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block mx-auto">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                </svg>
+                                Gestion des plaintes
+                            </label>
+                        </div>
+                        <div class="mb-4 flex items-center min-h-[1.5rem] pl-[1.5rem]">
+                            <input onclick=""
+                                class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
+                                type="radio" name="flexRadioDefault1" id="radioDefault04" value="order" />
+                            <label onclick="" class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer"
+                                for="radioDefault04">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6 inline-block mx-auto">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                                </svg>
+                                Faire une commande
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="mt-6 flex justify-end">
+                    <button
+                        @click="(function() { 
+                            var radios = document.querySelectorAll('input[name=\'flexRadioDefault1\']');
+                            var value = Array.from(radios).find(radio => radio.checked).value; 
+                            if (value === 'avis') { showModal2 = false; showModal3 = true; };
+                            if (value === 'order') { showModal2 = false; showOrderForm(), setContact() };
+                            if (value === 'complain') { showModal2 = false; showComplainForm(), setContact() }
+                        }) ()"
+                        class="px-4 py-2 bg-green-500 text-white rounded-md">
+                        Suivant
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div x-show="showModal3" class="fixed inset-0 overflow-y-auto z-50" x-cloak>
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-slate-100 w-full max-w-md p-4 rounded">
+                <div class="mt-4">
+                    <p>
                         Vous avez la possibité de donner votre avis par message audio ou écrit
                     </p>
 
@@ -104,8 +175,8 @@
                             <input onclick="showTextForm()" checked
                                 class="relative float-left -ml-[1.5rem] mr-1 mt-0.5 h-5 w-5 appearance-none rounded-full border-2 border-solid border-neutral-300 before:pointer-events-none before:absolute before:h-4 before:w-4 before:scale-0 before:rounded-full before:bg-transparent before:opacity-0 before:shadow-[0px_0px_0px_13px_transparent] before:content-[''] after:absolute after:z-[1] after:block after:h-4 after:w-4 after:rounded-full after:content-[''] checked:border-primary checked:before:opacity-[0.16] checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:h-[0.625rem] checked:after:w-[0.625rem] checked:after:rounded-full checked:after:border-primary checked:after:bg-primary checked:after:content-[''] checked:after:[transform:translate(-50%,-50%)] hover:cursor-pointer hover:before:opacity-[0.04] hover:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:shadow-none focus:outline-none focus:ring-0 focus:before:scale-100 focus:before:opacity-[0.12] focus:before:shadow-[0px_0px_0px_13px_rgba(0,0,0,0.6)] focus:before:transition-[box-shadow_0.2s,transform_0.2s] checked:focus:border-primary checked:focus:before:scale-100 checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca] checked:focus:before:transition-[box-shadow_0.2s,transform_0.2s] dark:border-neutral-600 dark:checked:border-primary dark:checked:after:border-primary dark:checked:after:bg-primary dark:focus:before:shadow-[0px_0px_0px_13px_rgba(255,255,255,0.4)] dark:checked:focus:border-primary dark:checked:focus:before:shadow-[0px_0px_0px_13px_#3b71ca]"
                                 type="radio" name="flexRadioDefault" id="radioDefault02" />
-                            <label onclick="showTextForm()" class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer"
-                                for="radioDefault02">
+                            <label onclick="showTextForm()"
+                                class="mt-px inline-block pl-[0.15rem] hover:cursor-pointer" for="radioDefault02">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-8 h-8 inline-block mx-auto">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -132,7 +203,7 @@
 
                 </div>
                 <div class="mt-6 flex justify-end">
-                    <button @click="showModal2 = false; showForm(); setContact()"
+                    <button @click="showModal3 = false; showForm(); setContact()"
                         class="px-4 py-2 bg-green-500 text-white rounded-md">
                         Suivant
                     </button>
@@ -153,27 +224,10 @@
                         href="/">
                         {{-- <img class="w-10" src="{{ url('storage/' . $user->structure->logo) }}" alt=""> &nbsp; --}}
                         <div class="tracking-widest text-sm font-semibold italic rounded text-white">
-                            {{ $user->place->name }}</div>
+                            {{ $user->place->name }}
+                        </div>
                     </a>
                 </div>
-
-                <!-- Navigation links -->
-                {{-- <div class="md:flex md:flex-row justify-end content-center">
-                    <ul class="mr-auto flex flex-col md:flex-row md:justify-end" data-te-navbar-nav-ref>
-                        <li class="mb-2 lg:mb-0 lg:pr-2 flex" data-te-nav-item-ref>
-
-                            <a class="flex" href="{{ $user->structure->slug ?? '#' }}" data-te-nav-link-ref
-                                data-te-ripple-init data-te-ripple-color="light">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
-                                </svg>
-                                &nbsp;A Propos
-                            </a>
-                        </li>
-                    </ul>
-                </div> --}}
             </div>
         </nav>
 
@@ -304,6 +358,141 @@
         </form>
     </div>
 
+    <!----------------------------- order form ---------------------------->
+    <section id="orderForm" class="hidden text-gray-600 body-font">
+        <div class="container md:px-5 py-12 mx-auto">
+            <div class="p-4">
+                @if (Session::has('success'))
+                    <div class="mb-4 rounded-lg bg-success-100 px-6 py-5 text-base text-success-700" role="alert">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
+
+                <h2 class="text-center font-bold text-xl md:text-2xl my-6">Faire une commande</h2>
+                <form action="{{ route('store.order') }}" id="" method="POST">
+                    @csrf
+                    <input type="hidden" name="structure" value="{{ $structure->id }}">
+
+                    <div id="" class="relative my-6 md:w-1/2 md:mx-auto">
+                        <div>
+                            <label for="name" class="font-bold">
+                                Nom et Prénoms
+                            </label>
+                            <input id="name"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="text" name="name" />
+                        </div>
+                        <div>
+                            <label for="contact1" class="font-bold">
+                                Contact
+                            </label>
+                            <input id="contact1"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="tel" name="tel" />
+                        </div>
+                        <div>
+                            <label for="product" class="font-bold">
+                                Produit
+                            </label>
+                            <input id="product"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="text" name="product" />
+                        </div>
+                        <div>
+                            <label for="quantity" class="font-bold">
+                                Quantitée
+                            </label>
+                            <input id="quantity"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="number" value="1" name="quantity" />
+                        </div>
+                        <div>
+                            <label for="delay" class="font-bold">
+                                Délai
+                            </label>
+                            <input id="delay"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="date" value="1" name="delay" />
+                        </div>
+                        <div>
+                            <label for="description" class="font-bold">
+                                Description (optionnel)
+                            </label>
+                            <textarea rows="5" name="complain" placeholder="description" id="description"
+                                class="my-2 peer block min-h-[auto] w-full rounded border px-3 py-[0.32rem] leading-[1.6] outline-none"></textarea>
+                        </div>
+                        <div>
+                            <label for="image" class="font-bold">
+                                Image (optionnel)
+                            </label>
+                            <input id="image"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="file" value="1" name="image" accept="image/*" />
+                        </div>
+                    </div>
+
+                    <!--Submit button-->
+                    <button type="submit"
+                        class="md:w-1/2 block mx-auto rounded px-6 pb-2 pt-2.5 my-6 text-xs font-medium uppercase leading-normal text-white"
+                        style="background-color: #4bad41">
+                        Envoyer
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!----------------------------- complain form ---------------------------->
+    <section id="complainForm" class="hidden text-gray-600 body-font">
+        <div class="container md:px-5 py-12 mx-auto">
+            <div class="p-4">
+                @if (Session::has('success'))
+                    <div class="mb-4 rounded-lg bg-success-100 px-6 py-5 text-base text-success-700" role="alert">
+                        {{ Session::get('success') }}
+                    </div>
+                @endif
+
+                <h2 class="text-center font-bold text-xl md:text-2xl my-6">Laisser une plainte</h2>
+                <form action="{{ route('store.complain') }}" id="" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="structure" value="{{ $structure->id }}">
+
+                    <div id="" class="relative my-6 md:w-1/2 md:mx-auto">
+                        <div>
+                            <label for="name" class="font-bold">
+                                Nom et Prénoms
+                            </label>
+                            <input id="name"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="text" name="name" />
+                        </div>
+                        <div>
+                            <label for="contact1" class="font-bold">
+                                Contact
+                            </label>
+                            <input id="contact1"
+                                class="my-2 peer block min-h-[auto] w-full rounded border bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none"
+                                type="tel" name="tel" />
+                        </div>
+                        <div>
+                            <label for="complain" class="font-bold">
+                                Plainte
+                            </label>
+                            <textarea rows="5" name="complain" placeholder="Plainte" id="complain"
+                                class="my-2 peer block min-h-[auto] w-full rounded border px-3 py-[0.32rem] leading-[1.6] outline-none"></textarea>
+                        </div>
+                    </div>
+
+                    <!--Submit button-->
+                    <button type="submit"
+                        class="md:w-1/2 block mx-auto rounded px-6 pb-2 pt-2.5 my-6 text-xs font-medium uppercase leading-normal text-white"
+                        style="background-color: #4bad41">
+                        Envoyer
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <footer id="footer" class="hidden px-6 mx-auto flex-wrap flex-col md:flex-row items-center"
         style="background-color: #03224c">
@@ -351,6 +540,18 @@
 
     function showAudioForm() {
         document.getElementById('form_type').value = "audio";
+    }
+
+    function showOrderForm() {
+        document.getElementById('header').style.display = 'block';
+        document.getElementById('orderForm').style.display = 'block';
+        document.getElementById('footer').style.display = 'flex';
+    }
+
+    function showComplainForm() {
+        document.getElementById('header').style.display = 'block';
+        document.getElementById('complainForm').style.display = 'block';
+        document.getElementById('footer').style.display = 'flex';
     }
 
     function showForm() {

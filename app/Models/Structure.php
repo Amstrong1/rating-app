@@ -58,4 +58,14 @@ class Structure extends Model
     {
         return $this->hasMany(Appreciation::class);
     }
+    
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+    
+    public function complains(): HasMany
+    {
+        return $this->hasMany(Complain::class);
+    }
 }
