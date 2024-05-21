@@ -418,7 +418,7 @@
                             <label for="description" class="font-bold">
                                 Description (optionnel)
                             </label>
-                            <textarea rows="5" name="complain" placeholder="description" id="description"
+                            <textarea rows="5" name="description" placeholder="Description" id="description"
                                 class="my-2 peer block min-h-[auto] w-full rounded border px-3 py-[0.32rem] leading-[1.6] outline-none"></textarea>
                         </div>
                         <div>

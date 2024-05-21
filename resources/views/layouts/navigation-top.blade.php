@@ -27,7 +27,7 @@
                         <button class="inline-flex items-center justify-center mx-2 p-2 rounded-md text-white">
                             <div>
                                 <a class="hidden-arrow mr-4 flex items-center text-white transition duration-200 hover:text-white hover:ease-in-out focus:text-white disabled:text-black/30 motion-reduce:transition-none dark:text-white dark:hover:text-white dark:focus:text-white [&.active]:text-black/90 dark:[&.active]:text-white"
-                                    href="#" id="dropdownMenuButton1" role="button" data-te-dropdown-toggle-ref
+                                    href="" id="dropdownMenuButton1" role="button" data-te-dropdown-toggle-ref
                                     aria-expanded="false">
                                     <!-- Dropdown trigger icon -->
                                     <span class="[&>svg]:w-6">
@@ -67,7 +67,7 @@
                         @endif
 
                         @forelse (Auth::user()->unreadNotifications as $notification)
-                            <x-dropdown-link href="{{ route('evaluate.index') }}">
+                            <x-dropdown-link href="{{ $notification->data['url'] }}">
                                 <div class="flex">
                                     <div>
                                         <p class="text-sm">

@@ -12,6 +12,9 @@ class ComplainController extends Controller
      */
     public function index()
     {
+        foreach (auth()->user()->notifications as $notification) {
+            $notification->markAsRead();
+        }
         $structure = Auth::user()->structure;
         return view('app.complain.index', [
             'complains' => $structure->complains()->get(),

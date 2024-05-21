@@ -13,6 +13,8 @@ use App\Models\Structure;
 use App\Mail\UserRatedMail;
 use App\Models\Appreciation;
 use App\Models\Complain;
+use App\Notifications\ComplainNotification;
+use App\Notifications\OrderNotification;
 use Illuminate\Http\Request;
 use App\Notifications\UserRated;
 use Illuminate\Support\Facades\Mail;
@@ -66,9 +68,7 @@ class WelcomeController extends Controller
                 $user = User::find($request->user);
 
                 foreach ($admins as $admin) {
-
                     $admin->notify(new UserRated());
-
                     Mail::to($admin->email)->send(new UserRatedMail($admin->name, $structure->name, $user->place->name));
                 }
             }
@@ -90,7 +90,6 @@ class WelcomeController extends Controller
 
     public function voice(Request $request)
     {
-
         $fileName = time() . '.' . $request->audio->extension();
         $request->audio->move(public_path('storage'), $fileName);
 
@@ -128,6 +127,12 @@ class WelcomeController extends Controller
         }
 
         if ($order->save()) {
+            $structure = Structure::find($request->structure);
+            $admins = User::where('role', 'admin')->where('structure_id', $structure->id)->get();
+            foreach ($admins as $admin) {
+                $admin->notify(new OrderNotification());
+            }
+
             Alert::toast("Commande enregistré", 'success');
             return redirect('order-done');
         } else {
@@ -145,6 +150,11 @@ class WelcomeController extends Controller
         $complain->complain = $request->complain;
 
         if ($complain->save()) {
+            $structure = Structure::find($request->structure);
+            $admins = User::where('role', 'admin')->where('structure_id', $structure->id)->get();
+            foreach ($admins as $admin) {
+                $admin->notify(new ComplainNotification());
+            }
             Alert::toast("Plainte enregistrée", 'success');
             return redirect('complain-done');
         } else {

@@ -14,10 +14,13 @@ class OrderController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {        
         $structure = Auth::user()->structure;
+        foreach (auth()->user()->notifications as $notification) {
+            $notification->markAsRead();
+        }
         return view('app.order.index', [
-            'orders' => $structure->orders()->get(),
+            'orders' => $structure->orders()->orderBy('created_at', 'desc')->get(),
             'my_actions' => $this->order_actions(),
             'my_attributes' => $this->order_columns(),
         ]);
@@ -112,8 +115,8 @@ class OrderController extends Controller
                     'field' => 'select',
                     'options' => [
                         'En attente' => 'En attente',
-                        'Termine' => 'Termine', 
-                        'Annule' => 'Annule',
+                        'Terminé' => 'Terminé', 
+                        'Annulé' => 'Annulé',
                     ]
                 ],
             ];

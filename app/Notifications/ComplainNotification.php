@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserRated extends Notification
+class ComplainNotification extends Notification
 {
     use Queueable;
 
@@ -26,7 +26,7 @@ class UserRated extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -35,8 +35,8 @@ class UserRated extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('Une entité vient de recevoir l\'avis d\'un client')
-                    ->action('Voir la note', url('/evaluate'))
+                    ->line('Vous avez une nouvelle plainte.')
+                    ->action('Notification Action', url('/complain'))
                     ->line('');
     }
 
@@ -48,8 +48,8 @@ class UserRated extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'message' => 'Une entité vient de recevoir l\'avis d\'un client',
-            'url' => '/evaluate'
+            'message' => 'Vous avez une nouvelle plainte',
+            'url' => '/complain'
         ];
     }
 }
